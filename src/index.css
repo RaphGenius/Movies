@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Noto+Serif&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: "Noto Serif";
+  @apply text-gray-800;
+}
+
+.gradientText {
+  @apply bg-gradient-to-l from-teal-500 to-teal-700 
+       bg-clip-text text-transparent;
+}

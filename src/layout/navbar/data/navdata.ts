@@ -1,3 +1,8 @@
+export type NavDataProps = {
+  title: string;
+  categories: string[];
+};
+
 export const navdata = [
   {
     title: "Film",

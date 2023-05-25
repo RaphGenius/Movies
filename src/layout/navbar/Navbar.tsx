@@ -1,10 +1,11 @@
-import { GoThreeBars } from "react-icons/go";
-import { BsLightbulb } from "react-icons/bs";
-import { AiOutlineSearch } from "react-icons/ai";
 import { useState, useEffect } from "react";
-import IconButton from "./components/IconButton";
-import Sidebar from "./components/Sidebar";
 
+import Sidebar from "./components/Sidebar";
+import { Desktop, Mobile } from "../../utils/ResponsiveWrapper";
+
+import MobileNavbar from "./components/Mobile/MobileNavbar";
+import DesktopNavbar from "./components/Desktop/DesktopNavbar";
+import SearchNavbar from "./components/SearchNavbar";
 function Navbar() {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -16,7 +17,7 @@ function Navbar() {
   const handleScroll = () => {
     const currentScrollPos = window.scrollY;
 
-    if (currentScrollPos > prevScrollPos && currentScrollPos > 64) {
+    if (currentScrollPos > prevScrollPos) {
       setVisible(false);
     } else {
       setVisible(true);
@@ -33,28 +34,23 @@ function Navbar() {
 
   return (
     <nav
-      className={` h-16  transition-transform origin-top duration-300 w-full sticky top-0 ${
-        visible ? " scale-y-100  " : "scale-y-0 "
-      } px-2 py-2 bg-gray-100 flex 
+      className={`   transition-transform origin-top duration-300
+       w-full sticky top-0 ${
+         visible ? " scale-y-100  " : "scale-y-0 "
+       } px-2 lg:px-8
+       h-16 lg:h-24 bg-gray-100 flex 
     items-center justify-between`}
     >
-      <div className="w-1/3">
-        <IconButton handleClick={toggleSideBar}>
-          <GoThreeBars />
-        </IconButton>
-      </div>
-      <h1 className="gradientText font-special text-3xl">Movies</h1>
-      <div className="w-1/3 flex items-center justify-end gap-4 ">
-        <IconButton handleClick={() => console.log("salut")}>
-          <BsLightbulb />
-        </IconButton>
-        <IconButton handleClick={() => console.log("salut")}>
-          <AiOutlineSearch />
-        </IconButton>
-      </div>
-      <aside className="">
-        <Sidebar isSideBarOpen={isSideBarOpen} />
-      </aside>
+      <Mobile>
+        <>
+          <MobileNavbar toggleSideBar={toggleSideBar} />{" "}
+          <Sidebar isSideBarOpen={isSideBarOpen} />
+        </>
+      </Mobile>
+
+      <Desktop>
+        <DesktopNavbar />
+      </Desktop>
     </nav>
   );
 }

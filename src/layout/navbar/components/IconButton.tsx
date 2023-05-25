@@ -4,7 +4,11 @@ type Props = {
 };
 
 function IconButton({ children, handleClick }: Props) {
-  return <button onClick={handleClick}>{children} </button>;
+  return (
+    <button className="text-2xl" onClick={handleClick}>
+      {children}{" "}
+    </button>
+  );
 }
 
 export default IconButton;

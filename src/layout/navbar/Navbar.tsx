@@ -1,14 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
-import Sidebar from "./components/Sidebar";
 import { Desktop, Mobile } from "../../utils/ResponsiveWrapper";
 
+import Sidebar from "./components/Sidebar";
 import MobileNavbar from "./components/Mobile/MobileNavbar";
+import {
+  SearchbarContext,
+  SearchbarContextType,
+} from "../../context/SearchbarContext";
 import DesktopNavbar from "./components/Desktop/DesktopNavbar";
-import SearchNavbar from "./components/SearchNavbar";
+
 function Navbar() {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [visible, setVisible] = useState(true);
+  const { visible, setVisible } = useContext(
+    SearchbarContext
+  ) as SearchbarContextType;
+  // const [visible, setVisible] = useState(true);
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
   const toggleSideBar = () => setIsSideBarOpen((prev) => !prev);
@@ -38,7 +45,7 @@ function Navbar() {
        w-full sticky top-0 ${
          visible ? " scale-y-100  " : "scale-y-0 "
        } px-2 lg:px-8
-       h-16 lg:h-24 bg-gray-100 flex 
+       h-24 bg-gray-100 flex 
     items-center justify-between`}
     >
       <Mobile>

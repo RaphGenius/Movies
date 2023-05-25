@@ -7,9 +7,9 @@ function Sidebar({ isSideBarOpen }: { isSideBarOpen: boolean }) {
   const visible = isSideBarOpen ? "left-0" : "-left-[100%]";
   return (
     <aside
-      className={`absolute w-full ${visible}  transition-all top-[64px] h-screen z-50 bottom-0  right-0 bg-yellow-500 `}
+      className={`absolute w-full ${visible}  transition-all top-[96px] h-screen z-50 bottom-0  right-0 bg-yellow-500 `}
     >
-      <div className="w-full h-full p-4">
+      <div className="w-full mt-12 h-full p-4">
         {navdata.map((el, index) => (
           <div key={index}>
             <h2

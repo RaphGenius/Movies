@@ -1,5 +1,3 @@
-import React from "react";
-
 function SearchBar() {
   return (
     <form className="py-4 w-full" action="">

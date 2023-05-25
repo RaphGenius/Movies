@@ -1,6 +1,6 @@
 type Props = {
   children: JSX.Element;
-  handleClick: () => void;
+  handleClick?: () => void;
 };
 
 function IconButton({ children, handleClick }: Props) {

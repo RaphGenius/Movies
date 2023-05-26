@@ -1,14 +1,17 @@
+import { Link } from "react-router-dom";
 type TitleProps = {
   title: string;
-  size: string;
 };
 
-function Title({ title, size }: TitleProps) {
+function Title({ title }: TitleProps) {
   return (
-    <h1 className={` text-center gradientText font-special  ${size} `}>
-      {" "}
-      {title}{" "}
-    </h1>
+    <Link to={"/"}>
+      <h1
+        className={` text-center gradientText font-special lg:text-6xl text-4xl    `}
+      >
+        {title}
+      </h1>
+    </Link>
   );
 }
 

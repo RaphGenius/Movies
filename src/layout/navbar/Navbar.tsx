@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 
 import { Desktop, Mobile } from "../../utils/ResponsiveWrapper";
 
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/Mobile/Sidebar";
 import MobileNavbar from "./components/Mobile/MobileNavbar";
 import {
   SearchbarContext,

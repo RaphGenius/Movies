@@ -15,7 +15,8 @@ function Sidebar({ isSideBarOpen }: { isSideBarOpen: boolean }) {
   if (isSideBarOpen) setSearchBarVisible(false);
   return (
     <aside
-      className={`absolute w-full ${visible}  transition-all top-[96px] h-screen z-50 bottom-0  right-0 bg-yellow-500 `}
+      className={`absolute w-full ${visible} duration-300  transition-all
+       top-[96px] h-screen z-50 bottom-0  right-0 bg-teal-200 `}
     >
       <div className="w-full  h-full p-4">
         {navdata.map((el, index) => (

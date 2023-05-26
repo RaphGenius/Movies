@@ -13,6 +13,9 @@ export default {
       fontFamily: {
         special: "'Cherry Bomb One', cursive",
       },
+      backgroundImage: {
+        "hero-image": "url(./assets/bg-hero.jpg)  ",
+      },
     },
   },
   plugins: [],

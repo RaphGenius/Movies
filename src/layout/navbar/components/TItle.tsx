@@ -7,7 +7,7 @@ function Title({ title }: TitleProps) {
   return (
     <Link to={"/"}>
       <h1
-        className={` text-center gradientText font-special lg:text-6xl text-4xl    `}
+        className={` text-center gradientText font-special tracking-wider lg:text-6xl  text-4xl    `}
       >
         {title}
       </h1>

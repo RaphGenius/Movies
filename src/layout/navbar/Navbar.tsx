@@ -40,7 +40,7 @@ function Navbar() {
 
   return (
     <nav
-      className={` bg-blue-900 text-white  transition-transform origin-top duration-300
+      className={` bg-blue-900 text-black  transition-transform origin-top duration-300
        w-full sticky top-0 ${
          visible ? " scale-y-100  " : "scale-y-0 "
        } px-2 lg:px-8

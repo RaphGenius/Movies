@@ -13,7 +13,6 @@ function RightButtonGroup() {
     SearchbarContext
   ) as SearchbarContextType;
 
-  console.log(searchBarVisible);
   const toggleDisplaySearchBar = () => setSearchBarVisible(!searchBarVisible);
   return (
     <>

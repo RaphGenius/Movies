@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Navbar from "./layout/navbar/Navbar";
 import SearchNavbar from "./layout/navbar/components/SearchNavbar";
 import SearchBarProvider from "./context/SearchbarContext.tsx";
+import Search from "./pages/Search.tsx";
 function App() {
   return (
     <div className="min-h-screen bg-gray-300 relative">
@@ -14,6 +15,7 @@ function App() {
 
       <Routes>
         <Route path="/" index element={<Home />} />
+        <Route path="search" element={<Search />}></Route>
       </Routes>
     </div>
   );

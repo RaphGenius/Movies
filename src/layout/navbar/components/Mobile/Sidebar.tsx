@@ -5,14 +5,17 @@ import {
   SearchbarContext,
   SearchbarContextType,
 } from "../../../../context/SearchbarContext";
+
 function Sidebar({ isSideBarOpen }: { isSideBarOpen: boolean }) {
-  console.log(isSideBarOpen);
   const [isCategiesShown, setIsCategoriesShow] = useState(false);
-  const visible = isSideBarOpen ? "left-0" : "-left-[100%]";
   const { setSearchBarVisible } = useContext(
     SearchbarContext
   ) as SearchbarContextType;
+
+  const visible = isSideBarOpen ? "left-0" : "-left-[100%]";
+
   if (isSideBarOpen) setSearchBarVisible(false);
+
   return (
     <aside
       className={`absolute w-full ${visible} duration-300  transition-all

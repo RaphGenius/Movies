@@ -1,4 +1,4 @@
-import { ReactNode, createContext } from "react";
+import { ReactNode, createContext, useContext } from "react";
 import { useState } from "react";
 
 export type SearchbarContextType = {
@@ -40,3 +40,8 @@ const SearchBarProvider = ({ children }: Props) => {
 };
 
 export default SearchBarProvider;
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const useSearchBar = () => {
+  return useContext(SearchbarContext);
+};

@@ -1,16 +1,13 @@
 import { useState } from "react";
 import { navdata } from "../../data/navdata";
-import { useContext } from "react";
 import {
-  SearchbarContext,
   SearchbarContextType,
+  useSearchBar,
 } from "../../../../context/SearchbarContext";
 
 function Sidebar({ isSideBarOpen }: { isSideBarOpen: boolean }) {
   const [isCategiesShown, setIsCategoriesShow] = useState(false);
-  const { setSearchBarVisible } = useContext(
-    SearchbarContext
-  ) as SearchbarContextType;
+  const { setSearchBarVisible } = useSearchBar() as SearchbarContextType;
 
   const visible = isSideBarOpen ? "left-0" : "-left-[100%]";
 

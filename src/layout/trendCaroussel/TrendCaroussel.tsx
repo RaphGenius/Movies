@@ -1,3 +1,4 @@
+import CardCarousel from "../../components/Carousel/CardCarousel";
 import Carousel from "../../components/Carousel/Carousel";
 import { useGetTrendingQuery } from "../../features/trendingSlice";
 import { FetchTime_window, Media_typeType } from "../../type/type";
@@ -19,9 +20,11 @@ function TrendCaroussel({ title, mediaType }: Props) {
   const switchDateWeek = () => setDate("week");
 
   console.log(data);
+  if (!data) return <p>Pas de data</p>;
+  const { results } = data;
 
   return (
-    <div className="overflow-hidden w-full px-8">
+    <div className="overflow-hidden w-full px-8 ">
       {/* Titre et boutons */}
       <div className="flex gap-4 mb-8 ">
         <h2>{title} </h2>
@@ -32,12 +35,7 @@ function TrendCaroussel({ title, mediaType }: Props) {
         </div>
       </div>
       {/* Caroussel */}
-      <div className="flex overflow-x-auto snap-x snap-center   gap-4 flex-nowrap   ">
-        {data &&
-          data?.results
-            .slice(0, 10)
-            .map((card) => <Carousel key={card.id} {...card} />)}
-      </div>
+      <Carousel data={results} />
     </div>
   );
 }

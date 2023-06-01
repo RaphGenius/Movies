@@ -13,3 +13,28 @@ html {
   @apply bg-gradient-to-l from-teal-500 to-teal-700 
        bg-clip-text text-transparent;
 }
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: 20px;
+  scrollbar-color: #a7a3a8 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 5px;
+  scroll-snap-type: proximity;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #7b787c;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #a7a3a8;
+  border-radius: 5px;
+}

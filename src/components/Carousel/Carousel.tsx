@@ -7,17 +7,15 @@ type Props = {
 };
 
 function Carousel({ data, isFetching }: Props) {
-  console.log(isFetching);
   return (
     <div
-      className={`flex overflow-x-auto snap-x snap-center gap-6 flex-nowrap transition  ${
-        isFetching && "blur-lg"
+      className={`flex overflow-x-auto snap-x snap-center gap-6 flex-nowrap transition-all duration-500  ${
+        isFetching && "blur-sm  "
       } `}
     >
-      {!isFetching &&
-        data
-          .slice(0, 20)
-          .map((card) => <CardCarousel key={card.id} {...card} />)}
+      {data.slice(0, 20).map((card) => (
+        <CardCarousel key={card.id} {...card} />
+      ))}
     </div>
   );
 }

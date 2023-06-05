@@ -33,7 +33,7 @@ export type MovieType = {
   original_title: string;
   overview: string;
   poster_path: string;
-  media_type: string;
+  media_type: Media_typeType;
   genre_ids: number[];
   popularity: number;
   release_date: string;
@@ -61,6 +61,24 @@ export type SerieType = {
   poster_path: string;
   vote_average: number;
   vote_count: number;
+};
+
+export type VideoFetchType<T> = {
+  id: 135251;
+  results: T;
+};
+
+export type VideoType = {
+  iso_639_1: string;
+  iso_3166_1: string;
+  name: string;
+  key: string;
+  site: string;
+  size: number;
+  type: string;
+  official: boolean;
+  published_at: string;
+  id: string;
 };
 
 export type Media_typeType = "movie" | "tv";

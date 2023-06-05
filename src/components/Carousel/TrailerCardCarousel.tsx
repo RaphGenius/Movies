@@ -1,23 +1,47 @@
 import { MovieType } from "../../type/type";
-import { getPosterPathImage } from "../../utils/getPosterPathImage";
-
+import { useState } from "react";
+import YoutubePlayer from "../VideoPlayer/YoutubePlayer";
+import { FaPlay } from "react-icons/fa";
 function TrailerCardCarousel(card: MovieType) {
-  const { poster_path, title, name } = card;
+  const [videoID, setVideoID] = useState<number | null>(null);
 
+  const { title, name, backdrop_path, id, media_type } = card;
   const titre = title ? title : name;
 
+  const launchVideo = (id: number) => {
+    setVideoID(id);
+  };
+
   return (
-    <article className="   cursor-pointer relative  group h-[400px] w-52 flex flex-col flex-shrink-0   ">
-      <div className=" h-3/4 w-full relative  rounded-lg overflow-hidden">
+    <article
+      className="cursor-pointer group h-[250px] w-[350px]
+     flex flex-col flex-shrink-0 "
+    >
+      <div className="relative group w-full rounded-lg">
+        <div
+          onClick={() => launchVideo(id)}
+          className="absolute scale-150 z-10 left-[50%] top-[50%] "
+        >
+          <FaPlay />
+        </div>
         <img
+          onClick={() => launchVideo(id)}
           loading="lazy"
-          className="w-full h-full  object-center   group-hover:scale-110 duration-500  "
-          src={getPosterPathImage(poster_path)}
+          className="w-full  z-10 hover:scale-105 will-change-transform
+           transition-transform duration-300  h-full object-cover"
+          src={`https://image.tmdb.org/t/p/w355_and_h200_multi_faces${backdrop_path}`}
           alt={`Poster du film ${titre}`}
         />
       </div>
       {/* Titre */}
-      <div className="mt-6 pl-2"></div>
+      <h3 className="mt-6 text-center pl-2 truncate">{titre} </h3>
+      {videoID && (
+        <YoutubePlayer
+          setVideoID={setVideoID}
+          media_type={media_type}
+          id={id}
+        />
+      )}
     </article>
   );
 }

@@ -6,7 +6,7 @@ import Carousel from "../../components/Carousel/Carousel";
 import TrailerCardCarousel from "../../components/Carousel/TrailerCardCarousel";
 
 function Trailers() {
-  const [mediaType, setMediaType] = useState<Media_typeType>("tv");
+  const [mediaType, setMediaType] = useState<Media_typeType>("movie");
   const [bgImage, setBgImage] = useState("");
 
   const { data, isFetching, isLoading } = useGetTrendingQuery({
@@ -23,18 +23,15 @@ function Trailers() {
     setBgImage(realBg);
   }, [data]);
 
-  console.log(data?.results[0].poster_path);
-
   const switchMediaMovie = () => setMediaType("movie");
   const switchMediaTv = () => setMediaType("tv");
 
   if (!data) {
     return <p>Data loading</p>;
   }
-
   return (
     <section
-      className={`overflow-hidden bg-center bg-no-repeat bg-cover w-full ${bgImage} bg-gray-700  text-white p-4    `}
+      className={`overflow-hidden bg-center  bg-no-repeat bg-cover w-full ${bgImage} bg-gray-700  text-white p-4   `}
     >
       {/* Titre et boutons */}
       <div className="flex items-center  gap-4 mb-8  ">
@@ -56,7 +53,7 @@ function Trailers() {
       </div>
       {/* Carouseel */}
       <Carousel isFetching={isFetching}>
-        {data.results.map((card) => (
+        {data.results.slice(0, 5).map((card) => (
           <TrailerCardCarousel key={card.id} {...card} />
         ))}
       </Carousel>

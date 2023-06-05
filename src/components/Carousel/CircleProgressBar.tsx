@@ -3,12 +3,12 @@ import "react-circular-progressbar/dist/styles.css";
 
 function CircleProgressBar({ rate }: { rate: number }) {
   const pourcentage = Number((rate * 10).toFixed());
-
   const colorsRate = {
     good: " #14b8a6",
     average: "#f9cb22",
     low: "#aa3838",
   };
+  const textRender = pourcentage === 0 ? "NC" : `${pourcentage}%`;
 
   //Couleur du cercle selon la note
   const pathColor = (rateMovie: number) => {
@@ -32,7 +32,7 @@ function CircleProgressBar({ rate }: { rate: number }) {
       })}
       background={true}
       value={pourcentage}
-      text={`${pourcentage}%`}
+      text={textRender}
     />
   );
 }

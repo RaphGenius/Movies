@@ -1,15 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { multiSliceAPi } from "../features/multi/multiSlice";
-import { trendingSlice } from "../features/trendingSlice";
+import { movieSlice, multiSliceAPi, trendingSlice } from "../features/index";
+import { tvSlice } from "../features/tvSlice";
+
 export const store = configureStore({
   reducer: {
     [multiSliceAPi.reducerPath]: multiSliceAPi.reducer,
     [trendingSlice.reducerPath]: trendingSlice.reducer,
+    [movieSlice.reducerPath]: movieSlice.reducer,
+    [tvSlice.reducerPath]: tvSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       multiSliceAPi.middleware,
-      trendingSlice.middleware
+      trendingSlice.middleware,
+      movieSlice.middleware,
+      tvSlice.middleware
     ),
 });
 

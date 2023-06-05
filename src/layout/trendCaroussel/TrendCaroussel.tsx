@@ -1,3 +1,4 @@
+import CardCarousel from "../../components/Carousel/CardCarousel";
 import Carousel from "../../components/Carousel/Carousel";
 
 import { useGetTrendingQuery } from "../../features/trendingSlice";
@@ -20,7 +21,7 @@ function TrendCaroussel({ title, mediaType }: Props) {
   const switchDateWeek = () => setDate("week");
 
   return (
-    <div className={`overflow-hidden w-full px-8  `}>
+    <section className={`overflow-hidden w-full   `}>
       {/* Titre et boutons */}
       <div className="flex items-center  gap-4 mb-8  ">
         <h2>{title} </h2>
@@ -47,8 +48,14 @@ function TrendCaroussel({ title, mediaType }: Props) {
         </div>
       )}
       {/* Caroussel */}
-      {data && <Carousel isFetching={isFetching} data={data?.results} />}
-    </div>
+      {
+        <Carousel isFetching={isFetching}>
+          {data?.results.map((card) => (
+            <CardCarousel key={card.id} {...card} />
+          ))}
+        </Carousel>
+      }
+    </section>
   );
 }
 

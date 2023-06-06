@@ -1,27 +1,17 @@
 import { useEffect, useState } from "react";
 import type { Media_typeType } from "../../type/type";
 import { useGetTrendingQuery } from "../../features/trendingSlice";
-import { getPosterPathImage } from "../../utils/getPosterPathImage";
 import Carousel from "../../components/Carousel/Carousel";
 import TrailerCardCarousel from "../../components/Carousel/TrailerCardCarousel";
 
 function Trailers() {
   const [mediaType, setMediaType] = useState<Media_typeType>("movie");
-  const [bgImage, setBgImage] = useState("");
+  const [bgImage, setBgImage] = useState("/bg_trailer.jpg");
 
   const { data, isFetching, isLoading } = useGetTrendingQuery({
     mediaType,
     date: "day",
   });
-
-  useEffect(() => {
-    const arriere = data?.results[0].poster_path;
-    const realBg = arriere
-      ? `bg-[url(${getPosterPathImage(arriere)})]  `
-      : "bg-gray-800 ";
-
-    setBgImage(realBg);
-  }, [data]);
 
   const switchMediaMovie = () => setMediaType("movie");
   const switchMediaTv = () => setMediaType("tv");
@@ -31,14 +21,21 @@ function Trailers() {
   }
   return (
     <section
-      className={`overflow-hidden bg-center  bg-no-repeat bg-cover w-full ${bgImage} bg-gray-700  text-white p-4   `}
+      style={{
+        backgroundImage: ` linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(0,0,0,0.9)),  url(${bgImage})`,
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        transition: "background-image 200ms ease-in-out ",
+      }}
+      className={` w-full  text-white p-4`}
     >
       {/* Titre et boutons */}
-      <div className="flex items-center  gap-4 mb-8  ">
+      <div className="flex items-center gap-4 mb-8">
         <h2>Bande annonce </h2>
-        <div className="flex relative gap-4 border overflow-hidden rounded-full border-gray-600 p-2 ">
+        <div className="flex relative gap-4 border overflow-hidden rounded-full border-gray-600 p-2">
           <div
-            className={` rounded-full absolute w-[170px] transition-all duration-500 bg-gray-200 h-full z-10 top-0 left-0`}
+            className={` rounded-full absolute w-[170px] bg-gray-200 h-full z-10 top-0 left-0`}
           />
           <button
             onClick={switchMediaMovie}
@@ -54,7 +51,11 @@ function Trailers() {
       {/* Carouseel */}
       <Carousel isFetching={isFetching}>
         {data.results.slice(0, 5).map((card) => (
-          <TrailerCardCarousel key={card.id} {...card} />
+          <TrailerCardCarousel
+            setBgImage={setBgImage}
+            key={card.id}
+            {...card}
+          />
         ))}
       </Carousel>
     </section>

@@ -9,6 +9,7 @@ type Props = {
 };
 
 function YoutubePlayer({ id, media_type, setVideoID }: Props) {
+  //Faire une caroussel de lecteur
   const width = window.innerWidth * 0.8;
   const height = window.innerHeight * 0.5;
 
@@ -34,7 +35,13 @@ function YoutubePlayer({ id, media_type, setVideoID }: Props) {
       onClick={stopReadingvideo}
     >
       <div className="relative ">
-        <YouTube videoId={videoId} opts={opts} title="salut" loading="eager" />
+        <YouTube
+          onReady={(e) => console.log(e)}
+          videoId={videoId}
+          opts={opts}
+          title="salut"
+          loading="eager"
+        />
         <h4 className="text-center mt-4 text-xl">{title}</h4>
       </div>
     </div>

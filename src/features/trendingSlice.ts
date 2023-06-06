@@ -3,6 +3,7 @@ import {
   FetchResult,
   Media_typeType,
   MovieType,
+  SerieType,
   VideoFetchType,
   VideoType,
 } from "../type/type";
@@ -26,7 +27,10 @@ export const trendingSlice = createApi({
     headers: headersApi,
   }),
   endpoints: (builder) => ({
-    getTrending: builder.query<FetchResult<MovieType>, fetchTrendingType>({
+    getTrending: builder.query<
+      FetchResult<MovieType & SerieType>,
+      fetchTrendingType
+    >({
       query: ({ mediaType, date }) =>
         `trending/${mediaType}/${date}?language=fr-EU`,
     }),

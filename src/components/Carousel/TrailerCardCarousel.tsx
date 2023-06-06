@@ -1,12 +1,35 @@
-import { MovieType } from "../../type/type";
+import { Media_typeType } from "../../type/type";
 import { useState } from "react";
 import YoutubePlayer from "../VideoPlayer/YoutubePlayer";
 import { FaPlay } from "react-icons/fa";
-function TrailerCardCarousel(card: MovieType) {
-  const [videoID, setVideoID] = useState<number | null>(null);
+type Props = {
+  title: string;
+  name: string;
+  backdrop_path: string;
+  id: number;
+  media_type: Media_typeType;
+  poster_path: string;
+  setBgImage: (value: React.SetStateAction<string>) => void;
+};
 
-  const { title, name, backdrop_path, id, media_type } = card;
+function TrailerCardCarousel({
+  title,
+  name,
+  backdrop_path,
+  id,
+  media_type,
+  poster_path,
+  setBgImage,
+}: Props) {
+  const [videoID, setVideoID] = useState<number | null>(null);
+  const urlBackdropPath =
+    "https://image.tmdb.org/t/p/w355_and_h200_multi_faces";
+
   const titre = title ? title : name;
+
+  const getBackgroundImageOnHover = () => {
+    setBgImage(`${urlBackdropPath}${poster_path}`);
+  };
 
   const launchVideo = (id: number) => {
     setVideoID(id);
@@ -14,6 +37,7 @@ function TrailerCardCarousel(card: MovieType) {
 
   return (
     <article
+      onMouseEnter={getBackgroundImageOnHover}
       className="cursor-pointer group h-[250px] w-[350px]
      flex flex-col flex-shrink-0 "
     >

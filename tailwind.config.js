@@ -14,7 +14,8 @@ export default {
         special: "'Cherry Bomb One', cursive",
       },
       backgroundImage: {
-        "hero-image": "url(./assets/bg-hero.jpg)  ",
+        "hero-image": "url(./assets/bg-hero.jpg)",
+        "trailer-image": "url(./assets/bg_trailer.jpg)",
       },
     },
   },

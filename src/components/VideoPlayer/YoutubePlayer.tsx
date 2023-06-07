@@ -1,11 +1,12 @@
 import YouTube, { YouTubeProps } from "react-youtube";
 import { Media_typeType } from "../../type/type";
 import { useGetVideoDataQuery } from "../../features/trendingSlice";
+import NoVideo from "./NoVideo";
 
 type Props = {
   id: number;
   media_type: Media_typeType;
-  setVideoID: (value: null) => void;
+  setVideoID: React.Dispatch<React.SetStateAction<number | null>>;
 };
 
 function YoutubePlayer({ id, media_type, setVideoID }: Props) {
@@ -13,7 +14,13 @@ function YoutubePlayer({ id, media_type, setVideoID }: Props) {
   const width = window.innerWidth * 0.8;
   const height = window.innerHeight * 0.5;
 
-  const { data } = useGetVideoDataQuery({ mediaType: media_type, id });
+  const { data, isFetching, isLoading } = useGetVideoDataQuery({
+    mediaType: media_type,
+    id,
+  });
+  console.log(data);
+  if (isFetching) return <p>Chargement...</p>;
+  if (!data?.results.length) return <NoVideo setVideoID={setVideoID} />;
   const videoId = data?.results[0].key;
   const title = data?.results[0].name;
 

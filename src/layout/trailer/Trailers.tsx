@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { Media_typeType } from "../../type/type";
 import { useGetTrendingQuery } from "../../features/trendingSlice";
 import Carousel from "../../components/Carousel/Carousel";
@@ -50,7 +50,7 @@ function Trailers() {
       </div>
       {/* Carouseel */}
       <Carousel isFetching={isFetching}>
-        {data.results.slice(0, 5).map((card) => (
+        {data.results.slice().map((card) => (
           <TrailerCardCarousel
             setBgImage={setBgImage}
             key={card.id}

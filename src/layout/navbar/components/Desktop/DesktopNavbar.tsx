@@ -5,7 +5,7 @@ import DropDown from "./DropDown";
 
 function DesktopNavbar() {
   return (
-    <div className="flex justify-between items-end  w-full">
+    <div className="flex justify-between items-end   w-full">
       {/* TItre et categories */}
       <div className="flex items-end  w-full ">
         <Title title="Movies" />

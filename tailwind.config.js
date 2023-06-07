@@ -17,6 +17,10 @@ export default {
         "hero-image": "url(./assets/bg-hero.jpg)",
         "trailer-image": "url(./assets/bg_trailer.jpg)",
       },
+      colors: {
+        mainColor: "#f2f2f2",
+        mainColordark: "#0c0c0c",
+      },
     },
   },
   plugins: [],

@@ -9,8 +9,8 @@ export type SearchbarContextType = {
   toggleSearchBarvisible: (value: boolean) => void;
 };
 
-export const SearchbarContext = createContext<SearchbarContextType | null>(
-  null
+export const SearchbarContext = createContext<SearchbarContextType | "light">(
+  "light"
 );
 
 type Props = {

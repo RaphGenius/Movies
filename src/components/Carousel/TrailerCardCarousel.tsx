@@ -39,7 +39,7 @@ function TrailerCardCarousel({
     <article
       onMouseEnter={getBackgroundImageOnHover}
       className="cursor-pointer group h-[250px] w-[350px]
-     flex flex-col flex-shrink-0 "
+     flex flex-col flex-shrink-0  "
     >
       <div className="relative group w-full rounded-lg">
         <div
@@ -51,7 +51,7 @@ function TrailerCardCarousel({
         <img
           onClick={() => launchVideo(id)}
           loading="lazy"
-          className="w-full  z-10 hover:scale-105 will-change-transform
+          className="w-full  border-8 border-white/10 z-10 hover:scale-105 will-change-transform
            transition-transform duration-300  h-full object-cover"
           src={`https://image.tmdb.org/t/p/w355_and_h200_multi_faces${backdrop_path}`}
           alt={`Poster du film ${titre}`}

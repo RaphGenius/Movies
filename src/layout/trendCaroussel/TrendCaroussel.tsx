@@ -1,9 +1,11 @@
+import { useState } from "react";
+import ButtonTrend from "../../components/Carousel/ButtonTrend";
 import CardCarousel from "../../components/Carousel/CardCarousel";
 import Carousel from "../../components/Carousel/Carousel";
+import TitleTrend from "../../components/Carousel/TitleTrend";
 
 import { useGetTrendingQuery } from "../../features/trendingSlice";
 import { FetchTime_window, Media_typeType } from "../../type/type";
-import { useState } from "react";
 type Props = {
   title: string;
   mediaType: Media_typeType;
@@ -21,25 +23,29 @@ function TrendCaroussel({ title, mediaType }: Props) {
   const switchDateWeek = () => setDate("week");
 
   return (
-    <section className={`overflow-hidden w-full   `}>
+    <section className={`overflow-hidden w-full     `}>
       {/* Titre et boutons */}
-      <div className="flex items-center  gap-4 mb-8  ">
-        <h2>{title} </h2>
-        <div className="flex relative gap-4 border overflow-hidden rounded-full border-gray-600 p-2 ">
+      <div className="flex items-center  flex-col lg:flex-row  gap-4 mb-8  ">
+        <TitleTrend title={title} />
+        <div className="flex relative gap-4 overflow-hidden border rounded-full border-gray-600 p-2 ">
           <div
-            className={` rounded-full absolute w-[170px] transition-all duration-500 bg-gray-200 h-full z-10 top-0 left-0 ${
-              date === "week" && "translate-x-full"
-            } `}
+            className={` rounded-full absolute w-[170px] 
+             transition-all duration-500 bg-white h-full z-10 top-0 left-0 ${
+               date === "week" && "translate-x-full"
+             } `}
           />
-          <button
-            className="w-[150px] gradientText z-20"
-            onClick={switchDateDay}
-          >
-            Aujourd'hui
-          </button>
-          <button className="w-[150px] z-20" onClick={switchDateWeek}>
-            Cette semaine
-          </button>
+          <ButtonTrend
+            label="day"
+            value={date}
+            title="Aujourd'hui"
+            handleClick={switchDateDay}
+          />
+          <ButtonTrend
+            label="week"
+            value={date}
+            title="Cette semaine"
+            handleClick={switchDateWeek}
+          />
         </div>
       </div>
       {isLoading && (

@@ -17,10 +17,16 @@ function RightButtonGroup() {
   const toggleDisplaySearchBar = () => setSearchBarVisible(!searchBarVisible);
   return (
     <>
-      <IconButton handleClick={() => dispatch(toggleTheme())}>
+      <IconButton
+        ariaLabel="Change de theme mode"
+        handleClick={() => dispatch(toggleTheme())}
+      >
         <Ampoule />
       </IconButton>
-      <IconButton handleClick={toggleDisplaySearchBar}>
+      <IconButton
+        ariaLabel="Affiche/retire la barre de recherche"
+        handleClick={toggleDisplaySearchBar}
+      >
         {searchBarVisible ? <Croix /> : <Loupe />}
       </IconButton>
     </>

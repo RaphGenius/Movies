@@ -38,7 +38,7 @@ function Navbar() {
 
   return (
     <nav
-      className={` z-50  text-black bg-white dark:text-white dark: transition-transform origin-top duration-300
+      className={` z-50   text-mainColordark bg-white dark:text-white dark:bg-slate-900 shadow-xl transition-all origin-top duration-300
        w-full sticky top-0 ${
          visible ? " scale-y-100  " : "scale-y-0 "
        } px-2 lg:px-8

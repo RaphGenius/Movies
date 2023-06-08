@@ -1,11 +1,12 @@
 type Props = {
   children: JSX.Element;
-  handleClick?: () => void;
+  handleClick: () => void;
+  ariaLabel: string;
 };
 
-function IconButton({ children, handleClick }: Props) {
+function IconButton({ children, handleClick, ariaLabel }: Props) {
   return (
-    <button className="text-2xl" onClick={handleClick}>
+    <button aria-label={ariaLabel} className="text-2xl" onClick={handleClick}>
       {children}{" "}
     </button>
   );

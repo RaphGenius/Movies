@@ -2,6 +2,7 @@ import YouTube, { YouTubeProps } from "react-youtube";
 import { Media_typeType } from "../../type/type";
 import { useGetVideoDataQuery } from "../../features/trendingSlice";
 import NoVideo from "./NoVideo";
+import Loader from "../Loading/Loader";
 
 type Props = {
   id: number;
@@ -19,8 +20,7 @@ function YoutubePlayer({ id, media_type, setVideoID }: Props) {
     id,
   });
   console.log(data);
-  if (isFetching) return <p>Chargement...</p>;
-  if (!data?.results.length) return <NoVideo setVideoID={setVideoID} />;
+
   const videoId = data?.results[0].key;
   const title = data?.results[0].name;
 
@@ -42,14 +42,27 @@ function YoutubePlayer({ id, media_type, setVideoID }: Props) {
       onClick={stopReadingvideo}
     >
       <div className="relative ">
-        <YouTube
-          onReady={(e) => console.log(e)}
-          videoId={videoId}
-          opts={opts}
-          title="salut"
-          loading="eager"
-        />
+        {isLoading || isFetching ? (
+          <Loader />
+        ) : (
+          <YouTube
+            onReady={(e) => console.log(e)}
+            videoId={videoId}
+            opts={opts}
+            title="salut"
+            loading="eager"
+          />
+        )}
+
         <h4 className="text-center mt-4 text-xl">{title}</h4>
+        <div className="mt-8 flex justify-center">
+          <button
+            className="px-6 py-2 bg-slate-950 hover:opacity-95  rounded-full text-xl "
+            onClick={stopReadingvideo}
+          >
+            Quitter
+          </button>
+        </div>
       </div>
     </div>
   );

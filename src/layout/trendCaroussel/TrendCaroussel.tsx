@@ -6,6 +6,8 @@ import TitleTrend from "../../components/Carousel/TitleTrend";
 
 import { useGetTrendingQuery } from "../../features/trendingSlice";
 import { FetchTime_window, Media_typeType } from "../../type/type";
+import GroupButtonTrend from "../../components/Carousel/GroupButtonTrend";
+import Loader from "../../components/Loading/Loader";
 type Props = {
   title: string;
   mediaType: Media_typeType;
@@ -25,15 +27,9 @@ function TrendCaroussel({ title, mediaType }: Props) {
   return (
     <section className={`overflow-hidden w-full     `}>
       {/* Titre et boutons */}
-      <div className="flex items-center  flex-col lg:flex-row  gap-4 mb-8  ">
-        <TitleTrend title={title} />
-        <div className="flex relative gap-4 overflow-hidden border rounded-full border-gray-600 p-2 ">
-          <div
-            className={` rounded-full absolute w-[170px] 
-             transition-all duration-500 bg-white h-full z-10 top-0 left-0 ${
-               date === "week" && "translate-x-full"
-             } `}
-          />
+      <div className="flex items-center  flex-col lg:flex-row  gap-4 mb-2  ">
+        <TitleTrend style="gradientText" title={title} />
+        <GroupButtonTrend firstPropsElement={date} firstPropsValue="week">
           <ButtonTrend
             label="day"
             value={date}
@@ -46,11 +42,11 @@ function TrendCaroussel({ title, mediaType }: Props) {
             title="Cette semaine"
             handleClick={switchDateWeek}
           />
-        </div>
+        </GroupButtonTrend>
       </div>
       {isLoading && (
-        <div className="w-full h-[404px] bg-gradient-to-l from-teal-400 to-teal-900 flex justify-center items-center rounded-lg ">
-          <p className="text-2xl font-bold text-white">Chargement...</p>
+        <div className="w-full h-[404px] bg-gradient-to-l opacity-25 from-teal-400 to-teal-900 flex justify-center items-center rounded-lg ">
+          <Loader />
         </div>
       )}
       {/* Caroussel */}

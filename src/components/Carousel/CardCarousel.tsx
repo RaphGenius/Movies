@@ -30,7 +30,7 @@ function CardCarousel(card: MovieType) {
         />
       </div>
       <div className="mt-6 pl-2">
-        <h3 className="font-bold">{titre} </h3>
+        <h3 className="font-bold text-lg  ">{titre}</h3>
         <p>{date ? formatDate(date) : "NC"}</p>
       </div>
     </article>

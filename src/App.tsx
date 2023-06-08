@@ -11,17 +11,21 @@ function App() {
   const currentTheme = useAppSelector((state) => state.theme.theme);
 
   return (
-    <div className={`min-h-screen bg-gray-100 relative  ${currentTheme} `}>
-      <SearchBarProvider>
-        <Navbar />
-        <SearchNavbar />
-      </SearchBarProvider>
+    <div className={` ${currentTheme} `}>
+      <div
+        className={`min-h-screen flex flex-col justify-between bg-gray-100 dark:bg-gradient-to-bl dark:from-gray-900 dark:to-slate-950  dark:text-white relative  ${currentTheme} `}
+      >
+        <SearchBarProvider>
+          <Navbar />
+          <SearchNavbar />
+        </SearchBarProvider>
 
-      <Routes>
-        <Route path="/" index element={<Home />} />
-        <Route path="search" element={<Search />}></Route>
-      </Routes>
-      <Footer />
+        <Routes>
+          <Route path="/" index element={<Home />} />
+          <Route path="search" element={<Search />}></Route>
+        </Routes>
+        <Footer />
+      </div>
     </div>
   );
 }

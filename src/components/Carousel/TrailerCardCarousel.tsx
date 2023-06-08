@@ -10,6 +10,7 @@ type Props = {
   media_type: Media_typeType;
   poster_path: string;
   setBgImage: (value: React.SetStateAction<string>) => void;
+  bgImage: string;
 };
 
 function TrailerCardCarousel({
@@ -20,6 +21,7 @@ function TrailerCardCarousel({
   media_type,
   poster_path,
   setBgImage,
+  bgImage,
 }: Props) {
   const [videoID, setVideoID] = useState<number | null>(null);
   const urlBackdropPath =
@@ -39,7 +41,7 @@ function TrailerCardCarousel({
     <article
       onMouseEnter={getBackgroundImageOnHover}
       className="cursor-pointer group h-[250px] w-[350px]
-     flex flex-col flex-shrink-0  "
+     flex flex-col flex-shrink-0   "
     >
       <div className="relative group w-full rounded-lg">
         <div
@@ -51,14 +53,18 @@ function TrailerCardCarousel({
         <img
           onClick={() => launchVideo(id)}
           loading="lazy"
-          className="w-full  border-8 border-white/10 z-10 hover:scale-105 will-change-transform
-           transition-transform duration-300  h-full object-cover"
+          className={`w-full ${
+            bgImage.includes(poster_path)
+              ? "border-white/50 "
+              : "border-white/10"
+          }  border-8  z-10 hover:scale-105 will-change-transform
+          transition-transform duration-300  h-full object-cover`}
           src={`https://image.tmdb.org/t/p/w355_and_h200_multi_faces${backdrop_path}`}
           alt={`Poster du film ${titre}`}
         />
       </div>
       {/* Titre */}
-      <h3 className="mt-6 text-center pl-2 truncate">{titre} </h3>
+      <h3 className="mt-6 text-center text-xl pl-2 ">{titre}</h3>
       {videoID && (
         <YoutubePlayer
           setVideoID={setVideoID}

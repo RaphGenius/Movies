@@ -21,6 +21,9 @@ export default {
         mainColor: "#f2f2f2",
         mainColordark: "#0c0c0c",
       },
+      maxWidth: {
+        bigScreen: "1680px",
+      },
     },
   },
   plugins: [],

@@ -2,6 +2,7 @@ import { Media_typeType } from "../../type/type";
 import { useState } from "react";
 import YoutubePlayer from "../VideoPlayer/YoutubePlayer";
 import { FaPlay } from "react-icons/fa";
+import LinkPage from "../Router/LinkPage";
 type Props = {
   title: string;
   name: string;
@@ -27,7 +28,7 @@ function TrailerCardCarousel({
   const urlBackdropPath =
     "https://image.tmdb.org/t/p/w355_and_h200_multi_faces";
 
-  const titre = title ? title : name;
+  const titre = title ?? name;
 
   const getBackgroundImageOnHover = () => {
     setBgImage(`${urlBackdropPath}${poster_path}`);
@@ -64,7 +65,11 @@ function TrailerCardCarousel({
         />
       </div>
       {/* Titre */}
-      <h3 className="mt-6 text-center text-xl pl-2 ">{titre}</h3>
+      <LinkPage mediaType={media_type} id={id.toString()} titleMedia={titre}>
+        {" "}
+        <h3 className="mt-6 text-center text-xl pl-2 ">{titre}</h3>
+      </LinkPage>
+
       {videoID && (
         <YoutubePlayer
           setVideoID={setVideoID}

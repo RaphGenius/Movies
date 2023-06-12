@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { Home, Search } from "./pages/index.ts";
+import { Home, Search, MoviePage, TvPage } from "./pages/index.ts";
 import Navbar from "./layout/navbar/Navbar";
 import SearchNavbar from "./layout/navbar/components/SearchNavbar";
 import SearchBarProvider from "./context/SearchbarContext.tsx";
@@ -22,6 +22,8 @@ function App() {
 
         <Routes>
           <Route path="/" index element={<Home />} />
+          <Route path="/movie/:id/:title?" element={<MoviePage />} />
+          <Route path="/tv/:id/:title?" element={<TvPage />} />
           <Route path="search" element={<Search />}></Route>
         </Routes>
         <Footer />

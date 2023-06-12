@@ -1,9 +1,6 @@
 import IconButton from "../IconButton";
 import { GoThreeBars } from "react-icons/go";
-import { Link } from "react-router-dom";
 import Title from "../TItle";
-import { BsLightbulb } from "react-icons/bs";
-import { AiOutlineSearch } from "react-icons/ai";
 import RightButtonGroup from "../RightButtonGroup";
 
 export default function MobileNavbar({
@@ -14,7 +11,10 @@ export default function MobileNavbar({
   return (
     <>
       <div className="w-1/3">
-        <IconButton handleClick={toggleSideBar}>
+        <IconButton
+          ariaLabel="Affichage de la sitebar"
+          handleClick={toggleSideBar}
+        >
           <GoThreeBars />
         </IconButton>
       </div>

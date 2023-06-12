@@ -12,7 +12,7 @@ function Trailers() {
   const [mediaType, setMediaType] = useState<Media_typeType>("movie");
   const [bgImage, setBgImage] = useState("/bg_trailer.jpg");
 
-  const { data, isFetching, isLoading } = useGetTrendingQuery({
+  const { data, isLoading } = useGetTrendingQuery({
     mediaType,
     date: "day",
   });

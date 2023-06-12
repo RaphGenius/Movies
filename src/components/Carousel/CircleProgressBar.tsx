@@ -1,7 +1,13 @@
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-function CircleProgressBar({ rate }: { rate: number }) {
+function CircleProgressBar({
+  rate,
+  size = "20px",
+}: {
+  rate: number;
+  size?: string;
+}) {
   const pourcentage = Number((rate * 10).toFixed());
   const colorsRate = {
     good: " #14b8a6",
@@ -25,6 +31,7 @@ function CircleProgressBar({ rate }: { rate: number }) {
     <CircularProgressbar
       styles={buildStyles({
         pathColor: pathColor(pourcentage),
+        textSize: size,
         strokeLinecap: "butt",
         textColor: "white",
         trailColor: "#d6d6d6",

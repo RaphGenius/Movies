@@ -6,9 +6,12 @@ import SearchNavbar from "./layout/navbar/components/SearchNavbar";
 import SearchBarProvider from "./context/SearchbarContext.tsx";
 import Footer from "./layout/footer/Footer.tsx";
 import { useAppSelector } from "./hooks/useRedux.ts";
+import { getVideoId } from "./features/video/videoSlice.ts";
 
 function App() {
   const currentTheme = useAppSelector((state) => state.theme.theme);
+  const { videoId } = useAppSelector(getVideoId);
+  console.log("VIDEOOOOOOOOOOOOOO", videoId);
 
   return (
     <div className={` ${currentTheme} `}>
@@ -22,8 +25,8 @@ function App() {
 
         <Routes>
           <Route path="/" index element={<Home />} />
-          <Route path="/movie/:id/:title?" element={<MoviePage />} />
-          <Route path="/tv/:id/:title?" element={<TvPage />} />
+          <Route path="/movie/:id/:titleMedia?" element={<MoviePage />} />
+          <Route path="/tv/:id/:titleMedia?" element={<TvPage />} />
           <Route path="search" element={<Search />}></Route>
         </Routes>
         <Footer />

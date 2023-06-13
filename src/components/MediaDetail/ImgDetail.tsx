@@ -9,7 +9,7 @@ function ImgDetail({ imageUrl, title }: Props) {
     <img
       className="w-full rounded-xl h-full"
       src={getPosterPathImage(imageUrl)}
-      alt={title}
+      alt={`Poster du film ${title} `}
     />
   );
 }

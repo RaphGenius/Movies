@@ -10,7 +10,9 @@ type Props = {
 function TitleDetail({ title, mediaType, id }: Props) {
   return (
     <LinkPage mediaType={mediaType} id={id}>
-      <h2 className="text-4xl font-bold ">{title} </h2>
+      <h2 className="text-4xl lg:text-start text-center lg:font-bold ">
+        {title}{" "}
+      </h2>
     </LinkPage>
   );
 }

@@ -9,6 +9,8 @@ import ResumeGroup from "./ResumeGroup";
 import SumGroup from "./SumGroup";
 import TitleDetail from "./TitleDetail";
 import TrailerButton from "./TrailerButton";
+import TaglineDetail from "./TaglineDetail";
+import ResumeParagraphDetail from "./ResumeParagraphDetail";
 
 export {
   CircularButton,
@@ -22,4 +24,6 @@ export {
   SumGroup,
   TitleDetail,
   TrailerButton,
+  TaglineDetail,
+  ResumeParagraphDetail,
 };

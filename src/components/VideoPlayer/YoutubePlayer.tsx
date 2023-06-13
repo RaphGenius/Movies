@@ -1,5 +1,4 @@
-import YouTube, { YouTubeProps } from "react-youtube/";
-
+import YouTube, { YouTubeProps } from "react-youtube";
 import { Media_typeType } from "../../type/type";
 import { useGetVideoDataQuery } from "../../features/trendingSlice";
 
@@ -47,9 +46,10 @@ function YoutubePlayer({ id, media_type, setVideoID }: Props) {
           <Loader />
         ) : (
           <YouTube
+            onReady={(e) => console.log(e)}
             videoId={videoId}
             opts={opts}
-            title={title}
+            title="salut"
             loading="eager"
           />
         )}

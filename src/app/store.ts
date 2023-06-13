@@ -4,6 +4,7 @@ import {
   multiSliceAPi,
   trendingSlice,
   themeSlice,
+  videoSlice,
 } from "../features/index";
 import { tvSlice } from "../features/tvSlice";
 
@@ -14,6 +15,7 @@ export const store = configureStore({
     [movieSlice.reducerPath]: movieSlice.reducer,
     [tvSlice.reducerPath]: tvSlice.reducer,
     theme: themeSlice.reducer,
+    videoId: videoSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(

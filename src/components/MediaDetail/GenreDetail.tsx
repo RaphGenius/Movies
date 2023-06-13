@@ -13,7 +13,7 @@ function GenreDetail({ allGenders }: Props) {
       </a>
     </li>
   ));
-  return <ul className="flex gap-2 first:text-4xl ">{content} </ul>;
+  return <ul className="flex gap-2  ">{content} </ul>;
 }
 
 export default GenreDetail;

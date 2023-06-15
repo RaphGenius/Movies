@@ -5,8 +5,9 @@ import {
   trendingSlice,
   themeSlice,
   videoSlice,
+  peopleSlice,
+  tvSlice,
 } from "../features/index";
-import { tvSlice } from "../features/tvSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     [trendingSlice.reducerPath]: trendingSlice.reducer,
     [movieSlice.reducerPath]: movieSlice.reducer,
     [tvSlice.reducerPath]: tvSlice.reducer,
+    [peopleSlice.reducerPath]: peopleSlice.reducer,
     theme: themeSlice.reducer,
     videoId: videoSlice.reducer,
   },
@@ -22,7 +24,8 @@ export const store = configureStore({
       multiSliceAPi.middleware,
       trendingSlice.middleware,
       movieSlice.middleware,
-      tvSlice.middleware
+      tvSlice.middleware,
+      peopleSlice.middleware
     ),
 });
 

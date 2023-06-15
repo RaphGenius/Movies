@@ -9,10 +9,13 @@ import YoutubePlayer from "../components/VideoPlayer/YoutubePlayer";
 import { Desktop, Mobile } from "../utils/ResponsiveWrapper";
 import SumGroupDesktop from "../layout/moviePage/desktop/SumGroupDesktop";
 import SumGroupMobile from "../layout/moviePage/mobile/SumGroupMobile";
+import Subtitle from "../components/text/Subtitle";
+import InformationsMedia from "../layout/moviePage/InformationsMedia";
 
 function MoviePage() {
   const [videoId, setVideoID] = useState<number | null>(null);
   const { id, titleMedia } = useParams();
+  console.log(useParams());
 
   useEffect(() => {
     document.title = titleMedia ?? "Movie";
@@ -34,6 +37,8 @@ function MoviePage() {
     );
   if (!data || !id) return <p>Pas de datas</p>;
 
+  console.log(data);
+
   return (
     <main className="flex-1 relative ">
       <Desktop>
@@ -52,6 +57,13 @@ function MoviePage() {
           setVideoID={setVideoID}
         />
       </Mobile>
+
+      <section
+        className="flex lg:flex-row flex-col px-8 mt-4 
+  max-w-bigScreen mx-auto gap-4 min-h-screen "
+      >
+        <InformationsMedia id={id} mediaType={mediaType} />
+      </section>
 
       {videoId && (
         <YoutubePlayer

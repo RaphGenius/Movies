@@ -64,7 +64,7 @@ export type SerieType = {
 };
 
 export type VideoFetchType<T> = {
-  id: 135251;
+  id: number;
   results: T;
 };
 

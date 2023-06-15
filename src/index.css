@@ -6,7 +6,6 @@
 @tailwind utilities;
 
 html {
-  font-family: "Noto San";
   @apply text-black;
 }
 

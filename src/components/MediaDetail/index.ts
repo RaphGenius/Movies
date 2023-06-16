@@ -11,6 +11,7 @@ import TitleDetail from "./TitleDetail";
 import TrailerButton from "./TrailerButton";
 import TaglineDetail from "./TaglineDetail";
 import ResumeParagraphDetail from "./ResumeParagraphDetail";
+import SubInformation from "./SubInformation";
 
 export {
   CircularButton,
@@ -26,4 +27,5 @@ export {
   TrailerButton,
   TaglineDetail,
   ResumeParagraphDetail,
+  SubInformation,
 };

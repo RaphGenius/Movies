@@ -14,9 +14,9 @@ export type MovieDetailType = {
   adult: false;
   backdrop_path: string;
   belongs_to_collection: null;
-  budget: 0;
+  budget: number;
   genres: GenderMediaType[];
-  homepage: "";
+  homepage: string;
   id: number;
   imdb_id: string;
   original_language: string;

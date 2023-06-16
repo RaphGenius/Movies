@@ -1,29 +1,27 @@
-import CardPeople from "../../components/Carousel/CardPeople";
 import Carousel from "../../components/Carousel/Carousel";
 import Subtitle from "../../components/text/Subtitle";
 import { useGetPeopleCreditMovieByIdQuery } from "../../features/peopleSlice";
-import { Media_typeType } from "../../type/type";
-import { getPosterPathImage } from "../../utils/getPosterPathImage";
+import { Media_typeType, QueryParamsType } from "../../type/type";
+import ImageNotFound from "../../assets/imageNotFound.jpg";
+import CardCarousel from "../../components/Carousel/CardCarousel";
 
-type Props = {
-  mediaType: Media_typeType;
-  id: string;
-};
-
-function InformationsMedia({ id, mediaType }: Props) {
+function InformationsMedia({ id, mediaType }: QueryParamsType) {
   const { data, isLoading, isError, isFetching } =
     useGetPeopleCreditMovieByIdQuery({ id, mediaType });
   if (!data) return <p>pas de data</p>;
-  const { cast } = data;
 
-  const content = cast
+  const content = data.cast
     .slice(0, 15)
     .map((actor) => (
-      <CardPeople
+      <CardCarousel
         key={actor.cast_id}
-        imageUrl={actor.profile_path}
-        role={actor.character}
-        name={actor.name}
+        id={actor.cast_id}
+        titleMedia={actor.original_name}
+        mediaType={"person"}
+        imageUrl={actor.profile_path ? actor.profile_path : ImageNotFound}
+        subtitle={actor.character}
+        title={actor.name}
+        circlePresence={false}
       />
     ));
 
@@ -31,13 +29,12 @@ function InformationsMedia({ id, mediaType }: Props) {
     <>
       {/* Tête d'affiche et reco */}
 
-      <div className=" w-full lg:w-3/4 ">
+      <div className=" w-full lg:w-4/5 ">
         <Subtitle text="Tête d'affiche" />
         <Carousel isFetching={isFetching}> {content} </Carousel>
       </div>
 
       {/* Info sup. sur le film */}
-      <div className="bg-green-600 w-full lg:w-1/4">e</div>
     </>
   );
 }

@@ -8,6 +8,7 @@ import { useGetTrendingQuery } from "../../features/trendingSlice";
 import { FetchTime_window, Media_typeType } from "../../type/type";
 import GroupButtonTrend from "../../components/Carousel/GroupButtonTrend";
 import Loader from "../../components/Loading/Loader";
+import formatDate from "../../utils/formatDate";
 type Props = {
   title: string;
   mediaType: Media_typeType;
@@ -53,7 +54,17 @@ function TrendCaroussel({ title, mediaType }: Props) {
       {
         <Carousel isFetching={isFetching}>
           {data?.results.map((card) => (
-            <CardCarousel key={card.id} {...card} />
+            <CardCarousel
+              key={card.id}
+              mediaType={mediaType}
+              id={card.id}
+              titleMedia={title}
+              rate={card.vote_average}
+              title={card.title || card.name}
+              subtitle={formatDate(card.release_date || card.first_air_date)}
+              imageUrl={card.poster_path}
+              circlePresence={true}
+            />
           ))}
         </Carousel>
       }

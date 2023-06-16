@@ -1,44 +1,52 @@
-import { MovieType } from "../../type/type";
-import formatDate from "../../utils/formatDate";
+import { Media_typeType } from "../../type/type";
 import { formatTitleUrl } from "../../utils/formatTitleUrl";
 import { getPosterPathImage } from "../../utils/getPosterPathImage";
 import LinkPage from "../Router/LinkPage";
+import ImgCard from "../card/ImgCard";
+import SubtitleCard from "../card/SubtitleCard";
+import TitleCard from "../card/TitleCard";
 import CircleProgressBar from "./CircleProgressBar";
 
-function CardCarousel(card: MovieType) {
-  const {
-    poster_path,
-    title,
-    release_date,
-    vote_average,
-    first_air_date,
-    name,
-    media_type,
-    id,
-  } = card;
+type CardProps = {
+  mediaType: Media_typeType;
+  id: number;
+  titleMedia: string;
+  circlePresence: boolean;
+  rate?: number;
+  title: string;
+  subtitle: string;
+  imageUrl: string;
+};
 
-  const titre = title ?? name;
-  const date = first_air_date ?? release_date;
-
-  const titleMedia = titre && formatTitleUrl(titre);
-
+function CardCarousel({
+  mediaType,
+  id,
+  circlePresence = false,
+  rate = 0,
+  title,
+  subtitle,
+  imageUrl,
+}: CardProps) {
   return (
-    <LinkPage mediaType={media_type} id={id.toString()} titleMedia={titleMedia}>
+    <LinkPage
+      mediaType={mediaType}
+      id={id.toString()}
+      titleMedia={formatTitleUrl(title)}
+    >
       <article className="   cursor-pointer relative  group h-[400px] w-52 flex flex-col flex-shrink-0   ">
         <div className="absolute bottom-20 left-2 z-10 w-12 ">
-          <CircleProgressBar rate={vote_average} />
+          {circlePresence && <CircleProgressBar rate={rate} />}
         </div>
         <div className=" h-3/4 w-full relative  rounded-lg overflow-hidden">
-          <img
-            loading="lazy"
-            className="w-full h-full  object-center   group-hover:scale-110 duration-500  "
-            src={getPosterPathImage(poster_path)}
-            alt={`Poster du film ${titre}`}
+          <ImgCard
+            imageUrl={imageUrl}
+            alt={`Image de ${title}`}
+            getImageFn={getPosterPathImage}
           />
         </div>
         <div className="mt-6 pl-2">
-          <h3 className="font-bold text-lg  ">{titre}</h3>
-          <p>{date ? formatDate(date) : "NC"}</p>
+          <TitleCard title={title} />
+          <SubtitleCard subtitle={subtitle} />
         </div>
       </article>
     </LinkPage>

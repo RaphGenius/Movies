@@ -81,5 +81,19 @@ export type VideoType = {
   id: string;
 };
 
-export type Media_typeType = "movie" | "tv";
+export type QueryParamsType = {
+  mediaType: Media_typeType;
+  id: string;
+};
+
+export type ExternalsIdType = {
+  id: number;
+  imdb_id: string;
+  wikidata_id: string;
+  facebook_id: string;
+  instagram_id: string;
+  twitter_id: string;
+};
+
+export type Media_typeType = "movie" | "tv" | "person";
 export type FetchTime_window = "day" | "week";

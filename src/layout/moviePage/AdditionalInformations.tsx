@@ -2,6 +2,7 @@ import { SubInformation } from "../../components/MediaDetail";
 import { useGetExternalsIdByIdQuery } from "../../features/multi/multiSlice";
 import { Media_typeType } from "../../type/type";
 import { formatEuroNumbers } from "../../utils/formatEuroNumbers";
+import { formatLanguageShort } from "../../utils/formatLanguageShort";
 import SocialMediaContainer from "./SocialMediaContainer";
 
 type Props = {
@@ -29,12 +30,23 @@ export default function AdditionalInformations({
   });
   if (!data) return <p> pas de data</p>;
 
+  console.log(new Intl.DisplayNames(["fr"], { type: "language" }).of("en"));
+
   const subInformationData = [
     { title: "Titre d'origine", information: originalTitle },
     { title: "Status", information: status },
-    { title: "Langue d'origine", information: originalLanguage },
-    { title: "Budget", information: formatEuroNumbers(budget) },
-    { title: "Recette", information: formatEuroNumbers(revenu) },
+    {
+      title: "Langue d'origine",
+      information: formatLanguageShort(originalLanguage),
+    },
+    {
+      title: "Budget",
+      information: budget !== 0 ? formatEuroNumbers(budget) : "NC",
+    },
+    {
+      title: "Recette",
+      information: revenu !== 0 ? formatEuroNumbers(revenu) : "NC",
+    },
   ];
 
   return (

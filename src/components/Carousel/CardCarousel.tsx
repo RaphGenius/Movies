@@ -6,7 +6,6 @@ import ImgCard from "../card/ImgCard";
 import SubtitleCard from "../card/SubtitleCard";
 import TitleCard from "../card/TitleCard";
 import CircleProgressBar from "./CircleProgressBar";
-
 type CardProps = {
   mediaType: Media_typeType;
   id: number;
@@ -27,6 +26,7 @@ function CardCarousel({
   subtitle,
   imageUrl,
 }: CardProps) {
+  console.log(imageUrl);
   return (
     <LinkPage
       mediaType={mediaType}

@@ -1,8 +1,7 @@
 import Carousel from "../../components/Carousel/Carousel";
 import Subtitle from "../../components/text/Subtitle";
 import { useGetPeopleCreditMovieByIdQuery } from "../../features/peopleSlice";
-import { Media_typeType, QueryParamsType } from "../../type/type";
-import ImageNotFound from "../../assets/imageNotFound.jpg";
+import { QueryParamsType } from "../../type/type";
 import CardCarousel from "../../components/Carousel/CardCarousel";
 
 function InformationsMedia({ id, mediaType }: QueryParamsType) {
@@ -18,7 +17,7 @@ function InformationsMedia({ id, mediaType }: QueryParamsType) {
         id={actor.cast_id}
         titleMedia={actor.original_name}
         mediaType={"person"}
-        imageUrl={actor.profile_path ? actor.profile_path : ImageNotFound}
+        imageUrl={actor.profile_path}
         subtitle={actor.character}
         title={actor.name}
         circlePresence={false}
@@ -29,7 +28,7 @@ function InformationsMedia({ id, mediaType }: QueryParamsType) {
     <>
       {/* Tête d'affiche et reco */}
 
-      <div className=" w-full lg:w-4/5 ">
+      <div className=" w-full lg:w-4/5  ">
         <Subtitle text="Tête d'affiche" />
         <Carousel isFetching={isFetching}> {content} </Carousel>
       </div>

@@ -56,7 +56,7 @@ function MoviePage() {
       </Mobile>
 
       <section
-        className="flex lg:flex-row flex-col px-8 mt-8 
+        className="flex lg:flex-row  flex-col px-8 mt-8 
   max-w-bigScreen mx-auto gap-4 min-h-screen "
       >
         <InformationsMedia id={id} mediaType={mediaType} />

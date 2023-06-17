@@ -18,13 +18,13 @@ function SumGroup({ children, imageUrl }: PropsWithChildren<Props>) {
         backgroundPosition: "left calc((50vw - 170px) - 340px) top",
         backgroundSize: "cover",
       }}
-      className="h-[600px] bg-slate-900 flex flex-col   w-full relative"
+      className="h-full bg-slate-900 flex flex-col relative  w-full "
     >
       <div
         style={{
           backgroundImage: ` linear-gradient(to bottom right, rgb(15, 32, 42, 1), rgb(15, 32, 42, 0.2))   `,
         }}
-        className="absolute w-full    h-full text-white "
+        className=" w-full h-full text-white "
       >
         <div className=" w-full flex max-w-screen-xl mx-auto p-8 gap-8 h-full">
           {children}{" "}

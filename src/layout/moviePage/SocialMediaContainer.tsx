@@ -1,4 +1,5 @@
 import { ExternalsIdType } from "../../type/type";
+import { Tooltip } from "react-tooltip";
 import {
   AiFillTwitterCircle as TwitterLogo,
   AiFillFacebook as FacebookLogo,
@@ -14,7 +15,7 @@ export default function SocialMediaContainer({ data }: Props) {
   const sizeButton = 50;
   const socialMediasTypeTEST = [
     {
-      name: "facebook_id",
+      name: "Facebook",
       logo: (
         <SocialMedia
           Element={FacebookLogo}
@@ -27,7 +28,7 @@ export default function SocialMediaContainer({ data }: Props) {
       id: crypto.randomUUID(),
     },
     {
-      name: "twitter_id",
+      name: "Twitter",
       logo: (
         <SocialMedia Element={TwitterLogo} size={sizeButton} color={"blue"} />
       ),
@@ -36,7 +37,7 @@ export default function SocialMediaContainer({ data }: Props) {
       id: crypto.randomUUID(),
     },
     {
-      name: "instagram_id",
+      name: "Instagram",
       logo: (
         <SocialMedia
           Element={InstagramLogo}
@@ -55,11 +56,18 @@ export default function SocialMediaContainer({ data }: Props) {
       {socialMediasTypeTEST.map((el) => {
         if (el.data) {
           return (
-            <button key={el.id}>
-              <a target="_blank" href={`${el.link}/${el.data}`}>
-                {el.logo}
-              </a>
-            </button>
+            <a
+              aria-label={`Bouton vers la page ${el.name} `}
+              key={el.id}
+              data-tooltip-id={el.id}
+              data-tooltip-content={`Page ${el.name} `}
+              data-tooltip-place="top"
+              target="_blank"
+              href={`${el.link}/${el.data}`}
+            >
+              {el.logo}
+              <Tooltip id={el.id} />
+            </a>
           );
         }
       })}

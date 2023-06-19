@@ -5,13 +5,14 @@ type Props = {
   title: string;
   mediaType: Media_typeType;
   id: string;
+  releasedYear: string;
 };
 
-function TitleDetail({ title, mediaType, id }: Props) {
+function TitleDetail({ title, mediaType, id, releasedYear }: Props) {
   return (
     <LinkPage mediaType={mediaType} id={id}>
       <h2 className="text-4xl lg:text-start text-center lg:font-bold ">
-        {title}{" "}
+        {title} <span className="text-gray-400">({releasedYear}) </span>
       </h2>
     </LinkPage>
   );

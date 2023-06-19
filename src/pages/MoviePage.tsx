@@ -1,4 +1,4 @@
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { skipToken } from "@reduxjs/toolkit/query";
 import { useGetMovieDetailByIDQuery } from "../features/movieSlice";
@@ -56,19 +56,21 @@ function MoviePage() {
       </Mobile>
 
       <section
-        className="flex lg:flex-row  flex-col px-8 mt-8 
-  max-w-bigScreen mx-auto gap-4 min-h-screen "
+        className=" px-8 mt-8 
+  max-w-bigScreen mx-auto  min-h-screen "
       >
-        <InformationsMedia id={id} mediaType={mediaType} />
-        <AdditionalInformations
-          id={id}
-          mediaType={mediaType}
-          originalTitle={original_title}
-          status={status}
-          originalLanguage={original_language}
-          revenu={revenue}
-          budget={budget}
-        />
+        <div className="flex lg:flex-row flex-col gap-4">
+          <InformationsMedia id={id} mediaType={mediaType} />
+          <AdditionalInformations
+            id={id}
+            mediaType={mediaType}
+            originalTitle={original_title}
+            status={status}
+            originalLanguage={original_language}
+            revenu={revenue}
+            budget={budget}
+          />
+        </div>
       </section>
 
       {videoId && (

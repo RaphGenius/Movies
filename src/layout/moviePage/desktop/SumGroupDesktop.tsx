@@ -16,6 +16,7 @@ import {
 } from "../../../components/MediaDetail/index";
 import { Media_typeType } from "../../../type/type";
 import Subtitle from "../../../components/text/Subtitle";
+import { getYear } from "../../../utils/formatDateNumbers";
 type Props = {
   data: MovieDetailType;
   mediaType: Media_typeType;
@@ -40,6 +41,7 @@ export default function SumGroupDesktop({
     tagline,
     overview,
   } = data;
+  console.log(data);
   return (
     <SumGroup imageUrl={backdrop_path}>
       {/* PARTIE IMAGE */}
@@ -50,7 +52,12 @@ export default function SumGroupDesktop({
       <div className="w-4/6  flex flex-col gap-2 mt-8  ">
         {/* Titre et genre */}
         <div>
-          <TitleDetail mediaType={mediaType} title={title} id={id} />
+          <TitleDetail
+            mediaType={mediaType}
+            title={title}
+            id={id}
+            releasedYear={getYear(release_date)}
+          />
           <FactsGroup>
             <ReleaseDateDetail release_date={release_date} /> -
             <GenreDetail allGenders={genres} /> -

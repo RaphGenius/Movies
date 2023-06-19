@@ -15,6 +15,7 @@ import {
 import Subtitle from "../../../components/text/Subtitle";
 import { MovieDetailType } from "../../../type/Movie";
 import { Media_typeType } from "../../../type/type";
+import { getYear } from "../../../utils/formatDateNumbers";
 
 type Props = {
   data: MovieDetailType;
@@ -38,7 +39,7 @@ function SumGroupMobile({ data, mediaType, id, setVideoID }: Props) {
     overview,
   } = data;
   return (
-    <div className="min-h-screen w-full  bg-gradient-to-b from-slate-900 to-slate-900/90 text-white ">
+    <div className=" w-full  bg-gradient-to-b from-slate-900 to-slate-900/90 text-white ">
       {/* PArtie Image */}
 
       <div
@@ -58,7 +59,12 @@ function SumGroupMobile({ data, mediaType, id, setVideoID }: Props) {
 
       {/* Partie Texte */}
       <section className="py-8 flex flex-col gap-6">
-        <TitleDetail id={id} title={title} mediaType={mediaType} />
+        <TitleDetail
+          id={id}
+          title={title}
+          mediaType={mediaType}
+          releasedYear={getYear(release_date)}
+        />
 
         <InteractionGroup>
           <CircularButton rate={vote_average} />{" "}

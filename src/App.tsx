@@ -1,7 +1,7 @@
 import "./App.css";
 import "react-tooltip/dist/react-tooltip.css";
 import { Routes, Route } from "react-router-dom";
-import { Home, Search, MoviePage, TvPage } from "./pages/index.ts";
+import { Home, Search, MoviePage, TvPage, CastPage } from "./pages/index.ts";
 import Navbar from "./layout/navbar/Navbar";
 import SearchNavbar from "./layout/navbar/components/SearchNavbar";
 import SearchBarProvider from "./context/SearchbarContext.tsx";
@@ -23,7 +23,9 @@ function App() {
 
         <Routes>
           <Route path="/" index element={<Home />} />
-          <Route path="/movie/:id/:titleMedia?" element={<MoviePage />} />
+          <Route path="/movie/:id/:titleMedia" element={<MoviePage />} />
+          <Route path="/movie/:id/:titleMedia/cast" element={<CastPage />} />
+
           <Route path="/tv/:id/:titleMedia?" element={<TvPage />} />
           <Route path="search" element={<Search />}></Route>
         </Routes>

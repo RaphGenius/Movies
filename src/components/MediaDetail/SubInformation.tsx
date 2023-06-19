@@ -5,8 +5,8 @@ type Props = {
 
 function SubInformation({ title, information }: Props) {
   return (
-    <p className="text-lg  ">
-      <strong className="block">{title} </strong>
+    <p className="text-lg   ">
+      <strong className="block ">{title} </strong>
       <span className="capitalize">{information} </span>
     </p>
   );

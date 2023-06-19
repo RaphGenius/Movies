@@ -1,17 +1,21 @@
-import Notfound from "../../assets/imageNotFound.jpg";
 type Props = {
   imageUrl: string;
   alt: string;
   getImageFn: (value: string) => string;
+  imageNotFound: string;
 };
 
-export default function ImgCard({ imageUrl, alt, getImageFn }: Props) {
-  console.log(imageUrl);
+export default function ImgCard({
+  imageUrl,
+  alt,
+  getImageFn,
+  imageNotFound,
+}: Props) {
   return (
     <img
       loading="lazy"
       className="w-full h-full  object-cover object-top   group-hover:scale-110 duration-500  "
-      src={imageUrl ? getImageFn(imageUrl) : Notfound}
+      src={imageUrl ? getImageFn(imageUrl) : imageNotFound}
       alt={`Poster du film ${alt}`}
     />
   );

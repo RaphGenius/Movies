@@ -3,6 +3,7 @@ import Subtitle from "../../components/text/Subtitle";
 import { useGetPeopleCreditMovieByIdQuery } from "../../features/peopleSlice";
 import { QueryParamsType } from "../../type/type";
 import CardCarousel from "../../components/Carousel/CardCarousel";
+import { Link } from "react-router-dom";
 
 function InformationsMedia({ id, mediaType }: QueryParamsType) {
   const { data, isLoading, isError, isFetching } =
@@ -25,16 +26,15 @@ function InformationsMedia({ id, mediaType }: QueryParamsType) {
     ));
 
   return (
-    <>
-      {/* Tête d'affiche et reco */}
-
-      <div className=" w-full lg:w-4/5  ">
-        <Subtitle text="Tête d'affiche" />
-        <Carousel isFetching={isFetching}> {content} </Carousel>
-      </div>
-
-      {/* Info sup. sur le film */}
-    </>
+    <div className=" w-full lg:w-4/5  ">
+      <Subtitle text="Tête d'affiche" />
+      <Carousel isFetching={isFetching}> {content} </Carousel>
+      <p className="mt-4 text-2xl font-bold hover:opacity-80 ">
+        <Link to={`cast`}>
+          Distribution des rôles et équipe technique au complet
+        </Link>
+      </p>
+    </div>
   );
 }
 

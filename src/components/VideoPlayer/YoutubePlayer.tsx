@@ -46,7 +46,6 @@ function YoutubePlayer({ id, media_type, setVideoID }: Props) {
           <Loader />
         ) : (
           <YouTube
-            onReady={(e) => console.log(e)}
             videoId={videoId}
             opts={opts}
             title="salut"
@@ -54,10 +53,10 @@ function YoutubePlayer({ id, media_type, setVideoID }: Props) {
           />
         )}
 
-        <h4 className="text-center mt-4 text-xl">{title}</h4>
+        <h4 className="text-center mt-4 text-4xl  ">{title}</h4>
         <div className="mt-8 flex justify-center">
           <button
-            className="px-6 py-2 bg-slate-950 hover:opacity-95  rounded-full text-xl "
+            className="px-6 py-2 bg-slate-950 hover:opacity-95  rounded-full text-xl text-white "
             onClick={stopReadingvideo}
           >
             Quitter

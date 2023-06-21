@@ -1,16 +1,26 @@
 import { useParams, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import { useGetPeopleCreditMovieByIdQuery } from "../features/peopleSlice";
 import { Media_typeType } from "../type/type";
-import { getProfilImagePath } from "../utils/getProfilImagePath";
+import { getProfilImagePath } from "../utils/getImage";
 import TitleCast from "../components/Cast/TitleCast";
 import CardRole from "../components/card/CardRole";
 import { getNotFoundImage } from "../utils/getNotFoundImage";
 import RoleList from "../layout/cast/RoleList";
 import HeaderCast from "../layout/cast/HeaderCast";
 function CastPage() {
-  const { id } = useParams() as { id: string };
+  const { pathname } = useLocation();
   const location = useLocation();
+  const { id } = useParams() as { id: string };
   const mediaType = location.pathname.split("/")[1] as Media_typeType;
+
+  useEffect(() => {
+    document.documentElement.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant", // Optional if you want to skip the scrolling animation
+    });
+  }, [pathname]);
 
   const { data, isLoading, isError } = useGetPeopleCreditMovieByIdQuery({
     id,
@@ -18,6 +28,7 @@ function CastPage() {
   });
 
   if (!data) return <p> pas de data</p>;
+
   const { cast, crew } = data;
 
   return (

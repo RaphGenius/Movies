@@ -1,4 +1,4 @@
-import { getPosterPathImage } from "../../utils/getPosterPathImage";
+import { getPosterPathImage } from "../../utils/getImage";
 type Props = {
   imageUrl: string;
   title: string;

@@ -55,6 +55,7 @@ function TrendCaroussel({ title, mediaType }: Props) {
         <Carousel isFetching={isFetching}>
           {data?.results.map((card) => (
             <CardCarousel
+              imageNotFoundNumber={10}
               key={card.id}
               mediaType={mediaType}
               id={card.id}

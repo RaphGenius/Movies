@@ -4,8 +4,9 @@ import ImgCard from "../../components/card/ImgCard";
 import { useGetMovieDetailByIDQuery } from "../../features/movieSlice";
 import { getYear } from "../../utils/formatDateNumbers";
 import { getNotFoundImage } from "../../utils/getNotFoundImage";
-import { getPosterPathImage } from "../../utils/getPosterPathImage";
+
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import { getPosterPathImage } from "../../utils/getImage";
 type Props = {
   id: string;
 };
@@ -23,9 +24,9 @@ function HeaderCast({ id }: Props) {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
-      className="py-4 px-8 flex gap-4 text-white  "
+      className="py-4 px-4 lg:px-8 flex gap-4 text-white  "
     >
-      <div className=" rounded-xl overflow-hidden h-32  ">
+      <div className=" rounded-xl overflow-hidden h-full w-full max-w-[100px]   ">
         <ImgCard
           imageUrl={poster_path}
           alt={`Affiche de ${title}`}
@@ -41,7 +42,7 @@ function HeaderCast({ id }: Props) {
           releasedYear={getYear(release_date)}
         />
         <a
-          className="text-gray-200 hover:text-gray-50 text-xl flex cursor-pointer items-center gap-2"
+          className="text-gray-200 hover:text-gray-50 text-xs lg:text-lg flex cursor-pointer items-end gap-2"
           onClick={() => navigate(-1)}
         >
           <AiOutlineArrowLeft /> Retour à la page principale

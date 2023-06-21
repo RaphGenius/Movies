@@ -1,7 +1,7 @@
 import { Media_typeType } from "../../type/type";
 import { formatTitleUrl } from "../../utils/formatTitleUrl";
 import { getNotFoundImage } from "../../utils/getNotFoundImage";
-import { getPosterPathImage } from "../../utils/getPosterPathImage";
+import { getPosterPathImage } from "../../utils/getImage";
 import LinkPage from "../Router/LinkPage";
 import ImgCard from "../card/ImgCard";
 import SubtitleCard from "../card/SubtitleCard";
@@ -16,6 +16,7 @@ type CardProps = {
   title: string;
   subtitle: string;
   imageUrl: string;
+  imageNotFoundNumber: number;
 };
 
 function CardCarousel({
@@ -26,6 +27,7 @@ function CardCarousel({
   title,
   subtitle,
   imageUrl,
+  imageNotFoundNumber,
 }: CardProps) {
   return (
     <LinkPage
@@ -39,7 +41,7 @@ function CardCarousel({
         </div>
         <div className=" h-3/4 w-full relative  rounded-lg overflow-hidden">
           <ImgCard
-            imageNotFound={getNotFoundImage(10)}
+            imageNotFound={getNotFoundImage(imageNotFoundNumber)}
             imageUrl={imageUrl}
             alt={`Image de ${title}`}
             getImageFn={getPosterPathImage}

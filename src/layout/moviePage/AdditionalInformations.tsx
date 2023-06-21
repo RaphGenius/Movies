@@ -3,6 +3,7 @@ import { useGetExternalsIdByIdQuery } from "../../features/multi/multiSlice";
 import { Media_typeType } from "../../type/type";
 import { formatEuroNumbers } from "../../utils/formatEuroNumbers";
 import { formatLanguageShort } from "../../utils/formatLanguageShort";
+import KeywordsSection from "./KeywordsSection";
 import SocialMediaContainer from "./SocialMediaContainer";
 
 type Props = {
@@ -29,8 +30,6 @@ export default function AdditionalInformations({
     mediaType,
   });
   if (!data) return <p> pas de data</p>;
-
-  console.log(new Intl.DisplayNames(["fr"], { type: "language" }).of("en"));
 
   const subInformationData = [
     { title: "Titre d'origine", information: originalTitle },
@@ -60,6 +59,7 @@ export default function AdditionalInformations({
             );
         })}
       </div>
+      <KeywordsSection id={id} mediaType={mediaType} />
     </div>
   );
 }

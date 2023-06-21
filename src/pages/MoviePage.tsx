@@ -28,7 +28,7 @@ function MoviePage() {
 
   if (isLoading)
     return (
-      <div className="min-h-screen bg-slate-700 flex justify-center items-center ">
+      <div className=" bg-slate-700 flex justify-center items-center ">
         <Loader />
       </div>
     );

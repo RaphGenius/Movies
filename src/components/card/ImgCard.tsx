@@ -14,7 +14,7 @@ export default function ImgCard({
   return (
     <img
       loading="lazy"
-      className="w-full h-full  object-cover object-top   group-hover:scale-110 duration-500  "
+      className="  group-hover:scale-110 duration-500  "
       src={imageUrl ? getImageFn(imageUrl) : imageNotFound}
       alt={`Poster du film ${alt}`}
     />

@@ -1,4 +1,4 @@
-import { useParams, useLocation, Link } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { skipToken } from "@reduxjs/toolkit/query";
 import { useGetMovieDetailByIDQuery } from "../features/movieSlice";
@@ -22,13 +22,13 @@ function MoviePage() {
   const location = useLocation();
   const mediaType = location.pathname.split("/")[1] as Media_typeType;
 
-  const { data, isLoading, isError } = useGetMovieDetailByIDQuery(
+  const { data, isFetching, isError } = useGetMovieDetailByIDQuery(
     id ?? skipToken
   );
 
-  if (isLoading)
+  if (isFetching)
     return (
-      <div className=" bg-slate-700 flex justify-center items-center ">
+      <div className=" bg-slate-700 min-h-screen flex justify-center items-center ">
         <Loader />
       </div>
     );

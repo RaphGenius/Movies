@@ -13,12 +13,13 @@ function CastPage() {
   const location = useLocation();
   const { id } = useParams() as { id: string };
   const mediaType = location.pathname.split("/")[1] as Media_typeType;
+  console.log(mediaType);
 
   useEffect(() => {
     document.documentElement.scrollTo({
       top: 0,
       left: 0,
-      behavior: "instant", // Optional if you want to skip the scrolling animation
+      behavior: "instant",
     });
   }, [pathname]);
 
@@ -33,7 +34,7 @@ function CastPage() {
 
   return (
     <section className="flex-1 ">
-      <HeaderCast id={id} />
+      <HeaderCast id={id} mediaType={mediaType} />
       <div className="grid grid-cols-1 lg:grid-cols-2 px-8 ">
         {/* 1ere colonne */}
         <RoleList>

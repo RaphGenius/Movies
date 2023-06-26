@@ -1,5 +1,5 @@
 function ResumeParagraphDetail({ resume }: { resume: string }) {
-  return <p className="">{resume} </p>;
+  return <p>{resume ? resume : "NC"} </p>;
 }
 
 export default ResumeParagraphDetail;

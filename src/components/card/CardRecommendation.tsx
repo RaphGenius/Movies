@@ -1,5 +1,7 @@
 import { formatDateNumbers } from "../../utils/formatDateNumbers";
-import ImgCard from "./ImgCard";
+import { AiOutlineSchedule as Calendrier } from "react-icons/ai";
+import LinkPage from "../Router/LinkPage";
+import { Media_typeType } from "../../type/type";
 
 type Props = {
   id: string;
@@ -9,6 +11,7 @@ type Props = {
   title: string;
   releaseDate: string;
   getImageFn: (value: string) => string;
+  mediaType: Media_typeType;
 };
 
 function CardRecommendation({
@@ -19,23 +22,28 @@ function CardRecommendation({
   title,
   releaseDate,
   getImageFn,
+  mediaType,
 }: Props) {
   return (
-    <div className="h-[150px] w-[220px] flex flex-col group flex-shrink-0 relative   ">
-      <div className=" h-4/5 relative  overflow-hidden    ">
-        <img
-          className="w-full h-full  object-cover object-bottom "
-          src={imageUrl ? getImageFn(imageUrl) : imageNotFound}
-          alt={`Image de ${title} `}
-        />
-        <div className="px-2 text-md translate-y-0 group-hover:-translate-y-6  w-full transition bg-white/80 bg-red-200 ">
-          {formatDateNumbers(releaseDate) ?? "NC"}
+    <div className=" w-[300px] h-[190px]  flex flex-col group flex-shrink-0    ">
+      <LinkPage mediaType={mediaType} id={id} titleMedia={title}>
+        <div className=" h-4/5 relative max-h-[160px]  overflow-hidden    ">
+          <img
+            className="w-full h-full rounded-xl  object-fill object-bottom "
+            src={imageUrl ? getImageFn(imageUrl) : imageNotFound}
+            alt={`Image de ${title} `}
+          />
+          <div className="px-2 text-md translate-y-0 group-hover:-translate-y-6 absolute will-change-transform w-full transition dark:bg-black/80 bg-white/80 bg-red-200 ">
+            <p className="flex items-center gap-2">
+              <Calendrier /> {formatDateNumbers(releaseDate) ?? "NC"}
+            </p>
+          </div>
         </div>
-      </div>
-      <div className="flex justify-between  ">
-        <h3 className="line-clamp-1">{title} </h3>{" "}
-        <p>{Math.round(rate * 10)}% </p>
-      </div>
+        <div className="flex justify-between w-full mt-2 ">
+          <h3 className="line-clamp-1 w-4/5 ">{title} </h3>{" "}
+          <p>{Math.round(rate * 10)}% </p>
+        </div>
+      </LinkPage>
     </div>
   );
 }

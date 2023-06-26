@@ -1,21 +1,22 @@
 import { TitleDetail } from "../../components/MediaDetail";
 import { useNavigate } from "react-router-dom";
 import ImgCard from "../../components/card/ImgCard";
-import { useGetMovieDetailByIDQuery } from "../../features/movieSlice";
 import { getYear } from "../../utils/formatDateNumbers";
 import { getNotFoundImage } from "../../utils/getNotFoundImage";
 
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { getPosterPathImage } from "../../utils/getImage";
-type Props = {
-  id: string;
-};
-function HeaderCast({ id }: Props) {
+import { QueryParamsType } from "../../type/type";
+import { useGetMediaDetailByIDQuery } from "../../features/multi/multiSlice";
+
+function HeaderCast({ id, mediaType }: QueryParamsType) {
   const navigate = useNavigate();
-  const { data } = useGetMovieDetailByIDQuery(id);
+  const { data } = useGetMediaDetailByIDQuery({ id, mediaType });
 
   if (!data) return <p>Pas de data</p>;
-  const { poster_path, title, release_date } = data;
+  const { title, name, poster_path, release_date, first_air_date } = data;
+
+  console.log(name);
 
   return (
     <div
@@ -29,17 +30,17 @@ function HeaderCast({ id }: Props) {
       <div className=" rounded-xl overflow-hidden h-full w-full max-w-[100px]   ">
         <ImgCard
           imageUrl={poster_path}
-          alt={`Affiche de ${title}`}
+          alt={`Affiche de ${title ?? name}`}
           getImageFn={getPosterPathImage}
           imageNotFound={getNotFoundImage(10)}
         />
       </div>
       <div className="flex flex-col justify-center gap-2 ">
         <TitleDetail
-          mediaType={"movie"}
-          title={title}
+          mediaType={mediaType}
+          title={title ?? name}
           id={id}
-          releasedYear={getYear(release_date)}
+          releasedYear={getYear(release_date ?? first_air_date)}
         />
         <a
           className="text-gray-200 hover:text-gray-50 text-xs lg:text-lg flex cursor-pointer items-end gap-2"

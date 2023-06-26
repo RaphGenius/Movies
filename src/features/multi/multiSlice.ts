@@ -6,8 +6,9 @@ import {
   QueryParamsType,
 } from "../../type/type";
 import { headersApi } from "../api.config";
-import { FetchKeywordsType } from "../../type/Multi";
+import { FetchKeywordsType, FetchTvKeywordsType } from "../../type/Multi";
 import { MovieDetailType } from "../../type/Movie";
+import { TvDetailType } from "../../type/Tv";
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export const multiSliceAPi = createApi({
@@ -22,16 +23,26 @@ export const multiSliceAPi = createApi({
         `search/multi?query=${query}&include_adult=false&page=1&language=fr-EU`,
     }),
     getExternalsIdById: builder.query<ExternalsIdType, QueryParamsType>({
-      query: ({ id, mediaType }) => `${mediaType}/${id}/external_ids`,
+      query: ({ id, mediaType }) =>
+        `${mediaType}/${id}/external_ids?language=fr-EU`,
     }),
     getKeywordsById: builder.query<FetchKeywordsType, QueryParamsType>({
       query: ({ id, mediaType }) => `${mediaType}/${id}/keywords`,
     }),
+    getTvKeywordsById: builder.query<FetchTvKeywordsType, QueryParamsType>({
+      query: ({ id, mediaType }) => `${mediaType}/${id}/keywords`,
+    }),
     getRecommendationsById: builder.query<
-      FetchResult<MovieDetailType>,
+      FetchResult<MovieDetailType & TvDetailType>,
       QueryParamsType
     >({
       query: ({ id, mediaType }) => `${mediaType}/${id}/recommendations`,
+    }),
+    getMediaDetailByID: builder.query<
+      MovieDetailType & TvDetailType,
+      QueryParamsType
+    >({
+      query: ({ id, mediaType }) => `${mediaType}/${id}?language=fr-EU`,
     }),
   }),
 });
@@ -41,4 +52,6 @@ export const {
   useGetExternalsIdByIdQuery,
   useGetKeywordsByIdQuery,
   useGetRecommendationsByIdQuery,
+  useGetTvKeywordsByIdQuery,
+  useGetMediaDetailByIDQuery,
 } = multiSliceAPi;

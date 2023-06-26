@@ -1,8 +1,17 @@
-export type KeywordsType = {
+export type MovieKeywordsType = {
   id: number;
   name: string;
 };
 export type FetchKeywordsType = {
   id: number;
-  keywords: KeywordsType[];
+  keywords: MovieKeywordsType[];
+};
+
+export type TvKeywordsType = {
+  id: number;
+  name: string;
+};
+export type FetchTvKeywordsType = {
+  id: number;
+  results: TvKeywordsType[];
 };

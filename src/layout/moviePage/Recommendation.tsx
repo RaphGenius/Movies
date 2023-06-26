@@ -1,17 +1,10 @@
-import { useLocation } from "react-router-dom";
 import Carousel from "../../components/Carousel/Carousel";
 import Subtitle from "../../components/text/Subtitle";
 import { useGetRecommendationsByIdQuery } from "../../features/multi/multiSlice";
-import { Media_typeType, QueryParamsType } from "../../type/type";
+import { QueryParamsType } from "../../type/type";
 import CardRecommendation from "../../components/card/CardRecommendation";
 import { getPosterPathImage } from "../../utils/getImage";
 import { getNotFoundImage } from "../../utils/getNotFoundImage";
-
-type Props = {
-  id: string;
-  mediaType: Media_typeType;
-  title: string;
-};
 
 function Recommendation({ id, mediaType }: QueryParamsType) {
   const { data, isLoading, isError } = useGetRecommendationsByIdQuery({
@@ -33,7 +26,8 @@ function Recommendation({ id, mediaType }: QueryParamsType) {
         backdrop_path,
         title,
         release_date,
-        poster_path,
+        name,
+        first_air_date,
       }) => (
         <CardRecommendation
           key={id}
@@ -42,19 +36,19 @@ function Recommendation({ id, mediaType }: QueryParamsType) {
           imageUrl={backdrop_path}
           getImageFn={getPosterPathImage}
           imageNotFound={getNotFoundImage(10)}
-          title={title}
-          releaseDate={release_date}
+          title={title ? title : name}
+          releaseDate={release_date ? release_date : first_air_date}
+          mediaType={mediaType}
         />
       )
     );
   }
-  console.log(data);
 
   return (
-    <>
+    <div className=" ">
       <Subtitle text="Recommendations" />
       <Carousel isFetching={isLoading}> {content} </Carousel>
-    </>
+    </div>
   );
 }
 

@@ -13,8 +13,8 @@ function Headlining({ id, mediaType }: QueryParamsType) {
     .slice(0, 15)
     .map((actor) => (
       <CardCarousel
-        key={actor.cast_id}
-        id={actor.cast_id}
+        key={actor.cast_id ?? actor.id}
+        id={actor.cast_id ?? actor.id}
         titleMedia={actor.original_name}
         mediaType={"person"}
         imageUrl={actor.profile_path}
@@ -27,7 +27,7 @@ function Headlining({ id, mediaType }: QueryParamsType) {
   return (
     <>
       <Subtitle text="Tête d'affiche" />
-      <Carousel isFetching={isLoading}> {content} </Carousel>
+      <Carousel isFetching={isFetching}> {content} </Carousel>
     </>
   );
 }

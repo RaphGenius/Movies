@@ -15,7 +15,7 @@ function SumGroup({ children, imageUrl }: PropsWithChildren<Props>) {
           BASE_URL_IMAGE + imageUrl
         })   `,
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "left calc((50vw - 170px) - 340px) top",
+        backgroundPosition: "left calc((52vw - 170px) - 340px) top",
         backgroundSize: "cover",
       }}
       className="h-full bg-slate-900 flex flex-col relative  w-full "

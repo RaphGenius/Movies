@@ -1,6 +1,6 @@
 type Props = {
   title: string;
-  information: string | number;
+  information: string | number | JSX.Element[];
 };
 
 function SubInformation({ title, information }: Props) {

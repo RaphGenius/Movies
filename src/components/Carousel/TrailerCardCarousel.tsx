@@ -67,7 +67,7 @@ function TrailerCardCarousel({
       {/* Titre */}
       <LinkPage mediaType={media_type} id={id.toString()} titleMedia={titre}>
         {" "}
-        <h3 className="mt-6 text-center text-xl pl-2 ">{titre}</h3>
+        <h3 className="mt-6 text-center text-xl pl-2 line-clamp-1 ">{titre}</h3>
       </LinkPage>
 
       {videoID && (

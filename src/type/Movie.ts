@@ -1,4 +1,4 @@
-type production_companiesType = {
+export type production_companiesType = {
   id: number;
   logo_path: string;
   name: string;

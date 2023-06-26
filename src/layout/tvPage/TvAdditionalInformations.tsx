@@ -1,10 +1,12 @@
 import { SubInformation } from "../../components/MediaDetail";
 import { useGetExternalsIdByIdQuery } from "../../features/multi/multiSlice";
+import { NetworksType } from "../../type/Tv";
 import { Media_typeType } from "../../type/type";
-import { formatEuroNumbers } from "../../utils/formatEuroNumbers";
 import { formatLanguageShort } from "../../utils/formatLanguageShort";
-import KeywordsSection from "./KeywordsSection";
-import SocialMediaContainer from "./SocialMediaContainer";
+import { formatTvStatus, formatTvType } from "../../utils/formatTvInformations";
+import KeywordsSection from "../moviePage/KeywordsSection";
+import SocialMediaContainer from "../moviePage/SocialMediaContainer";
+import TvKeywordsSection from "./TvKeywordsSection";
 
 type Props = {
   id: string;
@@ -12,8 +14,8 @@ type Props = {
   originalTitle: string;
   status: string;
   originalLanguage: string;
-  revenu: number;
-  budget: number;
+  networks: NetworksType[];
+  type: string;
 };
 
 export default function AdditionalInformations({
@@ -22,8 +24,8 @@ export default function AdditionalInformations({
   originalTitle,
   status,
   originalLanguage,
-  revenu,
-  budget,
+  networks,
+  type,
 }: Props) {
   const { data, isLoading, isError } = useGetExternalsIdByIdQuery({
     id,
@@ -33,18 +35,22 @@ export default function AdditionalInformations({
 
   const subInformationData = [
     { title: "Titre d'origine", information: originalTitle },
-    { title: "Status", information: status },
+    { title: "Status", information: formatTvStatus(status) },
     {
       title: "Langue d'origine",
       information: formatLanguageShort(originalLanguage),
     },
     {
-      title: "Budget",
-      information: budget !== 0 ? formatEuroNumbers(budget) : "NC",
+      title: "Type",
+      information: formatTvType(type),
     },
     {
-      title: "Recette",
-      information: revenu !== 0 ? formatEuroNumbers(revenu) : "NC",
+      title: "Diffuseur",
+      information: networks.slice(0, 5).map((el) => (
+        <span className="block" key={el.id}>
+          {el.name}{" "}
+        </span>
+      )),
     },
   ];
 
@@ -59,7 +65,7 @@ export default function AdditionalInformations({
             );
         })}
       </div>
-      {/* <KeywordsSection id={id} mediaType={mediaType} /> */}
+      <TvKeywordsSection id={id} mediaType={mediaType} />
     </div>
   );
 }

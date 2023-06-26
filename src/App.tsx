@@ -35,7 +35,10 @@ function App() {
         <Routes>
           <Route path="/" index element={<Home />} />
           <Route path="/movie/:id/:titleMedia" element={<MoviePage />} />
-          <Route path="/movie/:id/:titleMedia/cast" element={<CastPage />} />
+          <Route
+            path="/:mediaType/:id/:titleMedia/cast"
+            element={<CastPage />}
+          />
 
           <Route path="/tv/:id/:titleMedia?" element={<TvPage />} />
           <Route path="search" element={<Search />}></Route>

@@ -1,14 +1,14 @@
 import { useState } from "react";
+import { useGetTrendingQuery } from "../../features/trendingSlice";
+import { FetchTime_window, Media_typeType } from "../../type/type";
 import ButtonTrend from "../../components/Carousel/ButtonTrend";
 import CardCarousel from "../../components/Carousel/CardCarousel";
 import Carousel from "../../components/Carousel/Carousel";
 import TitleTrend from "../../components/Carousel/TitleTrend";
-
-import { useGetTrendingQuery } from "../../features/trendingSlice";
-import { FetchTime_window, Media_typeType } from "../../type/type";
 import GroupButtonTrend from "../../components/Carousel/GroupButtonTrend";
-import Loader from "../../components/Loading/Loader";
 import formatDate from "../../utils/formatDate";
+import LoadingCard from "../../components/Loading/LoadingCard";
+
 type Props = {
   title: string;
   mediaType: Media_typeType;
@@ -22,8 +22,11 @@ function TrendCaroussel({ title, mediaType }: Props) {
     date,
   });
 
+  console.log(data);
   const switchDateDay = () => setDate("day");
   const switchDateWeek = () => setDate("week");
+
+  const arrayLoading: JSX.Element[] = new Array(10).fill(<LoadingCard />);
 
   return (
     <section className={`overflow-hidden w-full     `}>
@@ -46,9 +49,11 @@ function TrendCaroussel({ title, mediaType }: Props) {
         </GroupButtonTrend>
       </div>
       {isLoading && (
-        <div className="w-full h-[404px] bg-gradient-to-l opacity-25 from-teal-400 to-teal-900 flex justify-center items-center rounded-lg ">
-          <Loader />
-        </div>
+        <Carousel isFetching={isFetching}>
+          {arrayLoading.map((el, i) => (
+            <div key={i}>{el} </div>
+          ))}
+        </Carousel>
       )}
       {/* Caroussel */}
       {

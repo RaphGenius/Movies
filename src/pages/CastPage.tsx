@@ -8,6 +8,7 @@ import CardRole from "../components/card/CardRole";
 import { getNotFoundImage } from "../utils/getNotFoundImage";
 import RoleList from "../layout/cast/RoleList";
 import HeaderCast from "../layout/cast/HeaderCast";
+import Loader from "../components/Loading/Loader";
 function CastPage() {
   const { pathname } = useLocation();
   const location = useLocation();
@@ -28,6 +29,12 @@ function CastPage() {
     mediaType,
   });
 
+  if (isLoading)
+    return (
+      <div className="min-h-screen flex justify-center items-center ">
+        <Loader />
+      </div>
+    );
   if (!data) return <p> pas de data</p>;
 
   const { cast, crew } = data;

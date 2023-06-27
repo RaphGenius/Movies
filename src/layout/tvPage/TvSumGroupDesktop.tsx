@@ -55,7 +55,7 @@ function TvSumGroupDesktop({ data, mediaType, id, setVideoID }: Props) {
             />
             <FactsGroup>
               <ReleaseDateDetail release_date={first_air_date} /> -
-              <GenreDetail allGenders={genres} /> -
+              <GenreDetail allGenders={genres} />
             </FactsGroup>
           </div>
           {/* Note et bande annonce */}

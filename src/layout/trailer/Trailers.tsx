@@ -6,6 +6,9 @@ import TrailerCardCarousel from "../../components/Carousel/TrailerCardCarousel";
 import TitleTrend from "../../components/Carousel/TitleTrend";
 import ButtonTrend from "../../components/Carousel/ButtonTrend";
 import GroupButtonTrend from "../../components/Carousel/GroupButtonTrend";
+import { FaPlay } from "react-icons/fa";
+import LoadingCard from "../../components/Loading/LoadingCard";
+import LoadingTrailerCard from "../../components/Loading/LoadingTrailerCard";
 
 function Trailers() {
   // Ajouter au bgImage ? linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(0,0,0,0.9)),
@@ -19,6 +22,8 @@ function Trailers() {
 
   const switchMediaMovie = () => setMediaType("movie");
   const switchMediaTv = () => setMediaType("tv");
+
+  const loadingTrailer = new Array(10).fill(<LoadingTrailerCard />);
 
   return (
     <section
@@ -51,6 +56,7 @@ function Trailers() {
       </div>
       {/* Carouseel */}
       <Carousel isFetching={isLoading}>
+        {isLoading && loadingTrailer.map((el, i) => <div key={i}>{el} </div>)}
         {data?.results.slice().map((card) => (
           <TrailerCardCarousel
             setBgImage={setBgImage}

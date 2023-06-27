@@ -1,5 +1,5 @@
 export const formatDateNumbers = (date: string) => {
-  if (!date) return "NC";
+  if (!date) return "Aucune date de sortie";
   const [yyyy, mm, dd] = date.split("-");
   return `${dd}/${mm}/${yyyy}`;
 };

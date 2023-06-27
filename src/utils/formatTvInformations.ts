@@ -6,6 +6,10 @@ export const formatTvStatus = (status: string) => {
       return "Émission renouvelée";
     case "Ended":
       return "Émission terminée";
+    case "Released":
+      return "Film Sorti";
+    case "Planned":
+      return "Film annoncé";
     default:
       return "Non communiqué";
   }
@@ -19,6 +23,7 @@ export const formatTvType = (type: string) => {
       return "Émission scénarisée";
     case "Miniseries":
       return "Émission mini-série";
+
     default:
       return "Non communiqué";
   }

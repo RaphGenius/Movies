@@ -32,3 +32,29 @@ export type FetchResultPeopleCreditType = {
   cast: PeopleCastCreditType[];
   crew: PeopleCrewCreditType[];
 };
+
+type TvRoleType = {
+  credit_id: string;
+  character: string;
+  episode_count: number;
+};
+export type TvRolePeopleCastCreditType = {
+  roles: TvRoleType[];
+  total_episode_count: number;
+};
+
+type TvJobsPeopleCrewCreditType = {
+  credit_id: string;
+  job: string;
+  episode_count: number;
+};
+
+type TvPeopleCastCreditType = PeopleCastCreditType & TvRolePeopleCastCreditType;
+
+type TvPeopleCrewCreditType = PeopleCrewCreditType & TvJobsPeopleCrewCreditType;
+
+export type FetchResultTvPeopleCreditType = {
+  cast: TvPeopleCastCreditType[];
+  crew: TvPeopleCrewCreditType[];
+  id: number;
+};

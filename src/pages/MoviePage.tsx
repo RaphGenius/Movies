@@ -16,7 +16,7 @@ function MoviePage() {
   const { id, titleMedia } = useParams();
 
   useEffect(() => {
-    document.title = titleMedia ?? "Movie";
+    document.title = `${titleMedia}` ?? "Movie";
   }, [titleMedia]);
 
   const location = useLocation();
@@ -57,7 +57,7 @@ function MoviePage() {
 
       <section
         className=" px-8 mt-8 
-  max-w-bigScreen mx-auto  min-h-screen "
+  max-w-bigScreen mx-auto "
       >
         <div className="flex lg:flex-row flex-col gap-4">
           <InformationsMedia id={id} mediaType={mediaType} />
@@ -71,6 +71,10 @@ function MoviePage() {
             budget={budget}
           />
         </div>
+        <svg
+          className="animate-spin h-5 w-5 mr-3 ..."
+          viewBox="0 0 24 24"
+        ></svg>
       </section>
 
       {videoId && (

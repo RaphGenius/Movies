@@ -3,6 +3,7 @@ import { useGetExternalsIdByIdQuery } from "../../features/multi/multiSlice";
 import { Media_typeType } from "../../type/type";
 import { formatEuroNumbers } from "../../utils/formatEuroNumbers";
 import { formatLanguageShort } from "../../utils/formatLanguageShort";
+import { formatTvStatus } from "../../utils/formatTvInformations";
 import KeywordsSection from "./KeywordsSection";
 import SocialMediaContainer from "./SocialMediaContainer";
 
@@ -33,18 +34,18 @@ export default function AdditionalInformations({
 
   const subInformationData = [
     { title: "Titre d'origine", information: originalTitle },
-    { title: "Status", information: status },
+    { title: "Status", information: formatTvStatus(status) },
     {
       title: "Langue d'origine",
       information: formatLanguageShort(originalLanguage),
     },
     {
       title: "Budget",
-      information: budget !== 0 ? formatEuroNumbers(budget) : "NC",
+      information: budget !== 0 ? formatEuroNumbers(budget) : "-",
     },
     {
       title: "Recette",
-      information: revenu !== 0 ? formatEuroNumbers(revenu) : "NC",
+      information: revenu !== 0 ? formatEuroNumbers(revenu) : "-",
     },
   ];
 

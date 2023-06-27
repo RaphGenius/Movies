@@ -41,7 +41,7 @@ function CardRecommendation({
         </div>
         <div className="flex justify-between w-full mt-2 ">
           <h3 className="line-clamp-1 w-4/5 ">{title} </h3>{" "}
-          <p>{Math.round(rate * 10)}% </p>
+          <p> {rate !== 0 ? `${Math.round(rate * 10)}% ` : ""} </p>
         </div>
       </LinkPage>
     </div>

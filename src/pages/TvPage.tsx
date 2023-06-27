@@ -11,13 +11,12 @@ import YoutubePlayer from "../components/VideoPlayer/YoutubePlayer";
 import TvSumGroupMobile from "../layout/tvPage/TvSumGroupMobile";
 import InformationsMedia from "../layout/moviePage/InformationsMedia";
 import TvAdditionalInformations from "../layout/tvPage/TvAdditionalInformations";
-import { writeMetaDocument } from "../utils/writeMetaDocument";
 function TvPage() {
   const [videoId, setVideoID] = useState<number | null>(null);
   const { id, titleMedia } = useParams();
 
   useEffect(() => {
-    document.title = titleMedia ?? "Movie";
+    document.title = `${titleMedia}` ?? "Movie";
   }, [titleMedia]);
 
   const location = useLocation();
@@ -33,7 +32,6 @@ function TvPage() {
       </div>
     );
   if (!data || !id) return <p>Pas de datas</p>;
-
   return (
     <main className="flex-1 relative">
       <Desktop>
@@ -56,7 +54,7 @@ function TvPage() {
 
       <section
         className=" px-8 mt-8 
-  max-w-bigScreen mx-auto  min-h-screen "
+  max-w-bigScreen mx-auto  "
       >
         <div className="flex lg:flex-row flex-col gap-4">
           <InformationsMedia id={id} mediaType={mediaType} />

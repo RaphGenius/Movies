@@ -1,16 +1,13 @@
-import { QueryParamsType } from "../../type/type";
 import Subtitle from "../../components/text/Subtitle";
 import Carousel from "../../components/Carousel/Carousel";
 import CardCarousel from "../../components/Carousel/CardCarousel";
-import { useGetPeopleCreditMovieByIdQuery } from "../../features/peopleSlice";
+import { useGetTvAggregateCreditsByIDQuery } from "../../features/tvSlice";
 
-function Headlining({ id, mediaType }: QueryParamsType) {
+function TvHeadlining({ id }: { id: string }) {
   const { data, isLoading, isError, isFetching } =
-    useGetPeopleCreditMovieByIdQuery({ id, mediaType });
-
+    useGetTvAggregateCreditsByIDQuery(id);
   if (!data) return <p>pas de data</p>;
 
-  console.log(data);
   let content;
   if (data?.cast.length < 1) {
     content = <p>Aucune distribution des rôles n'a été ajoutée à ce média.</p>;
@@ -19,12 +16,12 @@ function Headlining({ id, mediaType }: QueryParamsType) {
       .slice(0, 15)
       .map((actor) => (
         <CardCarousel
-          key={actor.cast_id ?? actor.id}
-          id={actor.cast_id ?? actor.id}
-          titleMedia={actor.original_name}
+          key={actor.id}
+          id={actor.id}
+          titleMedia={actor.name}
           mediaType={"person"}
           imageUrl={actor.profile_path}
-          subtitle={actor.character}
+          subtitle={actor.roles[0].character}
           title={actor.name}
           imageNotFoundNumber={actor.gender}
           circlePresence={false}
@@ -40,4 +37,4 @@ function Headlining({ id, mediaType }: QueryParamsType) {
   );
 }
 
-export default Headlining;
+export default TvHeadlining;

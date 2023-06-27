@@ -5,6 +5,8 @@ type Props = {
 };
 
 function GenreDetail({ allGenders }: Props) {
+  if (allGenders.length < 1)
+    return <ul className="flex gap-2  ">Aucun genre communiqué</ul>;
   const content = allGenders.map(({ id, name }, index) => (
     <li key={id}>
       <a href="#">
@@ -13,7 +15,14 @@ function GenreDetail({ allGenders }: Props) {
       </a>
     </li>
   ));
-  return <ul className="flex gap-2  ">{content} </ul>;
+  return (
+    <ul className="flex gap-2  ">
+      {content}{" "}
+      <span className={` hidden lg:inline  `}>
+        {allGenders.length > 1 ? "-" : ""}
+      </span>{" "}
+    </ul>
+  );
 }
 
 export default GenreDetail;

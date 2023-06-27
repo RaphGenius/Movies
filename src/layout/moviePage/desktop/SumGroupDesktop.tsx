@@ -42,6 +42,7 @@ export default function SumGroupDesktop({
     overview,
   } = data;
   console.log(data);
+  console.log(genres);
   return (
     <SumGroup imageUrl={backdrop_path}>
       {/* PARTIE IMAGE */}
@@ -60,7 +61,7 @@ export default function SumGroupDesktop({
           />
           <FactsGroup>
             <ReleaseDateDetail release_date={release_date} /> -
-            <GenreDetail allGenders={genres} /> -
+            {genres.length >= 1 && <GenreDetail allGenders={genres} />}
             <LengthMediaDetail lengthMedia={runtime} />
           </FactsGroup>
         </div>

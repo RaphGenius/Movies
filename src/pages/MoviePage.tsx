@@ -22,13 +22,11 @@ function MoviePage() {
   const location = useLocation();
   const mediaType = location.pathname.split("/")[1] as Media_typeType;
 
-  const { data, isFetching, isError } = useGetMovieDetailByIDQuery(
-    id ?? skipToken
-  );
+  const { data, isFetching } = useGetMovieDetailByIDQuery(id ?? skipToken);
 
   if (isFetching)
     return (
-      <div className=" bg-slate-700 min-h-screen flex justify-center items-center ">
+      <div className=" bg-slate-500 min-h-screen flex justify-center items-center ">
         <Loader />
       </div>
     );
@@ -37,7 +35,7 @@ function MoviePage() {
   const { budget, original_title, revenue, status, original_language } = data;
 
   return (
-    <main className="flex-1 relative ">
+    <main className={`flex-1 relative  ${isFetching && "blur-md"} `}>
       <Desktop>
         <SumGroupDesktop
           data={data}

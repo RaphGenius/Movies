@@ -4,6 +4,8 @@ import {
   FetchResult,
   MultiSearchDataType,
   QueryParamsType,
+  QuerySearchType,
+  SearchByMediaAndTextType,
 } from "../../type/type";
 import { headersApi } from "../api.config";
 import { FetchKeywordsType, FetchTvKeywordsType } from "../../type/Multi";
@@ -18,9 +20,12 @@ export const multiSliceAPi = createApi({
     headers: headersApi,
   }),
   endpoints: (builder) => ({
-    getAnything: builder.query<FetchResult<MultiSearchDataType>, string>({
-      query: (query) =>
-        `search/multi?query=${query}&include_adult=false&page=1&language=fr-EU`,
+    SearchByText: builder.query<
+      FetchResult<MultiSearchDataType>,
+      QuerySearchType
+    >({
+      query: ({ search, currentPage = 1 }) =>
+        `search/multi?query=${search}&include_adult=false&page=${currentPage}&language=fr-EU`,
     }),
     getExternalsIdById: builder.query<ExternalsIdType, QueryParamsType>({
       query: ({ id, mediaType }) =>
@@ -44,14 +49,22 @@ export const multiSliceAPi = createApi({
     >({
       query: ({ id, mediaType }) => `${mediaType}/${id}?language=fr-EU`,
     }),
+    searchByMediaTypeAndText: builder.query<
+      FetchResult<MultiSearchDataType>,
+      SearchByMediaAndTextType
+    >({
+      query: ({ query, mediaType, currentPage = 1 }) =>
+        `search/${mediaType}?query=${query}&include_adult=false&language=fr-EU&page=${currentPage}`,
+    }),
   }),
 });
 
 export const {
-  useGetAnythingQuery,
+  useSearchByTextQuery,
   useGetExternalsIdByIdQuery,
   useGetKeywordsByIdQuery,
   useGetRecommendationsByIdQuery,
   useGetTvKeywordsByIdQuery,
   useGetMediaDetailByIDQuery,
+  useSearchByMediaTypeAndTextQuery,
 } = multiSliceAPi;

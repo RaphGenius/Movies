@@ -41,7 +41,7 @@ function App() {
           />
 
           <Route path="/tv/:id/:titleMedia?" element={<TvPage />} />
-          <Route path="search" element={<Search />}></Route>
+          <Route path="search/:query" element={<Search />}></Route>
         </Routes>
         <Footer />
       </div>

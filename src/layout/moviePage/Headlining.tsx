@@ -5,11 +5,12 @@ import CardCarousel from "../../components/Carousel/CardCarousel";
 import { useGetPeopleCreditMovieByIdQuery } from "../../features/peopleSlice";
 
 function Headlining({ id, mediaType }: QueryParamsType) {
-  const { data, isLoading, isError, isFetching } =
-    useGetPeopleCreditMovieByIdQuery({ id, mediaType });
+  const { data, isFetching } = useGetPeopleCreditMovieByIdQuery({
+    id,
+    mediaType,
+  });
 
   if (!data) return <p>pas de data</p>;
-
   console.log(data);
   let content;
   if (data?.cast.length < 1) {

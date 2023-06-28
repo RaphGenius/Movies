@@ -34,7 +34,7 @@ export default function AdditionalInformations({
 
   const subInformationData = [
     { title: "Titre d'origine", information: originalTitle },
-    { title: "Status", information: formatTvStatus(status) },
+    { title: "Statut", information: formatTvStatus(status) },
     {
       title: "Langue d'origine",
       information: formatLanguageShort(originalLanguage),

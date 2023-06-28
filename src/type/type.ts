@@ -16,12 +16,21 @@ export type MultiSearchDataType = {
   origin_country: string[];
 };
 
+export type SearchByMediaAndTextType = {
+  query: string;
+  mediaType: Media_typeType;
+  currentPage?: number;
+};
 export type FetchResult<T> = {
   page: number;
   results: T[];
-
   total_pages: number;
   total_results: number;
+};
+
+export type QuerySearchType = {
+  search: string;
+  currentPage: number;
 };
 
 export type MovieType = {

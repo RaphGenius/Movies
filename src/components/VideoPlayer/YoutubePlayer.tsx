@@ -19,9 +19,14 @@ function YoutubePlayer({ id, media_type, setVideoID }: Props) {
     mediaType: media_type,
     id,
   });
-  console.log(data);
 
-  const videoId = data?.results[0].key;
+  if (!data) return <p>pas de data</p>;
+  if (data.results.length < 1) {
+    setVideoID(null);
+    alert("Aucune vidéo disponible");
+  }
+
+  const videoId = data?.results[0]?.key;
   const title = data?.results[0].name;
 
   const stopReadingvideo = () => {
@@ -46,9 +51,9 @@ function YoutubePlayer({ id, media_type, setVideoID }: Props) {
           <Loader />
         ) : (
           <YouTube
+            title="salut"
             videoId={videoId}
             opts={opts}
-            title="salut"
             loading="eager"
           />
         )}

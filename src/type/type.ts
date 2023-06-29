@@ -32,6 +32,7 @@ export type SearchQueryType = {
   first_air_date: string;
   known_for_department: string;
   known_for: known_forType[];
+  gender: number;
 };
 
 export type SearchByMediaAndTextType = {

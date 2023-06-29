@@ -4,6 +4,7 @@ import { Media_typeType } from "../../type/type";
 import CardSearchMedia from "../../components/card/CardSearchMedia";
 import Loader from "../../components/Loading/Loader";
 import PaginationContainer from "./PaginationContainer";
+import CardSearchPerson from "../../components/card/CardSearchPerson";
 
 type Props = {
   mediaType: Media_typeType;
@@ -12,7 +13,7 @@ type Props = {
 
 function SearchResult({ mediaType, query }: Props) {
   const [currentPage, setCurrentPage] = useState(1);
-  const { data, isFetching } = useSearchByMediaTypeAndTextQuery({
+  const { data, isFetching, isLoading } = useSearchByMediaTypeAndTextQuery({
     mediaType,
     query,
     currentPage,
@@ -24,17 +25,20 @@ function SearchResult({ mediaType, query }: Props) {
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: "instant",
+      behavior: "smooth",
     });
   }, [currentPage]);
 
-  if (!data) return <p>Pas de data </p>;
+  let content;
+  if (isLoading) {
+    content = <p>Loading...</p>;
+    return null;
+  }
+
+  if (!data) return <p>Aucune données n'a été trouvé</p>;
 
   const { results, total_pages } = data;
-
-  let content;
-
-  if (isFetching) content = <p>Loading...</p>;
+  const resultsLength = results.length;
 
   if (mediaType === "movie") {
     content = results.map(
@@ -47,6 +51,7 @@ function SearchResult({ mediaType, query }: Props) {
           date={release_date}
           overview={overview}
           imageUrl={poster_path}
+          isFetching={isFetching}
         />
       )
     );
@@ -63,30 +68,43 @@ function SearchResult({ mediaType, query }: Props) {
           date={first_air_date}
           overview={overview}
           imageUrl={poster_path}
+          isFetching={isFetching}
         />
       )
     );
   }
 
   if (mediaType === "person") {
-    content = results.map((el) => (
-      <div>
-        {el.name} {el.known_for_department}{" "}
-      </div>
-    ));
+    content = results.map(
+      ({ id, known_for_department, known_for, profile_path, gender, name }) => (
+        <CardSearchPerson
+          isFetching={isFetching}
+          key={id}
+          id={id}
+          job={known_for_department}
+          imageUrl={profile_path}
+          roles={known_for}
+          mediaType="person"
+          name={name}
+          gender={gender}
+        />
+      )
+    );
   }
-  if (results.length < 1) {
+  if (resultsLength < 1) {
     content = <p>Aucun média ne correspond à votre recherche {query} </p>;
   }
   console.log(data);
   return (
-    <div className="w-5/6 flex flex-col gap-4  ">
-      {isFetching ? <Loader /> : content}
-      <PaginationContainer
-        currentPage={currentPage}
-        switchPageFn={setCurrentPage}
-        totalPage={total_pages}
-      />
+    <div className="lg:w-5/6 w-full flex flex-col gap-4  ">
+      {content}
+      {resultsLength > 1 && !isFetching && (
+        <PaginationContainer
+          currentPage={currentPage}
+          switchPageFn={setCurrentPage}
+          totalPage={total_pages}
+        />
+      )}
     </div>
   );
 }

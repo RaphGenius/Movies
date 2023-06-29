@@ -16,7 +16,8 @@ export const SelectMediaSearch = ({
   query,
 }: Props) => {
   const mediaType = value;
-  const bgColor = value === label && "bg-green-500";
+  const bgColor =
+    value === label && "bg-slate-800 text-white dark:bg-white dark:text-black ";
 
   const { data, isFetching } = useSearchByMediaTypeAndTextQuery({
     mediaType,
@@ -26,13 +27,13 @@ export const SelectMediaSearch = ({
   return (
     <li
       onClick={() => handleClick(value)}
-      className={`flex p-2 justify-between overflow-hidden cursor-pointer ${bgColor} `}
+      className={`flex p-2 justify-between overflow-hidden cursor-pointer ${bgColor} text-black text-md lg:text-xl duration-75 min-w-[50vh] dark:text-white w-full  `}
     >
-      <button>{title} </button>
+      <button className="">{title} </button>
       <span
         className={`${
-          isFetching && "translate-y-9 "
-        } translate-y-0 transition border border-gray-700 px-2 rounded-lg bg-gray-200 `}
+          isFetching && "translate-x-16 "
+        } translate-x-0 transition-transform border  px-2 rounded-lg bg-gray-200 text-black `}
       >
         {totalResult}
       </span>{" "}

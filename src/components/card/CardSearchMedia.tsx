@@ -14,6 +14,7 @@ type Props = {
   overview: string;
   imageUrl: string;
   id: number;
+  isFetching: boolean;
 };
 
 function CardSearchMedia({
@@ -23,9 +24,14 @@ function CardSearchMedia({
   overview,
   imageUrl,
   id,
+  isFetching,
 }: Props) {
   return (
-    <div className="flex rounded-xl overflow-hidden h-40 w-full border border-gray-300 shadow-md  ">
+    <div
+      className={`flex dark:bg-gradient-to-tl dark:from-slate-700 dark:to-slate-900  rounded-xl overflow-hidden h-40 w-full border dark:border-gray-900 border-gray-300 shadow-md duration-700 transition-opacity ${
+        isFetching && "opacity-50"
+      } `}
+    >
       <LinkPage mediaType={mediaType} id={id.toString()} titleMedia={title}>
         <div className="w-28  h-full ">
           <ImgCard

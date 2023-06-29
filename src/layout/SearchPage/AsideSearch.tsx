@@ -18,7 +18,7 @@ function AsideSearch({ setCurrentMediaType, currentMediaType, query }: Props) {
     },
     {
       id: 1,
-      title: "Émissions télévisées",
+      title: "Émissions TV",
       value: "tv" as Media_typeType,
       handleClick: () => setCurrentMediaType("tv"),
       label: currentMediaType,
@@ -33,12 +33,14 @@ function AsideSearch({ setCurrentMediaType, currentMediaType, query }: Props) {
   ];
 
   return (
-    <div className="w-2/6  bg-blue-300 rounded-lg sticky top-28 h-fit  ">
-      <div className=" p-4">
-        <h3>Resultat de la recherche pour {query} </h3>
+    <aside className="lg:w-2/6   lg:rounded-xl overflow-hidden dark:border-gray-700 lg:border-2 border-gray-300 lg:sticky lg:top-28 h-fit  ">
+      <div className=" bg-gradient-to-tl from-teal-400 to-teal-700  p-4">
+        <h2 className="text-white text-xl font-bold  ">
+          Resultat de la recherche pour {query}{" "}
+        </h2>
       </div>
-      <div className="bg-gray-400 ">
-        <ul className="">
+      <div className="  ">
+        <ul className="flex lg:flex-col w-full overflow-y-hidden overflow-scroll lg:overflow-auto ">
           {dataSelectMediaSearch.map((btn) => (
             <SelectMediaSearch
               key={btn.id}
@@ -51,7 +53,7 @@ function AsideSearch({ setCurrentMediaType, currentMediaType, query }: Props) {
           ))}
         </ul>
       </div>
-    </div>
+    </aside>
   );
 }
 

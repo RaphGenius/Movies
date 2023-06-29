@@ -17,6 +17,13 @@ function Search() {
     console.log(query);
   }, [query]);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
+  }, [currentMediaType]);
+
   return (
     <section className="max-w-bigScreen min-h-screen mt-4 mx-auto w-full relative  ">
       <div className=" flex w-full mx-auto px-8 gap-4   ">

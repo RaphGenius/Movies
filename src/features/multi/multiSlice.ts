@@ -6,6 +6,7 @@ import {
   QueryParamsType,
   QuerySearchType,
   SearchByMediaAndTextType,
+  SearchQueryType,
 } from "../../type/type";
 import { headersApi } from "../api.config";
 import { FetchKeywordsType, FetchTvKeywordsType } from "../../type/Multi";
@@ -50,7 +51,7 @@ export const multiSliceAPi = createApi({
       query: ({ id, mediaType }) => `${mediaType}/${id}?language=fr-EU`,
     }),
     searchByMediaTypeAndText: builder.query<
-      FetchResult<MultiSearchDataType>,
+      FetchResult<SearchQueryType>,
       SearchByMediaAndTextType
     >({
       query: ({ query, mediaType, currentPage = 1 }) =>

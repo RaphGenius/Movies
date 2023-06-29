@@ -16,6 +16,24 @@ export type MultiSearchDataType = {
   origin_country: string[];
 };
 
+export type known_forType = {
+  id: number;
+  media_type: Media_typeType;
+  title: string;
+};
+export type SearchQueryType = {
+  id: number;
+  profile_path: string;
+  poster_path: string;
+  name: string;
+  title: string;
+  overview: string;
+  release_date: string;
+  first_air_date: string;
+  known_for_department: string;
+  known_for: known_forType[];
+};
+
 export type SearchByMediaAndTextType = {
   query: string;
   mediaType: Media_typeType;

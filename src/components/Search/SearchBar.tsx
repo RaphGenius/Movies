@@ -4,11 +4,10 @@ import { PropsWithChildren } from "react";
 import { AiOutlineSearch as Loupe } from "react-icons/ai";
 function SearchBar({ children }: PropsWithChildren) {
   const [query, setQuery] = useState("");
-  console.log(query);
   const getQuery = (qry: string) => setQuery(qry);
 
   const navigate = useNavigate();
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!query.trim()) return;
     navigate(`/search/${query.trim()}`);

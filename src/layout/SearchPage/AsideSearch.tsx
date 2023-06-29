@@ -33,9 +33,9 @@ function AsideSearch({ setCurrentMediaType, currentMediaType, query }: Props) {
   ];
 
   return (
-    <div className="w-2/6  bg-blue-300 rounded-lg sticky top-0   ">
+    <div className="w-2/6  bg-blue-300 rounded-lg sticky top-28 h-fit  ">
       <div className=" p-4">
-        <h3>Resultat de la recherche</h3>
+        <h3>Resultat de la recherche pour {query} </h3>
       </div>
       <div className="bg-gray-400 ">
         <ul className="">

@@ -1,6 +1,7 @@
 import femaleImage from "../assets/noImageFemale.svg";
 import maleImage from "../assets/noImageMale.svg";
 import genericImage from "../assets/imageNotFound.jpg";
+import posterPath from "../assets/noPoster.svg";
 export const getNotFoundImage = (value: number) => {
   switch (value) {
     case 0:
@@ -15,6 +16,8 @@ export const getNotFoundImage = (value: number) => {
     case 10:
       return genericImage;
       break;
+    case 11:
+      return posterPath;
     default:
       return genericImage;
   }

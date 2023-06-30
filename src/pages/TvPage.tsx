@@ -22,9 +22,7 @@ function TvPage() {
   const location = useLocation();
   const mediaType = location.pathname.split("/")[1] as Media_typeType;
 
-  const { data, isFetching, isError } = useGetTvDetailByIDQuery(
-    id ?? skipToken
-  );
+  const { data, isFetching } = useGetTvDetailByIDQuery(id ?? skipToken);
   if (isFetching)
     return (
       <div className=" bg-slate-700 min-h-screen flex justify-center items-center ">

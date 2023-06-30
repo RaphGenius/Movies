@@ -4,4 +4,5 @@ import MoviePage from "./MoviePage";
 import ErrorPage from "./ErrorPage";
 import TvPage from "./TvPage";
 import CastPage from "./CastPage";
-export { Home, Search, MoviePage, ErrorPage, TvPage, CastPage };
+import PersonPage from "./PersonPage";
+export { Home, Search, MoviePage, ErrorPage, TvPage, CastPage, PersonPage };

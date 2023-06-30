@@ -8,3 +8,12 @@ export const getYear = (date: string) => {
   const year = date.split("-")[0];
   return year;
 };
+
+export const getAge = (date: string) => {
+  console.log(date);
+  if (!date) return "";
+  const ageDif = Date.now() - new Date(date).getTime();
+  const ageDate = new Date(ageDif);
+
+  return Math.abs(ageDate.getUTCFullYear() - 1970);
+};

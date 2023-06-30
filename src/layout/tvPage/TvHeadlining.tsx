@@ -22,7 +22,7 @@ function TvHeadlining({ id }: { id: string }) {
           mediaType={"person"}
           imageUrl={actor.profile_path}
           subtitle={actor.roles[0].character}
-          title={actor.name}
+          title={actor.original_name}
           imageNotFoundNumber={actor.gender}
           circlePresence={false}
         />

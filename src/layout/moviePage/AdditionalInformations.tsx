@@ -60,7 +60,7 @@ export default function AdditionalInformations({
             );
         })}
       </div>
-      {/* <KeywordsSection id={id} mediaType={mediaType} /> */}
+      <KeywordsSection id={id} mediaType={mediaType} />
     </div>
   );
 }

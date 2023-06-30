@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useSearchByMediaTypeAndTextQuery } from "../../features/multi/multiSlice";
 import { Media_typeType } from "../../type/type";
 import CardSearchMedia from "../../components/card/CardSearchMedia";
-import Loader from "../../components/Loading/Loader";
 import PaginationContainer from "./PaginationContainer";
 import CardSearchPerson from "../../components/card/CardSearchPerson";
 

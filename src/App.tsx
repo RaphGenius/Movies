@@ -1,7 +1,14 @@
 import "./App.css";
 import "react-tooltip/dist/react-tooltip.css";
 import { Routes, Route } from "react-router-dom";
-import { Home, Search, MoviePage, TvPage, CastPage } from "./pages/index.ts";
+import {
+  Home,
+  Search,
+  MoviePage,
+  TvPage,
+  CastPage,
+  PersonPage,
+} from "./pages/index.ts";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Navbar from "./layout/navbar/Navbar";
@@ -24,7 +31,7 @@ function App() {
   return (
     <div className={` ${currentTheme} `}>
       <div
-        className={`min-h-screen flex flex-col justify-between bg-gray-100 dark:bg-gradient-to-bl dark:from-gray-900 dark:to-slate-950 
+        className={`min-h-screen flex flex-col justify-between bg-gray-100 dark:bg-gradient-to-bl dark:from-gray-800 dark:to-slate-950 
          dark:text-white relative  ${currentTheme} `}
       >
         <SearchBarProvider>
@@ -41,6 +48,8 @@ function App() {
           />
 
           <Route path="/tv/:id/:titleMedia?" element={<TvPage />} />
+          <Route path="/person/:id/:titleMedia?" element={<PersonPage />} />
+
           <Route path="search/:query" element={<Search />}></Route>
         </Routes>
         <Footer />

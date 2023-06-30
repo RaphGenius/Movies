@@ -21,7 +21,7 @@ function Headlining({ id, mediaType }: QueryParamsType) {
       .map((actor) => (
         <CardCarousel
           key={actor.cast_id ?? actor.id}
-          id={actor.cast_id ?? actor.id}
+          id={actor.id}
           titleMedia={actor.original_name}
           mediaType={"person"}
           imageUrl={actor.profile_path}

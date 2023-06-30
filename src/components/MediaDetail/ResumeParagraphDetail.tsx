@@ -1,5 +1,5 @@
 function ResumeParagraphDetail({ resume }: { resume: string }) {
-  return <p>{resume ? resume : "NC"} </p>;
+  return <p className="whitespace-pre-wrap">{resume ? resume : "NC"} </p>;
 }
 
 export default ResumeParagraphDetail;

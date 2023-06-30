@@ -5,7 +5,7 @@ type Props = {
   title: string;
   mediaType: Media_typeType;
   id: string;
-  releasedYear: string;
+  releasedYear?: string;
 };
 
 function TitleDetail({ title, mediaType, id, releasedYear }: Props) {

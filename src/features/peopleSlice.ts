@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { headersApi } from "./api.config";
-import { FetchResultPeopleCreditType } from "../type/People";
+import { FetchResultPeopleCreditType, PersonDetailType } from "../type/People";
 import { Media_typeType } from "../type/type";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -23,9 +23,13 @@ export const peopleSlice = createApi({
     >({
       query: ({ id, mediaType }) => `${mediaType}/${id}/credits`,
     }),
+    getPersonDetailById: builder.query<PersonDetailType, string>({
+      query: (id) => `person/${id}?language=fr-EU`,
+    }),
   }),
 });
 
-export const { useGetPeopleCreditMovieByIdQuery } = peopleSlice;
+export const { useGetPeopleCreditMovieByIdQuery, useGetPersonDetailByIdQuery } =
+  peopleSlice;
 
 export default peopleSlice.reducer;

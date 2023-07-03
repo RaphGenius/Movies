@@ -24,7 +24,8 @@ export const peopleSlice = createApi({
       query: ({ id, mediaType }) => `${mediaType}/${id}/credits`,
     }),
     getPersonDetailById: builder.query<PersonDetailType, string>({
-      query: (id) => `person/${id}?language=fr-EU`,
+      query: (id) =>
+        `person/${id}?append_to_response=combined_credits&language=fr-EU`,
     }),
   }),
 });

@@ -1,3 +1,5 @@
+import { Media_typeType } from "./type";
+
 export type PeopleCastCreditType = {
   adult: false;
   gender: number;
@@ -59,7 +61,17 @@ export type FetchResultTvPeopleCreditType = {
   id: number;
 };
 
+export type CombinedCreditsType = {
+  poster_path: string;
+  id: number;
+  name: string;
+  title: string;
+  media_type: Media_typeType;
+  popularity: number;
+};
+
 export type PersonDetailType = {
+  slice(arg0: string): unknown;
   adult: boolean;
   also_known_as: string[];
   biography: string;
@@ -74,4 +86,8 @@ export type PersonDetailType = {
   place_of_birth: string;
   popularity: number;
   profile_path: string;
+  combined_credits: {
+    cast: CombinedCreditsType[];
+    crew: CombinedCreditsType[];
+  };
 };

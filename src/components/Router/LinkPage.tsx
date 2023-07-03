@@ -4,7 +4,7 @@ import { Media_typeType } from "../../type/type";
 type Props = {
   mediaType: Media_typeType;
   id: string;
-  titleMedia: string;
+  titleMedia?: string;
 };
 
 function LinkPage({
@@ -13,7 +13,8 @@ function LinkPage({
   titleMedia,
   mediaType,
 }: PropsWithChildren<Props>) {
-  return <Link to={`/${mediaType}/${id}/${titleMedia}`}> {children} </Link>;
+  const title = titleMedia && titleMedia.replace("/", "_");
+  return <Link to={`/${mediaType}/${id}/${title}`}> {children} </Link>;
 }
 
 export default LinkPage;

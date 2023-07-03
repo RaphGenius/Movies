@@ -29,7 +29,7 @@ export const SelectMediaSearch = ({
   return (
     <li
       onClick={() => handleClick(value)}
-      className={`flex p-2 justify-between overflow-hidden cursor-pointer ${bgColor} text-black text-md lg:text-xl duration-75 min-w-[150px] w-full   `}
+      className={`flex p-2  justify-between overflow-hidden cursor-pointer ${bgColor} text-black text-md lg:text-xl duration-75 min-w-[150px] w-full   `}
     >
       <button className="">{title} </button>
       <span

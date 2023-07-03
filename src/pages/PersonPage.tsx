@@ -7,7 +7,6 @@ import SumUpPerson from "../layout/personPage/SumUpPerson";
 import DetailsPerson from "../layout/personPage/DetailsPerson";
 function PersonPage() {
   const { id, titleMedia } = useParams();
-  console.log(useParams());
   const location = useLocation();
   const mediaType = location.pathname.split("/")[1] as Media_typeType;
 
@@ -15,10 +14,7 @@ function PersonPage() {
     document.title = `${titleMedia}` ?? "Movie";
   }, [titleMedia]);
 
-  const { isFetching, isLoading, data } = useGetPersonDetailByIdQuery(
-    id ?? skipToken
-  );
-  console.log(data);
+  const { isLoading, data } = useGetPersonDetailByIdQuery(id ?? skipToken);
   if (!data || !id) return <p>Pas de data</p>;
 
   return (
@@ -27,11 +23,7 @@ function PersonPage() {
       <SumUpPerson data={data} />
       {/* RightSide */}
 
-      <DetailsPerson
-        id={Number(id)}
-        name={data.name}
-        biography={data.biography}
-      />
+      <DetailsPerson isLoading={isLoading} data={data} id={Number(id)} />
     </main>
   );
 }

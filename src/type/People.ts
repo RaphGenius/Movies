@@ -68,10 +68,14 @@ export type CombinedCreditsType = {
   title: string;
   media_type: Media_typeType;
   popularity: number;
+  character: string;
+  department: string;
+  job: string;
+  release_date: string;
+  first_air_date: string;
 };
 
 export type PersonDetailType = {
-  slice(arg0: string): unknown;
   adult: boolean;
   also_known_as: string[];
   biography: string;

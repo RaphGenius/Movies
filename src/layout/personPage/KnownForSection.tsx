@@ -31,7 +31,6 @@ export default function KnownForSection({ id, data, isLoading }: Props) {
     []
   );
 
-  console.log(dataForCaroussel);
   const content = dataForCaroussel.map((card) => (
     <CardCarousel
       imageNotFoundNumber={10}

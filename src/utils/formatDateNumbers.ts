@@ -9,8 +9,7 @@ export const getYear = (date: string) => {
   return year;
 };
 
-export const getAge = (date: string) => {
-  console.log(date);
+export const getAge = (date: string | null) => {
   if (!date) return "";
   const ageDif = Date.now() - new Date(date).getTime();
   const ageDate = new Date(ageDif);

@@ -13,6 +13,7 @@ type Props = {
 };
 export default function SumUpPerson({ data }: Props) {
   const birthDayDate = getAge(data.birthday);
+  const deathDayDate = getAge(data?.deathday);
 
   const subInformationsData = [
     {
@@ -25,15 +26,14 @@ export default function SumUpPerson({ data }: Props) {
     },
     {
       title: "Date de naissance",
-      information: `${formatDate(data.birthday)} ${
-        data.deathday ? "" : `- (${birthDayDate}ans)`
+      information: `${data.birthday ? formatDate(data.birthday) : ""} ${
+        data.deathday ? `- (${deathDayDate}ans)` : ""
       }   `,
     },
     {
       title: "Date de décès",
       information:
-        data.deathday &&
-        `${formatDate(data.deathday)} - (${getAge(data.birthday)}ans) `,
+        data.deathday && `${formatDate(data.deathday)} - (${deathDayDate}ans) `,
     },
     {
       title: "Lieu de naissance",
@@ -48,7 +48,8 @@ export default function SumUpPerson({ data }: Props) {
       )),
     },
   ];
-
+  console.log(subInformationsData);
+  console.log(data);
   return (
     <section className=" flex flex-col w-1/5 ">
       <div className="w-full rounded-lg overflow-hidden    ">
@@ -63,7 +64,7 @@ export default function SumUpPerson({ data }: Props) {
         <Subtitle text="Informations personnelles" />
         <div className="flex flex-col gap-4">
           {subInformationsData.map(({ title, information }, i) => {
-            if (information)
+            if (information?.length)
               return (
                 <SubInformation
                   key={i}

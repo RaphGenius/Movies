@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { skipToken } from "@reduxjs/toolkit/query";
 import { Media_typeType } from "../type/type";
 import { useGetTvDetailByIDQuery } from "../features/tvSlice";
-import Loader from "../components/Loading/Loader";
 import { Desktop, Mobile } from "../utils/ResponsiveWrapper";
 
 import TvSumGroupDesktop from "../layout/tvPage/TvSumGroupDesktop";
@@ -11,6 +10,7 @@ import YoutubePlayer from "../components/VideoPlayer/YoutubePlayer";
 import TvSumGroupMobile from "../layout/tvPage/TvSumGroupMobile";
 import InformationsMedia from "../layout/moviePage/InformationsMedia";
 import TvAdditionalInformations from "../layout/tvPage/TvAdditionalInformations";
+import LoadingPage from "../components/Loading/LoadingPage";
 function TvPage() {
   const [videoId, setVideoID] = useState<number | null>(null);
   const { id, titleMedia } = useParams();
@@ -23,12 +23,7 @@ function TvPage() {
   const mediaType = location.pathname.split("/")[1] as Media_typeType;
 
   const { data, isFetching } = useGetTvDetailByIDQuery(id ?? skipToken);
-  if (isFetching)
-    return (
-      <div className=" bg-slate-700 min-h-screen flex justify-center items-center ">
-        <Loader />
-      </div>
-    );
+  if (isFetching) return <LoadingPage />;
   if (!data || !id) return <p>Pas de datas</p>;
   return (
     <main className="flex-1 relative">

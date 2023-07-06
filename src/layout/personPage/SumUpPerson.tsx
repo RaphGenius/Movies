@@ -12,7 +12,6 @@ type Props = {
   data: PersonDetailType;
 };
 export default function SumUpPerson({ data }: Props) {
-  const birthDayDate = getAge(data.birthday);
   const deathDayDate = getAge(data?.deathday);
 
   const subInformationsData = [
@@ -48,8 +47,7 @@ export default function SumUpPerson({ data }: Props) {
       )),
     },
   ];
-  console.log(subInformationsData);
-  console.log(data);
+
   return (
     <section className=" flex flex-col w-1/5 ">
       <div className="w-full rounded-lg overflow-hidden    ">

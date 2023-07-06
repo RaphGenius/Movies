@@ -1,8 +1,7 @@
 import YouTube, { YouTubeProps } from "react-youtube";
 import { Media_typeType } from "../../type/type";
 import { useGetVideoDataQuery } from "../../features/trendingSlice";
-
-import Loader from "../Loading/Loader";
+import LoadingPage from "../Loading/LoadingPage";
 
 type Props = {
   id: number;
@@ -48,7 +47,7 @@ function YoutubePlayer({ id, media_type, setVideoID }: Props) {
     >
       <div className="relative ">
         {isLoading || isFetching ? (
-          <Loader />
+          <LoadingPage />
         ) : (
           <YouTube
             title="salut"

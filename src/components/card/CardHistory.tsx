@@ -31,7 +31,7 @@ function CardHistory({ year, movies }: Props) {
         }transition  `}
       >
         {movies.map((el: CombinedCreditsType) => (
-          <div key={crypto.randomUUID()} className="ml-16 w-full">
+          <div key={crypto.randomUUID()} className="w-fit ml-16 ">
             <h5 className="text-xl font-bold hover:opacity-80 w-fit">
               <LinkPage
                 id={el.id.toString()}

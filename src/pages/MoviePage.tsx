@@ -3,13 +3,13 @@ import { useState, useEffect } from "react";
 import { skipToken } from "@reduxjs/toolkit/query";
 import { useGetMovieDetailByIDQuery } from "../features/movieSlice";
 import { Media_typeType } from "../type/type";
-import Loader from "../components/Loading/Loader";
 import YoutubePlayer from "../components/VideoPlayer/YoutubePlayer";
 import { Desktop, Mobile } from "../utils/ResponsiveWrapper";
 import SumGroupDesktop from "../layout/moviePage/desktop/SumGroupDesktop";
 import SumGroupMobile from "../layout/moviePage/mobile/SumGroupMobile";
 import InformationsMedia from "../layout/moviePage/InformationsMedia";
 import AdditionalInformations from "../layout/moviePage/AdditionalInformations";
+import LoadingPage from "../components/Loading/LoadingPage";
 
 function MoviePage() {
   const [videoId, setVideoID] = useState<number | null>(null);
@@ -24,12 +24,7 @@ function MoviePage() {
 
   const { data, isFetching } = useGetMovieDetailByIDQuery(id ?? skipToken);
 
-  if (isFetching)
-    return (
-      <div className=" bg-slate-500 min-h-screen flex justify-center items-center ">
-        <Loader />
-      </div>
-    );
+  if (isFetching) return <LoadingPage />;
   if (!data || !id) return <p>Pas de datas</p>;
 
   const { budget, original_title, revenue, status, original_language } = data;

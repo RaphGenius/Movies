@@ -58,7 +58,7 @@ function SumGroupMobile({ data, mediaType, id, setVideoID }: Props) {
       </div>
 
       {/* Partie Texte */}
-      <section className="py-8 flex flex-col gap-6">
+      <section className="py-8  flex flex-col gap-6">
         <TitleDetail
           id={id}
           title={title}

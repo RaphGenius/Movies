@@ -35,7 +35,7 @@ function CardCarousel({
       id={id.toString()}
       titleMedia={formatTitleUrl(title)}
     >
-      <article className=" h-[400px]  cursor-pointer relative  group  w-52 flex flex-col flex-shrink-0   ">
+      <article className="w-40 h-full lg:h-[350px] cursor-pointer relative group lg:w-44 flex flex-col gap-2 flex-shrink-0">
         <div className="absolute bottom-20 left-2 z-10 w-12 ">
           {circlePresence && <CircleProgressBar rate={rate} />}
         </div>
@@ -47,7 +47,7 @@ function CardCarousel({
             getImageFn={getPosterPathImage}
           />
         </div>
-        <div className="mt-6 pl-2">
+        <div className=" pl-2">
           <TitleCard title={title} />
           <SubtitleCard subtitle={subtitle} />
         </div>

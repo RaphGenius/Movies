@@ -6,8 +6,6 @@ import TrailerCardCarousel from "../../components/Carousel/TrailerCardCarousel";
 import TitleTrend from "../../components/Carousel/TitleTrend";
 import ButtonTrend from "../../components/Carousel/ButtonTrend";
 import GroupButtonTrend from "../../components/Carousel/GroupButtonTrend";
-import { FaPlay } from "react-icons/fa";
-import LoadingCard from "../../components/Loading/LoadingCard";
 import LoadingTrailerCard from "../../components/Loading/LoadingTrailerCard";
 
 function Trailers() {
@@ -20,6 +18,8 @@ function Trailers() {
     date: "day",
   });
 
+  // const bg = "linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(0,0,0,0.9)),";
+
   const switchMediaMovie = () => setMediaType("movie");
   const switchMediaTv = () => setMediaType("tv");
 
@@ -28,14 +28,15 @@ function Trailers() {
   return (
     <section
       style={{
-        backgroundImage: ` linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(0,0,0,0.9)),url(${bgImage})`,
+        backgroundImage: `url(${bgImage})`,
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         transition: "background-image 200ms ease-in-out ",
       }}
-      className={` w-full  text-white p-4`}
+      className={` w-full  text-white relative overflow-hidden p-4`}
     >
+      <div className="absolute bottom-0 left-0 h-1/2 bg-gradient-to-b from-transparent opacity-50  to-black/20 w-full  " />
       {/* Titre et boutons */}
       <div className="flex items-center flex-col lg:flex-row  gap-4 mb-8">
         <TitleTrend title="Bandes annonces" />

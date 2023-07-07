@@ -15,7 +15,7 @@ function SearchNavbar() {
 
   return (
     <div
-      className={`bg-white px-2 lg:px-8 transition-all  z-50 duration-300 origin-top flex sticky items-center ${SearchBarPosition} ${searchBarDisplay} `}
+      className={`bg-white dark:bg-gray-100 px-2 lg:px-8 transition-all  z-50 duration-300 origin-top flex sticky items-center ${SearchBarPosition} ${searchBarDisplay} `}
     >
       <SearchBar />
       <button className="text-mainColordark" onClick={toggleSearchBarVisible}>

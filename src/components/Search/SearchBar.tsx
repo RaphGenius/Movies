@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { PropsWithChildren } from "react";
 import { AiOutlineSearch as Loupe } from "react-icons/ai";
+
 function SearchBar({ children }: PropsWithChildren) {
   const [query, setQuery] = useState("");
   const getQuery = (qry: string) => setQuery(qry);
@@ -12,6 +13,7 @@ function SearchBar({ children }: PropsWithChildren) {
     if (!query.trim()) return;
     navigate(`/search/${query.trim()}`);
   };
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -25,8 +27,9 @@ function SearchBar({ children }: PropsWithChildren) {
         <Loupe />
       </label>
       <input
+        autoFocus
         onChange={(e) => getQuery(e.target.value)}
-        className="w-full flex-1 truncate text-mainColordark  focus:outline-none   "
+        className="w-full flex-1 truncate  text-mainColordark dark:bg-gray-100   focus:outline-none   "
         placeholder="Rechercher un film, une série, un artiste..."
         id="search"
         value={query}

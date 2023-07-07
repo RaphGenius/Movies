@@ -25,8 +25,7 @@ function TrailerCardCarousel({
   bgImage,
 }: Props) {
   const [videoID, setVideoID] = useState<number | null>(null);
-  const urlBackdropPath =
-    "https://image.tmdb.org/t/p/w355_and_h200_multi_faces";
+  const urlBackdropPath = "https://image.tmdb.org/t/p/w780";
 
   const titre = title ?? name;
 
@@ -67,7 +66,9 @@ function TrailerCardCarousel({
       {/* Titre */}
       <LinkPage mediaType={media_type} id={id.toString()} titleMedia={titre}>
         {" "}
-        <h3 className="mt-6 text-center text-xl pl-2 line-clamp-1 ">{titre}</h3>
+        <h3 className="mt-6 font-bold text-center text-xl pl-2 line-clamp-1 ">
+          {titre}
+        </h3>
       </LinkPage>
 
       {videoID && (

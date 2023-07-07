@@ -8,6 +8,7 @@ import {
   TvPage,
   CastPage,
   PersonPage,
+  ErrorPage,
 } from "./pages/index.ts";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -41,6 +42,7 @@ function App() {
 
         <Routes>
           <Route path="/" index element={<Home />} />
+          <Route path="*" element={<ErrorPage />} />
           <Route path="/movie/:id/:titleMedia" element={<MoviePage />} />
           <Route
             path="/:mediaType/:id/:titleMedia/cast"

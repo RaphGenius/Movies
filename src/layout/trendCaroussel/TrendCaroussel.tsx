@@ -22,7 +22,6 @@ function TrendCaroussel({ title, mediaType }: Props) {
     date,
   });
 
-  console.log(data);
   const switchDateDay = () => setDate("day");
   const switchDateWeek = () => setDate("week");
 

@@ -50,7 +50,7 @@ export default function SumUpPerson({ data }: Props) {
 
   return (
     <section className=" flex flex-col w-full lg:w-1/5 ">
-      <div className="lg:w-full max-w-[250px]  bg-red-700   lg:block flex justify-center mx-auto   rounded-lg overflow-hidden    ">
+      <div className="lg:w-full max-w-[250px] lg:block flex justify-center mx-auto   rounded-lg overflow-hidden    ">
         <ImgCard
           alt={`Photo de ${data.name} `}
           getImageFn={getBigProfilImage}

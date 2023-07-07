@@ -10,7 +10,7 @@ type Props = {
 };
 export default function DetailsPerson({ id, data, isLoading }: Props) {
   return (
-    <section className="w-4/5 flex flex-col gap-4 ">
+    <section className="lg:w-4/5 w-full flex flex-col gap-4 ">
       <Presentation id={id} name={data.name} biography={data.biography} />
       <KnownForSection data={data} id={id} isLoading={isLoading} />
       <Historysection id={id} data={data} isLoading={isLoading} />

@@ -71,13 +71,13 @@ function SumGroupMobile({ data, mediaType, id, setVideoID }: Props) {
           <TrailerButton setVideoID={setVideoID} id={Number(id)} />
         </InteractionGroup>
 
-        <div className=" border-t-2 border-b-2  border-gray-800 flex justify-center flex-wrap bg-slate-900/50 py-4 ">
+        <div className=" border-t-2 border-b-2 border-gray-800 flex justify-center flex-wrap bg-slate-900/50 py-4 ">
           <FactsGroup>
-            <div>
+            <div className="">
               <ReleaseDateDetail release_date={release_date} />•{"   "}
               <LengthMediaDetail lengthMedia={runtime} />
             </div>
-            <div>
+            <div className="">
               {genres.length >= 1 && <GenreDetail allGenders={genres} />}
             </div>
           </FactsGroup>

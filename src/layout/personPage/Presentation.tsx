@@ -12,7 +12,7 @@ type Props = {
 export default function Presentation({ id, name, biography }: Props) {
   return (
     <article className="flex flex-col gap-4">
-      <div>
+      <div className="hidden lg:block ">
         <TitleDetail title={name} mediaType="person" id={id.toString()} />
       </div>
       <div>

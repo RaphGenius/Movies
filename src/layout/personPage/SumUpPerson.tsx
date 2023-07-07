@@ -1,4 +1,4 @@
-import { SubInformation } from "../../components/MediaDetail";
+import { SubInformation, TitleDetail } from "../../components/MediaDetail";
 import ImgCard from "../../components/card/ImgCard";
 import Subtitle from "../../components/text/Subtitle";
 import { PersonDetailType } from "../../type/People";
@@ -25,7 +25,7 @@ export default function SumUpPerson({ data }: Props) {
     },
     {
       title: "Date de naissance",
-      information: `${data.birthday ? formatDate(data.birthday) : ""} ${
+      information: `${data.birthday ? formatDate(data.birthday) : "-"} ${
         data.deathday ? `- (${deathDayDate}ans)` : ""
       }   `,
     },
@@ -41,7 +41,7 @@ export default function SumUpPerson({ data }: Props) {
     {
       title: "Alias",
       information: data.also_known_as.map((alias, i) => (
-        <span key={i} className="block">
+        <span key={i} className="lg:block  ">
           {alias}{" "}
         </span>
       )),
@@ -49,8 +49,8 @@ export default function SumUpPerson({ data }: Props) {
   ];
 
   return (
-    <section className=" flex flex-col w-1/5 ">
-      <div className="w-full rounded-lg overflow-hidden    ">
+    <section className=" flex flex-col w-full lg:w-1/5 ">
+      <div className="lg:w-full max-w-[250px]  bg-red-700   lg:block flex justify-center mx-auto   rounded-lg overflow-hidden    ">
         <ImgCard
           alt={`Photo de ${data.name} `}
           getImageFn={getBigProfilImage}
@@ -59,8 +59,15 @@ export default function SumUpPerson({ data }: Props) {
         />
       </div>
       <div>
+        {window.innerWidth < 992 && (
+          <TitleDetail
+            title={data.name}
+            mediaType="person"
+            id={data.id.toString()}
+          />
+        )}
         <Subtitle text="Informations personnelles" />
-        <div className="flex flex-col gap-4">
+        <div className="lg:flex grid   grid-cols-2  flex-col gap-4">
           {subInformationsData.map(({ title, information }, i) => {
             if (information?.length)
               return (

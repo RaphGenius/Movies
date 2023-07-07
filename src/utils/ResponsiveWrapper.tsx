@@ -5,7 +5,7 @@ type Props = {
 };
 
 export const Desktop = ({ children }: Props) => {
-  const isDesktop = useMediaQuery({ minWidth: 992 });
+  const isDesktop = useMediaQuery({ minWidth: 993 });
   return isDesktop ? children : null;
 };
 

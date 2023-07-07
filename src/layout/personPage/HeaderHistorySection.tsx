@@ -30,7 +30,7 @@ function HeaderHistorySection({
   }
 
   return (
-    <div className="flex items-center justify-between mb-4  ">
+    <div className="flex flex-col lg:flex-row  items-center justify-between mb-4  ">
       <Subtitle text="Filmographie" />
 
       <GroupButtonTrend firstPropsElement={mediaSelected} firstPropsValue="tv">

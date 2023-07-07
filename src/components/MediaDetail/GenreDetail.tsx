@@ -16,9 +16,9 @@ function GenreDetail({ allGenders }: Props) {
     </li>
   ));
   return (
-    <ul className="flex gap-2  ">
+    <ul className="flex gap-2 flex-wrap justify-center ">
       {content}{" "}
-      <span className={` hidden lg:inline  `}>
+      <span className={` hidden lg:inline `}>
         {allGenders.length > 1 ? "-" : ""}
       </span>{" "}
     </ul>

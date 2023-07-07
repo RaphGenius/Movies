@@ -18,7 +18,7 @@ function AsideSearch({ setCurrentMediaType, currentMediaType, query }: Props) {
     },
     {
       id: 1,
-      title: "Émissions TV",
+      title: "Series",
       value: "tv" as Media_typeType,
       handleClick: () => setCurrentMediaType("tv"),
       label: currentMediaType,

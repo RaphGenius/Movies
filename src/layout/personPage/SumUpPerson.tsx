@@ -58,7 +58,7 @@ export default function SumUpPerson({ data }: Props) {
           imageUrl={data.profile_path}
         />
       </div>
-      <div>
+      <div className="mt-4">
         {window.innerWidth < 992 && (
           <TitleDetail
             title={data.name}

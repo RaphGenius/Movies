@@ -7,6 +7,7 @@ import {
   videoSlice,
   peopleSlice,
   tvSlice,
+  filterListSlice,
 } from "../features/index";
 
 export const store = configureStore({
@@ -18,6 +19,7 @@ export const store = configureStore({
     [peopleSlice.reducerPath]: peopleSlice.reducer,
     theme: themeSlice.reducer,
     videoId: videoSlice.reducer,
+    filter: filterListSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(

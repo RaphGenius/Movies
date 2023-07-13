@@ -26,7 +26,7 @@ function Search() {
 
   return (
     <section className="max-w-bigScreen min-h-screen mt-4 mx-auto w-full relative  ">
-      <div className=" flex flex-col lg:flex-row w-full mx-auto px-8 gap-4   ">
+      <div className=" flex flex-col lg:flex-row w-full mx-auto px-8 gap-8   ">
         {/* Choix du media type*/}
         <AsideSearch
           query={search}

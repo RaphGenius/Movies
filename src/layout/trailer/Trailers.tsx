@@ -34,7 +34,7 @@ function Trailers() {
         backgroundSize: "cover",
         transition: "background-image 200ms ease-in-out ",
       }}
-      className={` w-full  text-white relative overflow-hidden p-4`}
+      className={`w-full text-white  overflow-hidden p-4`}
     >
       <div className="absolute bottom-0 left-0 h-1/2 bg-gradient-to-b from-transparent opacity-50  to-black/20 w-full  " />
       {/* Titre et boutons */}

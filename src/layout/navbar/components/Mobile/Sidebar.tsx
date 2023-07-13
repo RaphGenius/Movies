@@ -9,14 +9,14 @@ function Sidebar({ isSideBarOpen }: { isSideBarOpen: boolean }) {
   const [isCategiesShown, setIsCategoriesShow] = useState(false);
   const { setSearchBarVisible } = useSearchBar() as SearchbarContextType;
 
-  const visible = isSideBarOpen ? "left-0" : "-left-[100%]";
+  const visible = isSideBarOpen ? "scale-x-100" : "scale-x-0";
 
   if (isSideBarOpen) setSearchBarVisible(false);
 
   return (
     <aside
-      className={`absolute w-full ${visible} duration-300  transition-all
-       top-[96px] h-screen z-50 bottom-0  right-0 bg-teal-200 `}
+      className={`absolute w-screen border-none  ${visible} duration-300 origin-left  transition-transform
+       top-[96px] h-screen z-50 bottom-0 will-change-transform  right-0 bg-slate-100 dark:bg-slate-700 `}
     >
       <div className="w-full  h-full p-4">
         {navdata.map((el, index) => (

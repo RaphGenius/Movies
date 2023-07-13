@@ -31,7 +31,7 @@ function TvHeadlining({ id }: { id: string }) {
 
   return (
     <>
-      <Subtitle text="Tête d'affiche" />
+      <Subtitle text="Têtes d'affiche" />
       <Carousel isFetching={isFetching}> {content} </Carousel>
     </>
   );

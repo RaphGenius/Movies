@@ -12,14 +12,15 @@ export const movieSlice = createApi({
     headers: headersApi,
   }),
   endpoints: (builder) => ({
-    getMovieUpcoming: builder.query<FetchResult<MovieType>, void>({
-      query: () => `movie/upcoming`,
-    }),
     getMovieDetailByID: builder.query<MovieDetailType, string>({
       query: (id) => `movie/${id}?language=fr-EU`,
+    }),
+    getMovieListByParams: builder.query<FetchResult<MovieType>, string>({
+      query: (params) =>
+        `discover/movie?include_adult=false&include_video=false&language=fr-EU${params}`,
     }),
   }),
 });
 
-export const { useGetMovieUpcomingQuery, useGetMovieDetailByIDQuery } =
+export const { useGetMovieDetailByIDQuery, useGetMovieListByParamsQuery } =
   movieSlice;

@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Noto+Serif&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
 @import "./styles/loader.css";
+@import "./styles//DoubleInputRange.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

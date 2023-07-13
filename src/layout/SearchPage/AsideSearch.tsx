@@ -39,7 +39,7 @@ function AsideSearch({ setCurrentMediaType, currentMediaType, query }: Props) {
           Resultat de la recherche pour {query}{" "}
         </h2>
       </div>
-      <div className="  ">
+      <div>
         <ul className="flex lg:flex-col w-full overflow-y-hidden overflow-scroll lg:overflow-auto ">
           {dataSelectMediaSearch.map((btn) => (
             <SelectMediaSearch

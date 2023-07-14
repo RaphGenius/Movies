@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../app/store";
 
 export type Sort_byType =
   | "popularity.asc"
@@ -17,19 +18,21 @@ type FilterStateType = {
   runtime: minMaxType;
   voteAverage: minMaxType;
   amountVotes: number;
+  link: string;
 };
 
 const initialState: FilterStateType = {
   sortBy: "popularity.desc",
   runtime: {
-    min: 0,
-    max: 400,
+    min: 90,
+    max: 160,
   },
   voteAverage: {
     min: 0,
     max: 10,
   },
-  amountVotes: 300,
+  amountVotes: 0,
+  link: "",
 };
 
 export const filterListSlice = createSlice({
@@ -55,11 +58,27 @@ export const filterListSlice = createSlice({
         runtime.min = payload;
       }
     },
-    handleVoteAverageMax: (state, { payload }: PayloadAction<number>) => {
-      state.voteAverage.max = payload;
+    handleVoteAverageMax: (
+      { voteAverage },
+      { payload }: PayloadAction<number>
+    ) => {
+      if (voteAverage.max <= voteAverage.min) {
+        voteAverage.min = voteAverage.max;
+        voteAverage.max = payload;
+      } else {
+        voteAverage.max = payload;
+      }
     },
-    handleVoteAverageMin: (state, { payload }: PayloadAction<number>) => {
-      state.voteAverage.min = payload;
+    handleVoteAverageMin: (
+      { voteAverage },
+      { payload }: PayloadAction<number>
+    ) => {
+      if (voteAverage.min >= voteAverage.max) {
+        voteAverage.max = voteAverage.min;
+        voteAverage.min = payload;
+      } else {
+        voteAverage.min = payload;
+      }
     },
     handleAmountVotes: (state, action: PayloadAction<number>) => {
       state.amountVotes = action.payload;
@@ -75,5 +94,10 @@ export const {
   handleVoteAverageMax,
   handleVoteAverageMin,
 } = filterListSlice.actions;
+
+export const getNewLink = ({
+  filter: { runtime, sortBy, voteAverage, amountVotes },
+}: RootState) =>
+  `&primary_release_date.lte=2024-01-14&sort_by=${sortBy}&vote_average.gte=${voteAverage.min}&vote_average.lte=${voteAverage.max}&vote_count.gte=${amountVotes}&with_runtime.gte=${runtime.min}&with_runtime.lte=${runtime.max}`;
 
 export default filterListSlice.reducer;

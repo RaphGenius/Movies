@@ -1,33 +1,29 @@
-import { useState, useEffect } from "react";
+import { useState, FormEvent } from "react";
 import { useGetMovieListByParamsQuery } from "../features/movieSlice";
 import FilterSection from "../layout/listPage/FilterSection";
 import { useAppSelector } from "../hooks/useRedux";
 import { RootState } from "../app/store";
-
-type minMaxType = {
-  min: number;
-  max: number;
-};
+import { getParamsFromFilters } from "../components/filter/function/getParamsFromFilters";
+import { MovieType } from "../type/type";
+import MediaListContainer from "../layout/listPage/MediaListContainer";
+import LoadingPage from "../components/Loading/LoadingPage";
 
 function MovieListPage() {
-  const myObj = useAppSelector((state: RootState) => state.filter);
-  useEffect(() => {
-    console.log(myObj);
-  }, [myObj]);
-  const [paramsFilter, setParamsFilter] = useState<string>("");
-  const { data } = useGetMovieListByParamsQuery("");
+  const { sortBy, runtime, amountVotes, voteAverage } = useAppSelector(
+    (state: RootState) => state.filter
+  );
+  const [allMedias, setAllMedias] = useState<MovieType[]>([]);
 
-  function getLink(values: (number | string)[], names: string[]) {
-    const mylink: string[] = [];
+  const populareParams =
+    "&primary_release_date.lte=2024-01-14&sort_by=popularity.desc&vote_average.gte=0&vote_average.lte=10&vote_count.gte=0&with_runtime.gte=0&with_runtime.lte=400";
 
-    for (let i = 0; i <= values.length; i++) {
-      if (values[i] !== undefined) {
-        const param = (names[i] += values[i]?.toString());
-        mylink.push(param);
-      }
-    }
-    return mylink.join("");
-  }
+  const [paramsFilter, setParamsFilter] = useState<string>(populareParams);
+  const { data, isFetching, isLoading } =
+    useGetMovieListByParamsQuery(paramsFilter);
+
+  if (isLoading) return <LoadingPage />;
+
+  if (!data) return <p>Pas de data</p>;
   const allParamsNames = [
     "&sort_by=",
     "&with_runtime.gte=",
@@ -37,10 +33,29 @@ function MovieListPage() {
     "&vote_count.gte=",
   ];
 
+  const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
+    e.preventDefault;
+    const newLink = getParamsFromFilters(
+      [
+        sortBy,
+        runtime.min,
+        runtime.max,
+        voteAverage.min,
+        voteAverage.max,
+        amountVotes,
+      ],
+      allParamsNames
+    );
+    setParamsFilter(newLink);
+    console.log(newLink);
+  };
+
+  console.log(data?.results);
   return (
     <main className="flex-1  min-h-screen relative px-4 lg:px-8 mt-8 max-w-bigScreen mx-auto flex  gap-8 w-full">
       <FilterSection />
-      <section className="w-5/6">Liste</section>
+      <button onClick={handleSubmit}>Nouveau fetch</button>
+      <MediaListContainer isFetching={isFetching} data={data?.results} />
     </main>
   );
 }

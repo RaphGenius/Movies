@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CombinedCreditsType, PersonDetailType } from "../../type/People";
 import { Media_typeType } from "../../type/type";
 import { getYear } from "../../utils/formatDateNumbers";
 import HeaderHistorySection from "./HeaderHistorySection";
 import CardHistory from "../../components/card/CardHistory";
-import { useInView } from "react-intersection-observer";
+
 type Props = {
   id: number;
   data: PersonDetailType;

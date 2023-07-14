@@ -17,6 +17,7 @@ type CardProps = {
   subtitle: string;
   imageUrl: string;
   imageNotFoundNumber: number;
+  borderCard?: boolean;
 };
 
 function CardCarousel({
@@ -28,14 +29,20 @@ function CardCarousel({
   subtitle,
   imageUrl,
   imageNotFoundNumber,
+  borderCard = false,
 }: CardProps) {
+  const borderCardStyle =
+    borderCard &&
+    "border rounded-xl border-slate-300 overflow-hidden dark:border-slate-500  ";
   return (
     <LinkPage
       mediaType={mediaType}
       id={id.toString()}
       titleMedia={formatTitleUrl(title)}
     >
-      <article className="w-40 h-full lg:h-[350px] cursor-pointer relative group lg:w-44 flex flex-col gap-2 flex-shrink-0">
+      <article
+        className={`w-40 h-full lg:h-[350px] cursor-pointer relative group lg:w-44 flex flex-col gap-2 flex-shrink-0 ${borderCardStyle} `}
+      >
         <div className="absolute bottom-20 left-2 z-10 w-12 ">
           {circlePresence && <CircleProgressBar rate={rate} />}
         </div>

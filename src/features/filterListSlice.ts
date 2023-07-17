@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../app/store";
 
 export type Sort_byType =
   | "popularity.asc"
@@ -18,7 +17,8 @@ type FilterStateType = {
   runtime: minMaxType;
   voteAverage: minMaxType;
   amountVotes: number;
-  link: string;
+  genderList: number[];
+  currentPage: number;
 };
 
 const initialState: FilterStateType = {
@@ -31,8 +31,9 @@ const initialState: FilterStateType = {
     min: 0,
     max: 10,
   },
-  amountVotes: 0,
-  link: "",
+  amountVotes: 300,
+  genderList: [],
+  currentPage: 1,
 };
 
 export const filterListSlice = createSlice({
@@ -83,6 +84,17 @@ export const filterListSlice = createSlice({
     handleAmountVotes: (state, action: PayloadAction<number>) => {
       state.amountVotes = action.payload;
     },
+    handleGenders: (state, { payload }: PayloadAction<number>) => {
+      if (state.genderList.includes(payload)) {
+        const newList = state.genderList.filter((gender) => gender !== payload);
+        state.genderList = newList;
+      } else {
+        state.genderList.push(payload);
+      }
+    },
+    showMorePage: (state) => {
+      state.currentPage += 1;
+    },
   },
 });
 
@@ -93,11 +105,8 @@ export const {
   handleAmountVotes,
   handleVoteAverageMax,
   handleVoteAverageMin,
+  handleGenders,
+  showMorePage,
 } = filterListSlice.actions;
-
-export const getNewLink = ({
-  filter: { runtime, sortBy, voteAverage, amountVotes },
-}: RootState) =>
-  `&primary_release_date.lte=2024-01-14&sort_by=${sortBy}&vote_average.gte=${voteAverage.min}&vote_average.lte=${voteAverage.max}&vote_count.gte=${amountVotes}&with_runtime.gte=${runtime.min}&with_runtime.lte=${runtime.max}`;
 
 export default filterListSlice.reducer;

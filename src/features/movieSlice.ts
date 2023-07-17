@@ -5,6 +5,11 @@ import { MovieDetailType } from "../type/Movie";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
+type GetMovieListByParamsType = {
+  params: string;
+  page: string;
+};
+
 export const movieSlice = createApi({
   reducerPath: "movie",
   baseQuery: fetchBaseQuery({
@@ -15,9 +20,12 @@ export const movieSlice = createApi({
     getMovieDetailByID: builder.query<MovieDetailType, string>({
       query: (id) => `movie/${id}?language=fr-EU`,
     }),
-    getMovieListByParams: builder.query<FetchResult<MovieType>, string>({
-      query: (params) =>
-        `discover/movie?include_adult=false&include_video=false&language=fr-EU${params}`,
+    getMovieListByParams: builder.query<
+      FetchResult<MovieType>,
+      GetMovieListByParamsType
+    >({
+      query: ({ params, page }) =>
+        `discover/movie?include_adult=false&include_video=false&page=${page}&language=fr-EU${params}`,
     }),
   }),
 });

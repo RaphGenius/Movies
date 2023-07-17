@@ -25,9 +25,7 @@ function FilterContainer({ children, title }: PropsWithChildren<Props>) {
         </div>
       </div>
       <div
-        className={`${
-          isOpen ? "  h-full" : "hidden"
-        } gap-4 flex flex-col p-4  `}
+        className={`${isOpen ? "  h-full" : "hidden"} gap-4 flex flex-col   `}
       >
         {children}
       </div>

@@ -1,5 +1,5 @@
 import { useState, FormEvent, useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useGetMovieListByParamsQuery } from "../features/movieSlice";
 import FilterSection from "../layout/listPage/FilterSection";
 import { useAppDispatch, useAppSelector } from "../hooks/useRedux";
@@ -12,7 +12,6 @@ import { getGendersFromFilter } from "../components/filter/function/getGendersFr
 import {
   resetGender,
   resetMoviePage,
-  resetRunTime,
   resetTvPage,
   showMorePage,
   switchHasChanged,
@@ -28,7 +27,7 @@ type useParamsListType = {
   mediaType: Media_typeType;
 };
 
-function MovieListPage() {
+function MediaListPage() {
   const dispatch = useAppDispatch();
   const { section, mediaType } = useParams() as useParamsListType;
 
@@ -44,6 +43,7 @@ function MovieListPage() {
     mediaType: mediaType as Media_typeType,
   });
 
+  //Definie les paramettre des bases pour les 2 types de sectionn
   useEffect(() => {
     setAllMedias([]);
     section === "best"
@@ -56,6 +56,7 @@ function MovieListPage() {
       setAllMedias((prev) => [...prev, ...data.results]);
   }, [data]);
 
+  //Reset l'ensemble des paramettre quand on switch de mediaType
   useEffect(() => {
     if (mediaType === "tv") {
       dispatch(resetTvPage());
@@ -141,4 +142,4 @@ function MovieListPage() {
   );
 }
 
-export default MovieListPage;
+export default MediaListPage;

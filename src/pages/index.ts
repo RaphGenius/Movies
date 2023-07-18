@@ -5,7 +5,8 @@ import ErrorPage from "./ErrorPage";
 import TvPage from "./TvPage";
 import CastPage from "./CastPage";
 import PersonPage from "./PersonPage";
-import MovieListPage from "./MovieListPage";
+import MovieListPage from "./MediaListPage";
+import PersonsListPage from "./PersonsListPage";
 
 export {
   Home,
@@ -16,4 +17,5 @@ export {
   CastPage,
   PersonPage,
   MovieListPage,
+  PersonsListPage,
 };

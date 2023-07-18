@@ -1,5 +1,8 @@
 import { useAppDispatch } from "../../hooks/useRedux";
-import { Sort_byType, sortByFilter } from "../../features/filterListSlice";
+import {
+  Sort_byType,
+  sortByFilter,
+} from "../../features/filters/filterListSlice";
 
 type SortElementType = {
   value: Sort_byType;

@@ -5,7 +5,7 @@ import { themeSlice } from "./Theme/themeSlice";
 import { videoSlice } from "./video/videoSlice";
 import { peopleSlice } from "./peopleSlice";
 import { tvSlice } from "./tvSlice";
-import { filterListSlice } from "./filterListSlice";
+import { filterListSlice } from "./filters/filterListSlice";
 export {
   movieSlice,
   trendingSlice,

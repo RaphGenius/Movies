@@ -10,7 +10,6 @@ import {
   PersonPage,
   ErrorPage,
   MovieListPage,
-  TvListPage,
 } from "./pages/index.ts";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -45,8 +44,10 @@ function App() {
         <Routes>
           <Route path="/" index element={<Home />} />
           <Route path="*" element={<ErrorPage />} />
-          <Route path="/movie/:section?" element={<MovieListPage />} />
-          <Route path="/tv" element={<TvListPage />} />
+          <Route
+            path="/:mediaType/list/:section?"
+            element={<MovieListPage />}
+          />
           <Route path="/movie/:id/:titleMedia" element={<MoviePage />} />
           <Route path="/tv/:id/:titleMedia?" element={<TvPage />} />
           <Route path="/person/:id/:titleMedia?" element={<PersonPage />} />

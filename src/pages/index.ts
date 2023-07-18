@@ -6,7 +6,6 @@ import TvPage from "./TvPage";
 import CastPage from "./CastPage";
 import PersonPage from "./PersonPage";
 import MovieListPage from "./MovieListPage";
-import TvListPage from "./TvListPage";
 
 export {
   Home,
@@ -17,5 +16,4 @@ export {
   CastPage,
   PersonPage,
   MovieListPage,
-  TvListPage,
 };

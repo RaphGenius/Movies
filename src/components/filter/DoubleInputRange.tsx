@@ -1,4 +1,4 @@
-import { minMaxType } from "../../features/filterListSlice";
+import { minMaxType } from "../../features/filters/filterListSlice";
 
 type Props = {
   value: minMaxType;

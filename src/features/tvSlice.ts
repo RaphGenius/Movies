@@ -5,6 +5,10 @@ import { TvDetailType } from "../type/Tv";
 import { FetchResultTvPeopleCreditType } from "../type/People";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
+type GetTvListByParamsType = {
+  params: string;
+  page: string;
+};
 
 export const tvSlice = createApi({
   reducerPath: "tv",
@@ -25,6 +29,13 @@ export const tvSlice = createApi({
     >({
       query: (id) => `tv/${id}/aggregate_credits?language=fr-EU`,
     }),
+    getTVListByParams: builder.query<
+      FetchResult<SerieType>,
+      GetTvListByParamsType
+    >({
+      query: ({ params, page }) =>
+        `discover/tv?include_adult=false&page=${page}&language=fr-EU${params}`,
+    }),
   }),
 });
 
@@ -32,4 +43,5 @@ export const {
   useGetTvPopularQuery,
   useGetTvDetailByIDQuery,
   useGetTvAggregateCreditsByIDQuery,
+  useGetTVListByParamsQuery,
 } = tvSlice;

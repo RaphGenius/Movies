@@ -4,7 +4,7 @@ import {
   handleRuntimeMax,
   handleRuntimeMin,
   minMaxType,
-} from "../../features/filterListSlice";
+} from "../../features/filters/filterListSlice";
 
 function RuntimeRange() {
   const dispatch = useAppDispatch();

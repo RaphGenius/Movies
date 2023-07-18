@@ -3,7 +3,7 @@ import {
   handleVoteAverageMax,
   handleVoteAverageMin,
   minMaxType,
-} from "../../features/filterListSlice";
+} from "../../features/filters/filterListSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks/useRedux";
 
 function VoteAverageInputRange() {

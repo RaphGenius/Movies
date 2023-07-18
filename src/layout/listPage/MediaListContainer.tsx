@@ -1,42 +1,56 @@
 import CardCarousel from "../../components/Carousel/CardCarousel";
 import CardSearchMedia from "../../components/card/CardSearchMedia";
-import { MovieType } from "../../type/type";
+import { Media_typeType, MovieType } from "../../type/type";
 import { Desktop, Mobile } from "../../utils/ResponsiveWrapper";
 
 type Props = {
   data: MovieType[];
   isFetching: boolean;
+  mediaType: Media_typeType;
 };
 
-function MediaListContainer({ data, isFetching }: Props) {
-  const contentDesktop = data.map((el) => (
-    <CardCarousel
-      key={el.id}
-      mediaType={"movie"}
-      id={Number(el.id)}
-      titleMedia={el.title}
-      circlePresence
-      rate={el.vote_average}
-      title={el.title}
-      subtitle={el.release_date}
-      imageUrl={el.poster_path}
-      imageNotFoundNumber={10}
-      borderCard
-    />
-  ));
-  const contentMobile = data.map((el) => (
-    <CardSearchMedia
-      mediaType="movie"
-      title={el.title}
-      date={el.release_date}
-      isFetching={isFetching}
-      overview={el.overview}
-      id={Number(el.id)}
-      circlePresence
-      rate={el.vote_average}
-      imageUrl={el.poster_path}
-    />
-  ));
+function MediaListContainer({ data, isFetching, mediaType }: Props) {
+  const contentDesktop = (
+    <Desktop>
+      <>
+        {" "}
+        {data.map((el) => (
+          <CardCarousel
+            key={el.id}
+            mediaType={mediaType}
+            id={Number(el.id)}
+            titleMedia={el.title ?? el.name}
+            circlePresence
+            rate={el.vote_average}
+            title={el.title ?? el.name}
+            subtitle={el.release_date ?? el.first_air_date}
+            imageUrl={el.poster_path}
+            imageNotFoundNumber={10}
+            borderCard
+          />
+        ))}
+      </>
+    </Desktop>
+  );
+  const contentMobile = (
+    <Mobile>
+      <>
+        {data.map((el) => (
+          <CardSearchMedia
+            mediaType={mediaType}
+            title={el.title ?? el.name}
+            date={el.release_date ?? el.first_air_date}
+            isFetching={isFetching}
+            overview={el.overview}
+            id={Number(el.id)}
+            circlePresence
+            rate={el.vote_average}
+            imageUrl={el.poster_path}
+          />
+        ))}
+      </>
+    </Mobile>
+  );
   return (
     <section
       className={`w-full flex flex-wrap gap-8 ${
@@ -46,9 +60,7 @@ function MediaListContainer({ data, isFetching }: Props) {
       <Desktop>
         <>{contentDesktop}</>
       </Desktop>
-      <Mobile>
-        <>{contentMobile}</>
-      </Mobile>
+      <>{contentMobile}</>
     </section>
   );
 }

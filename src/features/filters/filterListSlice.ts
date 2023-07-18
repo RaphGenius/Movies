@@ -68,6 +68,9 @@ export const filterListSlice = createSlice({
         state.hasChanged = false;
       }
     },
+    resetRunTime: (state) => {
+      (state.runtime.max = 400), (state.runtime.min = 0);
+    },
     handleVoteAverageMax: (state, { payload }: PayloadAction<number>) => {
       if (state.voteAverage.max <= state.voteAverage.min) {
         state.voteAverage.min = state.voteAverage.max;
@@ -102,11 +105,28 @@ export const filterListSlice = createSlice({
         state.hasChanged = false;
       }
     },
+    resetGender: (state) => {
+      state.genderList = [];
+    },
     showMorePage: (state) => {
       state.currentPage += 1;
     },
     switchHasChanged: (state) => {
       state.hasChanged = !state.hasChanged;
+    },
+    resetMoviePage: (state) => {
+      (state.sortBy = "popularity.desc"),
+        (state.voteAverage = { min: 5, max: 10 });
+      state.currentPage = 1;
+      state.runtime = { min: 60, max: 200 };
+      state.genderList = state.genderList.splice(0, state.genderList.length);
+    },
+    resetTvPage: (state) => {
+      (state.sortBy = "popularity.desc"),
+        (state.voteAverage = { min: 5, max: 10 });
+      state.currentPage = 1;
+      state.runtime = { min: 0, max: 400 };
+      state.genderList = state.genderList.splice(0, state.genderList.length);
     },
   },
 });
@@ -116,11 +136,15 @@ export const {
   handleRuntimeMax,
   handleRuntimeMin,
   handleAmountVotes,
+  resetRunTime,
   handleVoteAverageMax,
   handleVoteAverageMin,
   handleGenders,
+  resetGender,
   showMorePage,
   switchHasChanged,
+  resetMoviePage,
+  resetTvPage,
 } = filterListSlice.actions;
 
 export default filterListSlice.reducer;

@@ -34,7 +34,7 @@ function Sidebar({ isSideBarOpen }: { isSideBarOpen: boolean }) {
               } `}
             >
               {el.categories.map((category, index) => (
-                <li key={index}> {category} </li>
+                <li key={index}> {category.name} </li>
               ))}
             </ul>
           </div>

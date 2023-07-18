@@ -1,4 +1,5 @@
 import { useState, FormEvent, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useGetMovieListByParamsQuery } from "../features/movieSlice";
 import FilterSection from "../layout/listPage/FilterSection";
 import { useAppDispatch, useAppSelector } from "../hooks/useRedux";
@@ -8,31 +9,42 @@ import { MovieType } from "../type/type";
 import MediaListContainer from "../layout/listPage/MediaListContainer";
 import LoadingPage from "../components/Loading/LoadingPage";
 import { getGendersFromFilter } from "../components/filter/function/getGendersFromFilter";
-import { showMorePage } from "../features/filterListSlice";
+import { showMorePage, switchHasChanged } from "../features/filterListSlice";
+import FetchButton from "../components/buttons/FetchButton";
+import {
+  bestParams,
+  populareParams,
+} from "../components/filter/data/defaultParams";
 
 function MovieListPage() {
   const dispatch = useAppDispatch();
+  const { section } = useParams();
+
+  const [allMedias, setAllMedias] = useState<MovieType[]>([]);
+  const [paramsFilter, setParamsFilter] = useState<string>("");
+
   const { sortBy, runtime, amountVotes, voteAverage, genderList, currentPage } =
     useAppSelector((state: RootState) => state.filter);
-  const [allMedias, setAllMedias] = useState<MovieType[]>([]);
 
-  const populareParams =
-    "&primary_release_date.lte=2024-01-14&sort_by=popularity.desc&vote_average.gte=0&vote_average.lte=10&vote_count.gte=0&with_runtime.gte=0&with_runtime.lte=400";
-
-  const [paramsFilter, setParamsFilter] = useState<string>(populareParams);
   const { data, isFetching, isLoading } = useGetMovieListByParamsQuery({
     params: paramsFilter,
     page: String(currentPage),
   });
 
   useEffect(() => {
-    console.log(data?.results);
+    setAllMedias([]);
+    section === "best"
+      ? setParamsFilter(bestParams)
+      : setParamsFilter(populareParams);
+  }, [section]);
+
+  useEffect(() => {
     if (data?.results !== undefined)
       setAllMedias((prev) => [...prev, ...data.results]);
   }, [data]);
 
   if (isLoading) return <LoadingPage />;
-
+  console.log("IS lOADIIIIING", isLoading);
   if (!data) return <p>Pas de data</p>;
 
   const allParamsNames = [
@@ -43,7 +55,7 @@ function MovieListPage() {
     "&vote_average.lte=",
     "&vote_count.gte=",
   ];
-  console.log(currentPage);
+
   const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault;
     //Transformer les params sous forme de lien
@@ -59,24 +71,38 @@ function MovieListPage() {
       ],
       allParamsNames
     );
+
+    if (newLink + genders === paramsFilter) return;
     setParamsFilter(newLink + genders);
+    dispatch(switchHasChanged());
     setAllMedias([]);
   };
-
-  // console.log(data?.results);
+  console.log(allMedias);
   return (
-    <main className="flex-1  min-h-screen relative px-4 lg:px-8 mt-8 max-w-bigScreen mx-auto flex  gap-8 w-full">
-      <FilterSection handleSubmit={handleSubmit} />
+    <main className="flex-1   relative px-4 lg:px-8 mt-8 max-w-bigScreen mx-auto flex lg:flex-row flex-col  gap-8 w-full">
+      <FilterSection isFetching={isFetching} handleSubmit={handleSubmit} />
+
       <div className="flex flex-col">
-        <MediaListContainer isFetching={isFetching} data={allMedias} />
-        <div className="text-center mt-8">
-          <button
-            className=" px-4 py-2 rounded-xl font-bold border w-full bg-slate-800 text-white hover:opacity-80 dark:bg-slate-200 dark:text-slate-900 "
-            onClick={() => dispatch(showMorePage())}
-          >
-            Charger plus{" "}
-          </button>
-        </div>
+        {allMedias.length > 1 ? (
+          <>
+            <MediaListContainer isFetching={isFetching} data={allMedias} />
+            <div className="text-center mt-8">
+              <FetchButton
+                title="Charger plus"
+                isFetching={isFetching}
+                isDisabled={false}
+                handleClick={showMorePage()}
+              />
+            </div>
+          </>
+        ) : isFetching ? (
+          <p>Chargement...</p>
+        ) : (
+          <p>
+            Aucun média ne correspond à votre recherche. <br /> Essayez avec
+            d'autres configurations!{" "}
+          </p>
+        )}
       </div>
     </main>
   );

@@ -14,7 +14,6 @@ function Search() {
   useEffect(() => {
     document.title = query ?? "Movie";
     setSearch(query ?? "");
-    console.log(query);
   }, [query]);
 
   useEffect(() => {

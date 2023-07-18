@@ -51,6 +51,7 @@ function SearchResult({ mediaType, query }: Props) {
           overview={overview}
           imageUrl={poster_path}
           isFetching={isFetching}
+          circlePresence={false}
         />
       )
     );
@@ -68,6 +69,7 @@ function SearchResult({ mediaType, query }: Props) {
           overview={overview}
           imageUrl={poster_path}
           isFetching={isFetching}
+          circlePresence={false}
         />
       )
     );
@@ -93,7 +95,7 @@ function SearchResult({ mediaType, query }: Props) {
   if (resultsLength < 1) {
     content = <p>Aucun média ne correspond à votre recherche {query} </p>;
   }
-  console.log(data);
+
   return (
     <div className="lg:w-5/6 w-full flex flex-col gap-4  ">
       {content}

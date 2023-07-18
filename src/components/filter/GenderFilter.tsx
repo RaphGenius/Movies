@@ -11,7 +11,9 @@ function GenderFilter() {
 
   const content = genderMovieList.map(({ id, name }) => (
     <button
-      className={`p-4 rounded-lg ${genderList.includes(id) && "bg-gray-500"}`}
+      className={`p-2 px-4 border  border-slate-400 rounded-lg font-semibold hover:opacity-90  ${
+        genderList.includes(id) && "generalGradient text-white   "
+      }`}
       onClick={() => dispatch(handleGenders(id))}
       key={id}
     >
@@ -19,7 +21,7 @@ function GenderFilter() {
     </button>
   ));
 
-  return <div className="flex flex-wrap"> {content} </div>;
+  return <div className="flex flex-wrap gap-2   "> {content} </div>;
 }
 
 export default GenderFilter;

@@ -14,8 +14,6 @@ function DoubleInputRange({
   step,
   rangeValue,
 }: Props) {
-  console.log(handleMaxValue);
-
   return (
     <div className="range_container">
       <div className="sliders_control">

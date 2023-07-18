@@ -41,8 +41,7 @@ export default function SumGroupDesktop({
     tagline,
     overview,
   } = data;
-  console.log(data);
-  console.log(genres);
+
   return (
     <SumGroup imageUrl={backdrop_path}>
       {/* PARTIE IMAGE */}

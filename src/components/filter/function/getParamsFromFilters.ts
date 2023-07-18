@@ -7,7 +7,6 @@ export function getParamsFromFilters(
   for (let i = 0; i <= values.length; i++) {
     if (values[i]) {
       const param = (names[i] += values[i]?.toString());
-      console.log(values[i]);
       mylink.push(param);
     }
   }

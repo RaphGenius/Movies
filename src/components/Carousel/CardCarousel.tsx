@@ -33,7 +33,7 @@ function CardCarousel({
 }: CardProps) {
   const borderCardStyle =
     borderCard &&
-    "border rounded-xl border-slate-300 overflow-hidden dark:border-slate-500  ";
+    "border rounded-xl border-slate-300 overflow-hidden dark:border-slate-600  ";
   return (
     <LinkPage
       mediaType={mediaType}

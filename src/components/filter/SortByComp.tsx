@@ -1,11 +1,16 @@
 import { useAppDispatch } from "../../hooks/useRedux";
 import { Sort_byType, sortByFilter } from "../../features/filterListSlice";
-import FilterBox from "../../layout/listPage/FilterBox";
+
+type SortElementType = {
+  value: Sort_byType;
+  id: number;
+  name: string;
+};
 
 function SortByComp() {
   const dispatch = useAppDispatch();
 
-  const sortByElementTest = [
+  const sortByElementTest: SortElementType[] = [
     {
       value: "popularity.asc",
       id: 0,
@@ -26,15 +31,26 @@ function SortByComp() {
       id: 3,
       name: "Plus récent",
     },
+    {
+      value: "vote_average.desc",
+      id: 4,
+      name: "Note +/-",
+    },
+    {
+      value: "vote_average.asc",
+      id: 5,
+      name: "Note -/+",
+    },
   ];
   return (
     <>
       <select
+        className="bg-slate-200 dark:bg-slate-800 p-2 w-full text-center font-semibold mt-4 "
         onChange={(e) => dispatch(sortByFilter(e.target.value as Sort_byType))}
         id="sortby"
       >
         {sortByElementTest.map((el) => (
-          <option key={el.id} value={el.value}>
+          <option className="hover:font-semibold" key={el.id} value={el.value}>
             {el.name}{" "}
           </option>
         ))}

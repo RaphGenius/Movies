@@ -7,10 +7,10 @@ type Props = {
 };
 
 function FilterContainer({ children, title }: PropsWithChildren<Props>) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="rounded-lg border border-slate-700   ">
+    <div className="rounded-lg border border-slate-700  bg-white dark:bg-slate-900 dark:border-slate-800 shadow-md  ">
       <div
         onClick={() => setIsOpen((prev) => !prev)}
         className="w-full flex justify-between items-center cursor-pointer border-b border-b-slate-600 p-4   "

@@ -5,14 +5,22 @@ import FilterContainer from "./FilterContainer";
 import VoteAverageInputRange from "../../components/filter/VoteAverageInputRange";
 import GenderFilter from "../../components/filter/GenderFilter";
 import { FormEvent } from "react";
+import FetchButton from "../../components/buttons/FetchButton";
+import { useAppSelector } from "../../hooks/useRedux";
+import { RootState } from "../../app/store";
 
 type Props = {
   handleSubmit: (e: FormEvent<HTMLButtonElement>) => void;
+  isFetching: boolean;
 };
 
-function FilterSection({ handleSubmit }: Props) {
+function FilterSection({ handleSubmit, isFetching }: Props) {
+  const hasParamsChanged = useAppSelector(
+    (state: RootState) => state.filter.hasChanged
+  );
+  console.log(hasParamsChanged);
   return (
-    <section className="w-1/6 min-w-[250px] flex gap-4 flex-col">
+    <section className=" lg:w-1/6 min-w-[250px] flex gap-4 flex-col">
       <FilterContainer title="Trier">
         <FilterBox titleFilter="Trier les résultats par :">
           <SortByComp />
@@ -32,12 +40,12 @@ function FilterSection({ handleSubmit }: Props) {
         </FilterBox>
       </FilterContainer>
       <div className="text-center">
-        <button
-          className=" px-4 py-2 rounded-xl font-bold border w-full bg-slate-800 text-white hover:opacity-80 dark:bg-slate-200 dark:text-slate-900 "
-          onClick={handleSubmit}
-        >
-          Rechercher
-        </button>
+        <FetchButton
+          isDisabled={hasParamsChanged}
+          isFetching={isFetching}
+          title="Rechercher"
+          handleClick={handleSubmit}
+        />
       </div>
     </section>
   );

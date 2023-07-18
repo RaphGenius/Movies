@@ -16,8 +16,6 @@ function HeaderCast({ id, mediaType }: QueryParamsType) {
   if (!data) return <p>Pas de data</p>;
   const { title, name, poster_path, release_date, first_air_date } = data;
 
-  console.log(name);
-
   return (
     <div
       style={{

@@ -2,6 +2,7 @@ import { Media_typeType } from "../../type/type";
 import formatDate from "../../utils/formatDate";
 import { getPosterPathImage } from "../../utils/getImage";
 import { getNotFoundImage } from "../../utils/getNotFoundImage";
+import CircleProgressBar from "../Carousel/CircleProgressBar";
 import LinkPage from "../Router/LinkPage";
 import ImgCard from "./ImgCard";
 import SubtitleCard from "./SubtitleCard";
@@ -15,6 +16,8 @@ type Props = {
   imageUrl: string;
   id: number;
   isFetching: boolean;
+  circlePresence: boolean;
+  rate?: number;
 };
 
 function CardSearchMedia({
@@ -25,14 +28,21 @@ function CardSearchMedia({
   imageUrl,
   id,
   isFetching,
+  circlePresence = false,
+  rate,
 }: Props) {
   return (
     <div
-      className={`flex dark:bg-gradient-to-tl dark:from-slate-700 dark:to-slate-900  rounded-xl overflow-hidden h-40 w-full border dark:border-gray-900 border-gray-300 shadow-md duration-700 transition-opacity ${
+      className={`flex relative dark:bg-gradient-to-tl dark:from-slate-700 dark:to-slate-900  rounded-xl overflow-hidden h-40 w-full border dark:border-gray-900 border-gray-300 shadow-md duration-700 transition-opacity ${
         isFetching && "opacity-50"
       } `}
     >
       <LinkPage mediaType={mediaType} id={id.toString()} titleMedia={title}>
+        {circlePresence && (
+          <div className="absolute h-8 md:right-0   w-10 md:block    mx-2 mt-2 ">
+            <CircleProgressBar rate={rate ?? 0} />
+          </div>
+        )}
         <div className="w-28  h-full ">
           <ImgCard
             imageUrl={imageUrl}

@@ -5,8 +5,8 @@ type Props = {
 };
 function FilterBox({ children, titleFilter }: PropsWithChildren<Props>) {
   return (
-    <div className="border-t border-gray-200 p-4 ">
-      <h3 className="text-gray-500 ">{titleFilter} </h3>
+    <div className="border-t border-gray-200 p-4 flex flex-col gap-2 ">
+      <h3 className="text-gray-800 dark:text-gray-200 ">{titleFilter} </h3>
       {children}
     </div>
   );

@@ -14,7 +14,6 @@ function CastPage() {
   const location = useLocation();
   const { id } = useParams() as { id: string };
   const mediaType = location.pathname.split("/")[1] as Media_typeType;
-  console.log(mediaType);
 
   useEffect(() => {
     document.documentElement.scrollTo({

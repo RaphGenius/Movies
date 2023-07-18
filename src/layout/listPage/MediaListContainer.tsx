@@ -1,5 +1,7 @@
 import CardCarousel from "../../components/Carousel/CardCarousel";
+import CardSearchMedia from "../../components/card/CardSearchMedia";
 import { MovieType } from "../../type/type";
+import { Desktop, Mobile } from "../../utils/ResponsiveWrapper";
 
 type Props = {
   data: MovieType[];
@@ -7,7 +9,7 @@ type Props = {
 };
 
 function MediaListContainer({ data, isFetching }: Props) {
-  const content = data.map((el) => (
+  const contentDesktop = data.map((el) => (
     <CardCarousel
       key={el.id}
       mediaType={"movie"}
@@ -22,15 +24,31 @@ function MediaListContainer({ data, isFetching }: Props) {
       borderCard
     />
   ));
-
+  const contentMobile = data.map((el) => (
+    <CardSearchMedia
+      mediaType="movie"
+      title={el.title}
+      date={el.release_date}
+      isFetching={isFetching}
+      overview={el.overview}
+      id={Number(el.id)}
+      circlePresence
+      rate={el.vote_average}
+      imageUrl={el.poster_path}
+    />
+  ));
   return (
     <section
       className={`w-full flex flex-wrap gap-8 ${
         isFetching && "opacity-80"
       } transition  `}
     >
-      {" "}
-      {content}{" "}
+      <Desktop>
+        <>{contentDesktop}</>
+      </Desktop>
+      <Mobile>
+        <>{contentMobile}</>
+      </Mobile>
     </section>
   );
 }

@@ -11,7 +11,6 @@ function Headlining({ id, mediaType }: QueryParamsType) {
   });
 
   if (!data) return <p>pas de data</p>;
-  console.log(data);
   let content;
   if (data?.cast.length < 1) {
     content = <p>Aucune distribution des rôles n'a été ajoutée à ce média.</p>;

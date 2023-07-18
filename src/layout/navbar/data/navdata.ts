@@ -1,20 +1,53 @@
+import { Media_typeType } from "../../../type/type";
+
+type CategoryType = {
+  name: string;
+  section: "popular" | "best";
+};
 export type NavDataProps = {
   title: string;
-  categories: string[];
+  mediaType: Media_typeType;
+
+  categories: CategoryType[];
 };
 
-export const navdata = [
+export const navdata: NavDataProps[] = [
   {
     title: "Film",
-    categories: ["Populaire", "Les mieux notés", "A venir", "Du moment"],
+    mediaType: "movie",
+    categories: [
+      {
+        name: "Populaire",
+        section: "popular",
+      },
+      {
+        name: "Les mieux notés",
+        section: "best",
+      },
+    ],
   },
   {
     title: "Serie",
+    mediaType: "tv",
     categories: [
-      "Populaire",
-      "Les mieux notés",
-      "En cours de diffusion",
-      "Diffusé aujourd'hui",
+      {
+        name: "Populaire",
+        section: "popular",
+      },
+      {
+        name: "Les mieux notés",
+        section: "best",
+      },
+    ],
+  },
+  {
+    title: "Personnes",
+    mediaType: "person",
+    categories: [
+      {
+        name: "Populaire",
+        section: "popular",
+      },
     ],
   },
 ];

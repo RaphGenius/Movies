@@ -1,7 +1,6 @@
 import { useParams, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useGetPeopleCreditMovieByIdQuery } from "../features/peopleSlice";
-import { Media_typeType } from "../type/type";
 import { getProfilImagePath } from "../utils/getImage";
 import TitleCast from "../components/Cast/TitleCast";
 import CardRole from "../components/card/CardRole";
@@ -9,11 +8,11 @@ import { getNotFoundImage } from "../utils/getNotFoundImage";
 import RoleList from "../layout/cast/RoleList";
 import HeaderCast from "../layout/cast/HeaderCast";
 import Loader from "../components/Loading/Loader";
+import { getMediaTypeFromPathname } from "../utils/getMediaTypeFromPathname";
 function CastPage() {
   const { pathname } = useLocation();
-  const location = useLocation();
   const { id } = useParams() as { id: string };
-  const mediaType = location.pathname.split("/")[1] as Media_typeType;
+  const mediaType = getMediaTypeFromPathname(pathname);
 
   useEffect(() => {
     document.documentElement.scrollTo({

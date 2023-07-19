@@ -1,23 +1,22 @@
 import { Media_typeType } from "../../../type/type";
 
-type CategoryType = {
+export type CategoryType = {
   name: string;
   section: "popular" | "best";
 };
 export type NavDataProps = {
   title: string;
   mediaType: Media_typeType;
-
   categories: CategoryType[];
 };
 
 export const navdata: NavDataProps[] = [
   {
-    title: "Film",
+    title: "Films",
     mediaType: "movie",
     categories: [
       {
-        name: "Populaire",
+        name: "Populaires",
         section: "popular",
       },
       {
@@ -27,11 +26,11 @@ export const navdata: NavDataProps[] = [
     ],
   },
   {
-    title: "Serie",
+    title: "Series",
     mediaType: "tv",
     categories: [
       {
-        name: "Populaire",
+        name: "Populaires",
         section: "popular",
       },
       {
@@ -41,11 +40,11 @@ export const navdata: NavDataProps[] = [
     ],
   },
   {
-    title: "Personnes",
+    title: "Artistes",
     mediaType: "person",
     categories: [
       {
-        name: "Populaire",
+        name: "Populaires",
         section: "popular",
       },
     ],

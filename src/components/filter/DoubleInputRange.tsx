@@ -2,7 +2,7 @@ import { minMaxType } from "../../features/filters/filterListSlice";
 
 type Props = {
   value: minMaxType;
-  handleMinValue: any;
+  handleMinValue: (value: number) => void;
   handleMaxValue: (value: number) => void;
   step: number;
   rangeValue: minMaxType;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import { useLocation } from "react-router-dom";
 import { Desktop, Mobile } from "../../utils/ResponsiveWrapper";
 
 import Sidebar from "./components/Mobile/Sidebar";
@@ -12,10 +12,12 @@ import DesktopNavbar from "./components/Desktop/DesktopNavbar";
 
 function Navbar() {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const { visible, setVisible } = useSearchBar() as SearchbarContextType;
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+  const { visible, setVisible } = useSearchBar() as SearchbarContextType;
+  const { pathname } = useLocation();
 
   const toggleSideBar = () => setIsSideBarOpen((prev) => !prev);
+  const closeSideBar = () => setIsSideBarOpen(false);
 
   // Verifie si on scroll vers le bas
   const handleScroll = () => {
@@ -36,6 +38,9 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   });
 
+  useEffect(() => {
+    closeSideBar();
+  }, [pathname]);
   return (
     <nav
       className={` dark:border-slate-800 border border-b-gray-300 z-50  text-mainColordark bg-white dark:text-white dark:bg-slate-900 shadow-xl transition-all origin-top duration-300

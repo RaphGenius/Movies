@@ -21,7 +21,7 @@ export const peopleSlice = createApi({
       FetchResultPeopleCreditType,
       DataQueryParamsType
     >({
-      query: ({ id, mediaType }) => `${mediaType}/${id}/credits`,
+      query: ({ id, mediaType }) => `${mediaType}/${id}/credits?language=fr-EU`,
     }),
     getPersonDetailById: builder.query<PersonDetailType, string>({
       query: (id) =>

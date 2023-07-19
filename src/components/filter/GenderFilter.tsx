@@ -9,7 +9,6 @@ function GenderFilter({ mediaType }: { mediaType: Media_typeType }) {
   const { genderList } = useAppSelector((state: RootState) => state.filter);
   const genderMediaList =
     mediaType === "movie" ? genderMovieList : genderTvList;
-  console.log(genderList);
 
   const content = genderMediaList.map(({ id, name }) => (
     <button

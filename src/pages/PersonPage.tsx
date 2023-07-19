@@ -16,7 +16,7 @@ function PersonPage() {
   const { isLoading, data } = useGetPersonDetailByIdQuery(id ?? skipToken);
   if (isLoading) return <LoadingPage />;
   if (!data || !id) return <p>Pas de data</p>;
-  console.log(data);
+
   return (
     <main className="flex-1 min-h-screen relative px-4 lg:px-8 mt-8 max-w-bigScreen mx-auto  w-full">
       <Desktop>

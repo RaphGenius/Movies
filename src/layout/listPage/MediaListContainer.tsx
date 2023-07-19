@@ -37,6 +37,7 @@ function MediaListContainer({ data, isFetching, mediaType }: Props) {
       <>
         {data.map((el) => (
           <CardSearchMedia
+            key={el.id}
             mediaType={mediaType}
             title={el.title ?? el.name}
             date={el.release_date ?? el.first_air_date}

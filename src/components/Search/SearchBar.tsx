@@ -8,7 +8,7 @@ function SearchBar({ children }: PropsWithChildren) {
   const getQuery = (qry: string) => setQuery(qry);
 
   const navigate = useNavigate();
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!query.trim()) return;
     navigate(`/search/${query.trim()}`);
@@ -20,6 +20,7 @@ function SearchBar({ children }: PropsWithChildren) {
       className="py-4 px-2 lg:px-4 w-full group  flex items-center justify-between   "
     >
       <label
+        onClick={handleSubmit}
         className=" text-black text-xl flex justify-center items-center mr-4"
         aria-label="Rechercher un film, serie, artiste"
         htmlFor="search"

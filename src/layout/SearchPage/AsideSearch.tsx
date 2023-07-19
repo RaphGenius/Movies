@@ -33,7 +33,7 @@ function AsideSearch({ setCurrentMediaType, currentMediaType, query }: Props) {
   ];
 
   return (
-    <aside className="lg:w-2/6   lg:rounded-xl overflow-hidden dark:border-gray-700 lg:border-2 border-gray-300 lg:sticky lg:top-28 h-fit  ">
+    <aside className="lg:w-2/6 border-b  lg:rounded-xl overflow-hidden dark:border-gray-700 lg:border-2 border-gray-300 lg:sticky lg:top-28 h-fit  ">
       <div className=" bg-gradient-to-tl from-teal-400 to-teal-700  p-4">
         <h2 className="text-white text-xl font-bold  ">
           Resultat de la recherche pour {query}{" "}

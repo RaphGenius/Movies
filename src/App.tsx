@@ -22,6 +22,7 @@ import { useAppSelector } from "./hooks/useRedux.ts";
 
 function App() {
   const currentTheme = useAppSelector((state) => state.theme.theme);
+  console.log(currentTheme);
   const { pathname } = useLocation();
   useEffect(() => {
     document.documentElement.scrollTo({

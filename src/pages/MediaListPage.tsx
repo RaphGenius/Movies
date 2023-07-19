@@ -43,6 +43,13 @@ function MediaListPage() {
     mediaType: mediaType as Media_typeType,
   });
 
+  useEffect(() => {
+    const mediaTitle = mediaType === "movie" ? "Les films" : "Les séries";
+    const sectionTitle =
+      section === "popular" ? "populaires" : "les mieux notés";
+    document.title = mediaTitle + " " + sectionTitle;
+  }, [section, mediaType]);
+
   //Definie les paramettre des bases pour les 2 types de sectionn
   useEffect(() => {
     setAllMedias([]);
@@ -101,7 +108,7 @@ function MediaListPage() {
     dispatch(switchHasChanged());
     setAllMedias([]);
   };
-  console.log(data);
+
   return (
     <main className="flex-1   relative px-4 lg:px-8 mt-8 max-w-bigScreen mx-auto flex lg:flex-row flex-col  gap-8 w-full">
       <FilterSection

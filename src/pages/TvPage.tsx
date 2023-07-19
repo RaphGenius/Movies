@@ -1,7 +1,6 @@
 import { useParams, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { skipToken } from "@reduxjs/toolkit/query";
-import { Media_typeType } from "../type/type";
 import { useGetTvDetailByIDQuery } from "../features/tvSlice";
 import { Desktop, Mobile } from "../utils/ResponsiveWrapper";
 
@@ -11,6 +10,7 @@ import TvSumGroupMobile from "../layout/tvPage/TvSumGroupMobile";
 import InformationsMedia from "../layout/moviePage/InformationsMedia";
 import TvAdditionalInformations from "../layout/tvPage/TvAdditionalInformations";
 import LoadingPage from "../components/Loading/LoadingPage";
+import { getMediaTypeFromPathname } from "../utils/getMediaTypeFromPathname";
 function TvPage() {
   const [videoId, setVideoID] = useState<number | null>(null);
   const { id, titleMedia } = useParams();
@@ -19,8 +19,8 @@ function TvPage() {
     document.title = `${titleMedia}` ?? "Movie";
   }, [titleMedia]);
 
-  const location = useLocation();
-  const mediaType = location.pathname.split("/")[1] as Media_typeType;
+  const { pathname } = useLocation();
+  const mediaType = getMediaTypeFromPathname(pathname);
 
   const { data, isFetching } = useGetTvDetailByIDQuery(id ?? skipToken);
   if (isFetching) return <LoadingPage />;

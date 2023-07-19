@@ -20,6 +20,10 @@ function PersonsListPage() {
     });
   }, [currentPage]);
 
+  useEffect(() => {
+    document.title = "Artiste populaires";
+  }, []);
+
   if (isLoading) return <LoadingPage />;
 
   return (
@@ -27,7 +31,7 @@ function PersonsListPage() {
       <TitleTrend style="text-black dark:text-white " title="Populaire" />
       <section className="w-full    ">
         <div
-          className={`w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 my-8 transition-opacity ${
+          className={`w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 my-8 transition-opacity  ${
             isFetching && "opacity-50"
           }  `}
         >

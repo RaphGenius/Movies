@@ -2,7 +2,6 @@ import { useParams, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { skipToken } from "@reduxjs/toolkit/query";
 import { useGetMovieDetailByIDQuery } from "../features/movieSlice";
-import { Media_typeType } from "../type/type";
 import YoutubePlayer from "../components/VideoPlayer/YoutubePlayer";
 import { Desktop, Mobile } from "../utils/ResponsiveWrapper";
 import SumGroupDesktop from "../layout/moviePage/desktop/SumGroupDesktop";
@@ -10,6 +9,7 @@ import SumGroupMobile from "../layout/moviePage/mobile/SumGroupMobile";
 import InformationsMedia from "../layout/moviePage/InformationsMedia";
 import AdditionalInformations from "../layout/moviePage/AdditionalInformations";
 import LoadingPage from "../components/Loading/LoadingPage";
+import { getMediaTypeFromPathname } from "../utils/getMediaTypeFromPathname";
 
 function MoviePage() {
   const [videoId, setVideoID] = useState<number | null>(null);
@@ -19,8 +19,8 @@ function MoviePage() {
     document.title = `${titleMedia}` ?? "Movie";
   }, [titleMedia]);
 
-  const location = useLocation();
-  const mediaType = location.pathname.split("/")[1] as Media_typeType;
+  const { pathname } = useLocation();
+  const mediaType = getMediaTypeFromPathname(pathname);
 
   const { data, isFetching } = useGetMovieDetailByIDQuery(id ?? skipToken);
 

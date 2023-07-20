@@ -18,7 +18,7 @@ export default function MobileNavbar({
           <GoThreeBars />
         </IconButton>
       </div>
-      <div className="w-1/3">
+      <div className="w-full">
         <Title title="Movies" />
       </div>
 

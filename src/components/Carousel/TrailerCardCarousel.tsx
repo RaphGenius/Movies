@@ -40,7 +40,7 @@ function TrailerCardCarousel({
   return (
     <article
       onMouseEnter={getBackgroundImageOnHover}
-      className="cursor-pointer group h-[250px] w-[350px]
+      className="cursor-pointer group   lg:w-[350px]  w-[200px]
      flex flex-col flex-shrink-0   "
     >
       <div className="relative group w-full rounded-lg">
@@ -57,7 +57,7 @@ function TrailerCardCarousel({
             bgImage.includes(poster_path)
               ? "border-white/50 "
               : "border-white/10"
-          }  border-8  z-10 hover:scale-105 will-change-transform
+          }  border-2 lg:border-8  z-10 hover:scale-105 will-change-transform
           transition-transform duration-300  h-full object-cover`}
           src={`https://image.tmdb.org/t/p/w355_and_h200_multi_faces${backdrop_path}`}
           alt={`Poster du film ${titre}`}
@@ -66,7 +66,7 @@ function TrailerCardCarousel({
       {/* Titre */}
       <LinkPage mediaType={media_type} id={id.toString()} titleMedia={titre}>
         {" "}
-        <h3 className="mt-6 font-bold text-center text-xl pl-2 line-clamp-1 ">
+        <h3 className="lg:mt-6 font-bold text-center text-xl pl-2 line-clamp-1 ">
           {titre}
         </h3>
       </LinkPage>

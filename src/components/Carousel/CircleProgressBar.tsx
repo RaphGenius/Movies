@@ -3,7 +3,7 @@ import "react-circular-progressbar/dist/styles.css";
 
 function CircleProgressBar({
   rate,
-  size = "20px",
+  size = "25px",
 }: {
   rate: number;
   size?: string;

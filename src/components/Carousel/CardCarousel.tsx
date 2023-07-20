@@ -41,9 +41,9 @@ function CardCarousel({
       titleMedia={formatTitleUrl(title)}
     >
       <article
-        className={`w-40 h-full lg:h-[350px] cursor-pointer relative group lg:w-44 flex flex-col gap-2 flex-shrink-0 ${borderCardStyle} `}
+        className={`w-40 h-full lg:h-[350px] cursor-pointer relative group lg:w-44 flex flex-col gap-4 flex-shrink-0 ${borderCardStyle} `}
       >
-        <div className="absolute bottom-20 left-2 z-10 w-12 ">
+        <div className="absolute bottom-[70px] left-2 z-10 w-10 ">
           {circlePresence && <CircleProgressBar rate={rate} />}
         </div>
         <div className=" h-3/4 w-full relative  rounded-lg overflow-hidden">

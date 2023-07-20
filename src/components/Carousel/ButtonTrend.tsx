@@ -9,7 +9,7 @@ function ButtonTrend({ title, handleClick, value, label }: Props) {
   const textColor = value === label ? " gradientText font-semibold" : "";
   return (
     <button
-      className={`w-[150px] transition-colors text-xl ${textColor} z-20 
+      className={`lg:w-[150px] w-full  flex items-center justify-center  transition-colors text-xl ${textColor} z-20 
      `}
       onClick={handleClick}
     >

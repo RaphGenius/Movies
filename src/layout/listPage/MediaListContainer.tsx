@@ -44,7 +44,7 @@ function MediaListContainer({ data, isFetching, mediaType }: Props) {
             isFetching={isFetching}
             overview={el.overview}
             id={Number(el.id)}
-            circlePresence
+            circlePresence={false}
             rate={el.vote_average}
             imageUrl={el.poster_path}
           />

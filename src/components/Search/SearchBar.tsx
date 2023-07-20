@@ -30,7 +30,7 @@ function SearchBar({ children }: PropsWithChildren) {
       <input
         autoFocus
         onChange={(e) => getQuery(e.target.value)}
-        className="w-full flex-1 truncate  text-mainColordark dark:bg-gray-100   focus:outline-none   "
+        className="w-full flex-1 truncate  text-mainColordark bg-transparent  focus:outline-none   "
         placeholder="Rechercher un film, une série, un artiste..."
         id="search"
         value={query}

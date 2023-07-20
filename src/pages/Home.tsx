@@ -5,7 +5,7 @@ import TrendCaroussel from "../layout/trendCaroussel/TrendCaroussel";
 
 export default function Home() {
   useEffect(() => {
-    document.title = "Movie";
+    document.title = "Movies";
   }, []);
 
   return (

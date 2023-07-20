@@ -19,7 +19,7 @@ export default function MobileNavbar({
         </IconButton>
       </div>
       <div className="w-1/3">
-        <Title title="Movie" />
+        <Title title="Movies" />
       </div>
 
       <div className="w-1/3 flex items-center justify-end gap-4 ">

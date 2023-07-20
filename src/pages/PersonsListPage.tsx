@@ -21,7 +21,7 @@ function PersonsListPage() {
   }, [currentPage]);
 
   useEffect(() => {
-    document.title = "Artiste populaires";
+    document.title = "Artistes populaires";
   }, []);
 
   if (isLoading) return <LoadingPage />;

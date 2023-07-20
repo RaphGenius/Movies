@@ -34,7 +34,7 @@ export const navdata: NavDataProps[] = [
         section: "popular",
       },
       {
-        name: "Les mieux notés",
+        name: "Les mieux notées",
         section: "best",
       },
     ],

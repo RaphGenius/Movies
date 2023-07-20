@@ -42,7 +42,8 @@ export const multiSliceAPi = createApi({
       FetchResult<MovieDetailType & TvDetailType>,
       QueryParamsType
     >({
-      query: ({ id, mediaType }) => `${mediaType}/${id}/recommendations`,
+      query: ({ id, mediaType }) =>
+        `${mediaType}/${id}/recommendations?language=fr-EU`,
     }),
     getMediaDetailByID: builder.query<
       MovieDetailType & TvDetailType,

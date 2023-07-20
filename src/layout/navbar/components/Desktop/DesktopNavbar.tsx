@@ -5,9 +5,9 @@ import DropDown from "./DropDown";
 
 function DesktopNavbar() {
   return (
-    <div className="flex justify-between items-end w-full">
+    <div className="flex justify-between items-baseline w-full">
       {/* TItre et categories */}
-      <div className="flex items-end  w-full ">
+      <div className="flex items-baseline  w-full ">
         <Title title="Movies" />
         <div className="flex gap-12 ml-8 text-xl w-full ">
           {navdata.map((show: NavDataProps, index) => (

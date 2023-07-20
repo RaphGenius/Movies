@@ -34,7 +34,7 @@ function Headlining({ id, mediaType }: QueryParamsType) {
 
   return (
     <>
-      <Subtitle text="Tête d'affiche" />
+      <Subtitle text="Têtes d'affiche" />
       <Carousel isFetching={isFetching}> {content} </Carousel>
     </>
   );

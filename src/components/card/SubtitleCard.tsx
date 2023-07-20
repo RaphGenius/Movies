@@ -3,6 +3,8 @@ type Props = {
 };
 export default function SubtitleCard({ subtitle }: Props) {
   return (
-    <p className="text-gray-600 dark:text-gray-300 ">{subtitle ?? "NC"}</p>
+    <p className="text-gray-600 dark:text-gray-300 line-clamp-2 ">
+      {subtitle ?? "NC"}
+    </p>
   );
 }

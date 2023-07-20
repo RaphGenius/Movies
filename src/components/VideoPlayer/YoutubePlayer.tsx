@@ -1,4 +1,4 @@
-import YouTube, { YouTubeProps } from "react-youtube";
+import ReactPlayer from "react-player/youtube";
 import { Media_typeType } from "../../type/type";
 import { useGetVideoDataQuery } from "../../features/trendingSlice";
 import LoadingPage from "../Loading/LoadingPage";
@@ -12,7 +12,7 @@ type Props = {
 function YoutubePlayer({ id, media_type, setVideoID }: Props) {
   //Faire une caroussel de lecteur
   const width = window.innerWidth * 0.8;
-  const height = window.innerHeight * 0.5;
+  const height = window.innerHeight * 0.6;
 
   const { data, isFetching, isLoading } = useGetVideoDataQuery({
     mediaType: media_type,
@@ -32,28 +32,21 @@ function YoutubePlayer({ id, media_type, setVideoID }: Props) {
     setVideoID && setVideoID(null);
   };
 
-  const opts: YouTubeProps["opts"] = {
-    height,
-    width,
-    playerVars: {
-      autoplay: 0,
-    },
-  };
-
   return (
     <div
-      className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center  backdrop-blur-sm z-50 "
+      className="absolute h-full z-50 top-0 left-0 right-0 bottom-0  backdrop-blur-md   "
       onClick={stopReadingvideo}
     >
-      <div className="relative ">
+      <div className="w-full h-full flex justify-center items-center flex-col ">
         {isLoading || isFetching ? (
           <LoadingPage />
         ) : (
-          <YouTube
-            title="salut"
-            videoId={videoId}
-            opts={opts}
-            loading="eager"
+          <ReactPlayer
+            controls
+            playing
+            width={width}
+            height={height}
+            url={`https://www.youtube.com/watch?v=${videoId}`}
           />
         )}
 

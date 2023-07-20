@@ -22,13 +22,11 @@ import { useAppSelector } from "./hooks/useRedux.ts";
 
 function App() {
   const currentTheme = useAppSelector((state) => state.theme.theme);
-  console.log(currentTheme);
   const { pathname } = useLocation();
   useEffect(() => {
     document.documentElement.scrollTo({
       top: 0,
       left: 0,
-      behavior: "instant", // Optional if you want to skip the scrolling animation
     });
   }, [pathname]);
 

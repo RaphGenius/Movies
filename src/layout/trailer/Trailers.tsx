@@ -36,7 +36,6 @@ function Trailers() {
       }}
       className={`w-full text-white  overflow-hidden p-4`}
     >
-      <div className="absolute bottom-0 left-0 h-1/2 bg-gradient-to-b from-transparent opacity-50  to-black/20 w-full  " />
       {/* Titre et boutons */}
       <div className="flex items-center flex-col lg:flex-row  gap-4 mb-8">
         <TitleTrend title="Bandes annonces" />

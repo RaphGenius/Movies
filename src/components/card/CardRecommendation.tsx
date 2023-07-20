@@ -33,7 +33,7 @@ function CardRecommendation({
             src={imageUrl ? getImageFn(imageUrl) : imageNotFound}
             alt={`Image de ${title} `}
           />
-          <div className="px-2 text-md translate-y-0 group-hover:-translate-y-6 absolute will-change-transform w-full transition dark:bg-black/80 bg-white/80 bg-red-200 ">
+          <div className="px-2 text-md translate-y-0 opacity-0  group-hover:opacity-100  group-hover:-translate-y-6 absolute will-change-transform w-full transition dark:bg-black/80 bg-white/80 rounded-b-xl bg-red-200 ">
             <p className="flex items-center gap-2">
               <Calendrier /> {formatDateNumbers(releaseDate) ?? "NC"}
             </p>

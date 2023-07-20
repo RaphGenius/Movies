@@ -18,11 +18,10 @@ function CastPage() {
     document.documentElement.scrollTo({
       top: 0,
       left: 0,
-      behavior: "instant",
     });
   }, [pathname]);
 
-  const { data, isLoading, isError } = useGetPeopleCreditMovieByIdQuery({
+  const { data, isLoading } = useGetPeopleCreditMovieByIdQuery({
     id,
     mediaType,
   });

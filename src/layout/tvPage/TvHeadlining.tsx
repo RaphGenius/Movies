@@ -4,8 +4,7 @@ import CardCarousel from "../../components/Carousel/CardCarousel";
 import { useGetTvAggregateCreditsByIDQuery } from "../../features/tvSlice";
 
 function TvHeadlining({ id }: { id: string }) {
-  const { data, isLoading, isError, isFetching } =
-    useGetTvAggregateCreditsByIDQuery(id);
+  const { data, isFetching } = useGetTvAggregateCreditsByIDQuery(id);
   if (!data) return <p>pas de data</p>;
 
   let content;

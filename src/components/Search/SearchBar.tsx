@@ -21,7 +21,7 @@ function SearchBar({ children }: PropsWithChildren) {
     >
       <label
         onClick={handleSubmit}
-        className=" text-black text-xl flex justify-center items-center mr-4"
+        className=" text-black text-xl flex justify-center cursor-pointer items-center mr-4"
         aria-label="Rechercher un film, serie, artiste"
         htmlFor="search"
       >

@@ -1,7 +1,7 @@
 import CardCarousel from "../../components/Carousel/CardCarousel";
 import Carousel from "../../components/Carousel/Carousel";
 import Subtitle from "../../components/text/Subtitle";
-import { CombinedCreditsType, PersonDetailType } from "../../type/People";
+import { PersonDetailType } from "../../type/People";
 
 type Props = {
   id: number;
@@ -9,7 +9,7 @@ type Props = {
   isLoading: boolean;
 };
 
-export default function KnownForSection({ id, data, isLoading }: Props) {
+export default function KnownForSection({ data, isLoading }: Props) {
   const dataForCarousselCrew = data.combined_credits.crew.slice();
   const dataForCarousselCast = data.combined_credits.cast.slice();
 

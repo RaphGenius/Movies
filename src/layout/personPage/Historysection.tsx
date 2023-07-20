@@ -12,7 +12,7 @@ type Props = {
 };
 
 type oneMediaTypeListType = { [key: string]: CombinedCreditsType[] };
-function Historysection({ id, data, isLoading }: Props) {
+function Historysection({ data }: Props) {
   const [mediaSelected, setMediaSelected] = useState<Media_typeType>("movie");
 
   const { crew, cast } = data.combined_credits;

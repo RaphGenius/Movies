@@ -8,7 +8,7 @@ type Props = {
   mediaType: Media_typeType;
 };
 function KeywordsSection({ id, mediaType }: Props) {
-  const { data, isLoading, isError } = useGetKeywordsByIdQuery({
+  const { data } = useGetKeywordsByIdQuery({
     id,
     mediaType,
   });

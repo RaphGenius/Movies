@@ -7,7 +7,7 @@ import { getPosterPathImage } from "../../utils/getImage";
 import { getNotFoundImage } from "../../utils/getNotFoundImage";
 
 function Recommendation({ id, mediaType }: QueryParamsType) {
-  const { data, isLoading, isError } = useGetRecommendationsByIdQuery({
+  const { data, isLoading } = useGetRecommendationsByIdQuery({
     id,
     mediaType,
   });

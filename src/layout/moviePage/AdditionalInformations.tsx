@@ -26,7 +26,7 @@ export default function AdditionalInformations({
   revenu,
   budget,
 }: Props) {
-  const { data, isLoading, isError } = useGetExternalsIdByIdQuery({
+  const { data } = useGetExternalsIdByIdQuery({
     id,
     mediaType,
   });

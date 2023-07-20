@@ -5,6 +5,7 @@ function Footer() {
     <footer className="w-full h-20 mt-8 bg-slate-950 p-4 flex items-center justify-center  ">
       <p className="text-white gap-2 flex text-xl ">
         <a
+          target="_blank"
           className="flex items-center  gap-2"
           href="https://github.com/RaphGenius"
         >

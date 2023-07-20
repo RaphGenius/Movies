@@ -4,7 +4,6 @@ import { NetworksType } from "../../type/Tv";
 import { Media_typeType } from "../../type/type";
 import { formatLanguageShort } from "../../utils/formatLanguageShort";
 import { formatTvStatus, formatTvType } from "../../utils/formatTvInformations";
-import KeywordsSection from "../moviePage/KeywordsSection";
 import SocialMediaContainer from "../moviePage/SocialMediaContainer";
 import TvKeywordsSection from "./TvKeywordsSection";
 
@@ -27,7 +26,7 @@ export default function AdditionalInformations({
   networks,
   type,
 }: Props) {
-  const { data, isLoading, isError } = useGetExternalsIdByIdQuery({
+  const { data } = useGetExternalsIdByIdQuery({
     id,
     mediaType,
   });

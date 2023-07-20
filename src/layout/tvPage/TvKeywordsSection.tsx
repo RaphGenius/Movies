@@ -8,7 +8,7 @@ type Props = {
   mediaType: Media_typeType;
 };
 function TvKeywordsSection({ id, mediaType }: Props) {
-  const { data, isLoading, isError } = useGetTvKeywordsByIdQuery({
+  const { data } = useGetTvKeywordsByIdQuery({
     id,
     mediaType,
   });
